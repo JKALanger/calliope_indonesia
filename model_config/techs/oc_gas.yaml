@@ -1,0 +1,24 @@
+techs:
+
+    oc_gas:
+        essentials:
+            name: 'Open-Cycle Gas'
+            parent: supply
+            carrier_in: gas
+            carrier_out: power
+        constraints: # all based on 2050 values in DEA 2021 technology catalogue
+            resource: inf
+            energy_eff: 0.40
+            energy_cap_min_use: 0.15 # Nuclear Energy Agency (2011)
+            lifetime: 25
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 751000 # USD/MW, median from literature since 2016
+                om_annual: 22000 # USD/MW, median from literature since 2016
+                om_prod: 4.625 # usd/MWh, median from literature since 2016
+                om_con: 23.33 # USD/MWh_th, based on PLN Statistik 2020, see assumptions below
+                # Exchange rate IDR->USD: 14572 (based on BPP 2021), energy content 38 MJ/m3 (from IEA World Energy Balances 2019)
+                # Conversion from standard cubic feet to standard cubic metre: 0.02833
+            emission:
+                om_con: 201.5 # kgCO2eq/MWh, based on emission factor 56 kgCO2/GJ (IPCC)

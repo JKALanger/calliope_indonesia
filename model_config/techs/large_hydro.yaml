@@ -1,0 +1,22 @@
+techs:
+
+    large_hydro:
+        essentials:
+            name: 'Large hydro'
+            parent: supply
+            carrier_out: power
+        constraints: # lifetime based on DEN 2021 technology catalogue, year 2050
+            resource: file=Hydropower_Profiles_2050_mean.csv # gross power production
+            resource_unit: energy_per_cap
+            energy_eff: 0.8
+            lifetime: 50
+        costs:
+            monetary:
+                interest_rate: 0.1
+                # 2050 values calculated with 2021 costs and cost projections until 2050, check supplmentary materials of paper
+                energy_cap: 2262000 # USD/MW, set to zero since we assume no more reservoir plant will be built
+                om_annual: 43000 # USD/MW/year
+                om_prod: 0.68 # USD/MWh/year
+                om_con: 0 # USD/MWh/year
+            emission:
+                om_prod: 0

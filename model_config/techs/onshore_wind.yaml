@@ -1,0 +1,22 @@
+techs:
+
+    onshore_wind:
+        essentials:
+            name: 'Onshore wind'
+            parent: supply_plus
+            carrier_out: power
+        constraints:
+            resource: file=Onshore_Wind_Profiles_2050_mean.csv # gross power production
+            resource_unit: energy_per_cap
+            energy_eff: 0.8536 # consisting of wake losses of 88% and availability factor of 97%, see Langer et al. (2023) Introducing site selection flexibility to technical and economic onshore wind potential assessments: New method with application to Indonesia.
+            lifetime: 30
+        costs:
+            monetary:
+                interest_rate: 0.1
+                # 2050 values calculated with 2021 costs and cost projections until 2050, check supplmentary materials of paper
+                energy_cap: 1326000 # USD/MW
+                om_annual: 35000 # USD/MW/year
+                om_prod: 0 # USD/MWh/year
+                om_con: 0 # USD/MWh/year
+            emission:
+                om_prod: 0

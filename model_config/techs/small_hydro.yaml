@@ -1,0 +1,22 @@
+techs:
+
+    small_hydro:
+        essentials:
+            name: 'Small hydro'
+            parent: supply
+            carrier_out: power
+        constraints: # all based on DEN 2021 technology catalogue, year 2050
+            resource: file=Hydropower_Profiles_2050_mean.csv # gross power production
+            resource_unit: energy_per_cap
+            energy_eff: 0.80
+            lifetime: 50
+        costs:
+            monetary:
+                interest_rate: 0.1
+                # 2050 values calculated with 2021 costs and cost projections until 2050, check supplmentary materials of paper
+                energy_cap: 2686000 # USD/MW
+                om_annual: 55400 # USD/MW/year
+                om_prod: 0.52 # USD/MWh/year
+                om_con: 0 # USD/MWh/year
+            emission:
+                om_prod: 0

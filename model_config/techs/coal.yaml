@@ -1,0 +1,26 @@
+techs:
+
+    coal:
+        essentials:
+            name: 'Coal'
+            parent: supply
+            carrier_in: coal
+            carrier_out: power
+        constraints:
+            # all based on 2050 values in DEA 2021 technology catalogue
+            # we assume subcritical coal plants, as the majority of Indonesia's PLTU fleet consists of subcritical plants
+            # https://earthjournalism.net/stories/coal-fever-in-indonesia
+            resource: inf
+            energy_eff: 0.4
+            energy_cap_min_use: 0.2
+            lifetime: 30
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 1512000 # USD/MW, median from literature since 2016
+                om_annual: 45000 # USD/MW, median from literature since 2016
+                om_prod: 2.493 # USD/MWh, median from literature since 2016
+                om_con: 12.05 # USD/MWh_th, based on PLN Statistik 2020, see assumptions below
+                # Exchange rate IDR->USD: 14572 (based on BPP 2021), energy content 18.8 MJ/kg (sub-bituminous coal from IEA World Energy Balances 2019)
+            emission:
+                om_con: 342 # kgCO2eq/MWh, based on emission factor 95 kgCO2/GJ (IPCC)

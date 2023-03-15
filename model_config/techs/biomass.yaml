@@ -1,0 +1,22 @@
+techs:
+
+    biomass:
+        essentials:
+            name: 'Biomass'
+            parent: supply
+            carrier_in: biomass
+            carrier_out: power
+        constraints: # all based on 2050 values in DEA 2021 technology catalogue
+            resource: inf
+            energy_eff: 0.32
+            energy_cap_min_use: 0.3
+            lifetime: 25
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 1520000  # USD/MW, median from literature since 2016
+                om_annual: 66000 # USD/MW, median from literature since 2016
+                om_prod: 5.196 # USD/MWh, median from literature since 2016
+                om_con: 9 # USD/MWh - assuming fuel price 2.5 USD/GJ (mean value from Danish Energy Agency's updated technology catalogue)
+            emission:
+                om_prod: 0 # kgCO2eq/MWh

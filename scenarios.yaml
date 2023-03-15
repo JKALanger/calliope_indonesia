@@ -1,0 +1,116 @@
+##
+# Scenarios are optional, named combinations of overrides
+##
+scenarios:
+    spores_test: ["spores"]
+    resolution_test_1H: ["half_year", "1H_resolution"]
+    resolution_test_2H: ["half_year", "2H_resolution"]
+    resolution_test_3H: ["half_year", "3H_resolution"]
+    resolution_test_4H: ["half_year", "4H_resolution"]
+#    cold_fusion_with_capacity_share: ['cold_fusion', 'cold_fusion_cap_share']
+
+
+##
+# Overrides are the building blocks from which scenarios can be defined
+##
+overrides:
+    half_year:
+        model.subset_time: [ '2050-01-01', '2050-06-30']
+    1H_resolution:
+        model.time: {function: resample, function_options: {'resolution': '1H' }}
+    2H_resolution:
+        model.time: {function: resample, function_options: {'resolution': '2H'}}
+    3H_resolution:
+        model.time: {function: resample, function_options: {'resolution': '3H'}}
+    4H_resolution:
+        model.time: {function: resample, function_options: {'resolution': '4H'}}
+
+    spores:
+        run.mode: spores
+        run.spores_options:
+            score_cost_class: 'spores_score'
+            slack_cost_group: 'systemwide_cost_max'
+            slack: 0.1
+            spores_number: 3
+#            objective_cost_class: {'monetary': 0, 'spores_score': 1}
+#        run.objective_options.cost_class: {'monetary': 1, 'spores_score': 0}
+        group_constraints:
+            systemwide_cost_max.cost_max.monetary: .inf  # very large, non-infinite value
+
+        techs.battery.costs.spores_score.energy_cap: 0
+        techs.battery.costs.spores_score.interest_rate: 1
+        techs.geothermal.costs.spores_score.energy_cap: 0
+        techs.geothermal.costs.spores_score.interest_rate: 1
+        techs.large_hydro.costs.spores_score.energy_cap: 0
+        techs.large_hydro.costs.spores_score.interest_rate: 1
+        techs.nuclear.costs.spores_score.energy_cap: 0
+        techs.nuclear.costs.spores_score.interest_rate: 1
+        techs.onshore_wind.costs.spores_score.energy_cap: 0
+        techs.onshore_wind.costs.spores_score.interest_rate: 1
+        techs.pumped_hydro.costs.spores_score.energy_cap: 0
+        techs.pumped_hydro.costs.spores_score.interest_rate: 1
+        techs.small_hydro.costs.spores_score.energy_cap: 0
+        techs.small_hydro.costs.spores_score.interest_rate: 1
+        techs.solar.costs.spores_score.energy_cap: 0
+        techs.solar.costs.spores_score.interest_rate: 1
+
+#    operate:
+#        run.mode: operate
+#        run.operation:
+#            window: 12
+#            horizon: 24
+#        model.subset_time: ['2005-01-01', '2005-01-10']
+#        locations:
+#            region1.techs.ccgt.constraints.energy_cap_equals: 30000
+#
+#            region2.techs.battery.constraints.energy_cap_equals: 1000
+#            region2.techs.battery.constraints.storage_cap_equals: 5240
+#
+#            region1-1.techs.csp.constraints.energy_cap_equals: 10000
+#            region1-1.techs.csp.constraints.storage_cap_equals: 244301
+#            region1-1.techs.csp.constraints.resource_area_equals: 130385
+#
+#            region1-2.techs.csp.constraints.energy_cap_equals: 0
+#            region1-2.techs.csp.constraints.storage_cap_equals: 0
+#            region1-2.techs.csp.constraints.resource_area_equals: 0
+#
+#            region1-3.techs.csp.constraints.energy_cap_equals: 2534
+#            region1-3.techs.csp.constraints.storage_cap_equals: 25301
+#            region1-3.techs.csp.constraints.resource_area_equals: 8487
+#
+#        links:
+#            region1,region2.techs.ac_transmission.constraints.energy_cap_equals: 3231
+#            region1,region1-1.techs.free_transmission.constraints.energy_cap_equals: 9000
+#            region1,region1-2.techs.free_transmission.constraints.energy_cap_equals: 0
+#            region1,region1-3.techs.free_transmission.constraints.energy_cap_equals: 2281
+#
+#    check_feasibility:
+#        run:
+#            ensure_feasibility: False
+#            objective: 'check_feasibility'
+#        model:
+#            subset_time: '2005-01-04'
+#
+#    reserve_margin:
+#        model:
+#            # Model-wide settings for the system-wide reserve margin
+#            # Even setting a reserve margin of zero activates the constraint,
+#            # forcing enough installed capacity to cover demand in
+#            # the maximum demand timestep
+#            reserve_margin:
+#                power: 0.10  # 10% reserve margin for power
+
+    ##
+    # Overrides to demonstrate the run generator ("calliope generate_runs")
+    ##
+
+    run1:
+        model.subset_time: ['2005-01-01', '2005-01-31']
+    run2:
+        model.subset_time: ['2005-02-01', '2005-02-31']
+    run3:
+        model.subset_time: ['2005-01-01', '2005-01-31']
+        locations.region1.techs.ccgt.constraints.energy_cap_max: 0  # Disallow CCGT
+    run4:
+        subset_time: ['2005-02-01', '2005-02-31']
+        locations.region1.techs.ccgt.constraints.energy_cap_max: 0  # Disallow CCGT

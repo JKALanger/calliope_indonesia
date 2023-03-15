@@ -1,0 +1,22 @@
+techs:
+
+    offshore_wind:
+        essentials:
+            name: 'Offshore wind'
+            parent: supply_plus
+            carrier_out: power
+        constraints:
+            resource: file=Offshore_Wind_Profiles_2050_mean.csv # gross power production
+            resource_unit: energy_per_cap
+            energy_eff: 0.792 # consisting of wake losses of 88% and availability factor of 90%, see Langer et al (2022) offshore wind paper
+            lifetime: 30
+        costs:
+            monetary:
+                interest_rate: 0.1
+                # 2050 values calculated with 2021 costs and cost projections until 2050, check supplementary materials of paper
+                energy_cap: 3269000 # USD/MW
+                om_annual: 13000 # USD/MW/year
+                om_prod: 17.7 # USD/MWh/year
+                om_con: 0 # USD/MWh/year
+            emission:
+                om_prod: 0

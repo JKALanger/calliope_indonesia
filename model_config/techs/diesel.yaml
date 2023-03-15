@@ -1,0 +1,23 @@
+techs:
+
+    diesel:
+        essentials:
+            name: 'Diesel'
+            parent: supply
+            carrier_in: diesel
+            carrier_out: power
+        constraints: # all based on 2050 values in DEA 2021 technology catalogue
+            resource: inf
+            energy_eff: 0.48
+            energy_cap_min_use: 0.06 # Nuclear Energy Agency (2011)
+            lifetime: 25
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 782000  # USD/MW, median from literature since 2016
+                om_annual: 9000 # USD/MW, median from literature since 2016
+                om_prod: 6.4 # USD/MWh, median from literature since 2016
+                om_con: 38.68 # USD/MWh_th, based on PLN Statistik 2020, see assumptions below
+                # Exchange rate IDR->USD: 14572 (based on BPP 2021), energy content 36.7 MJ/litre (mean value from IEA World Energy Balances 2019)
+            emission:
+                om_con: 266 # kgCO2eq/MWh, based on emission factor 74 kgCO2/GJ (IPCC)

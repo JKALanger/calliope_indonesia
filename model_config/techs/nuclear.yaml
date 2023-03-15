@@ -1,0 +1,23 @@
+techs:
+
+    nuclear:
+        essentials:
+            name: 'Nuclear'
+            parent: supply
+            carrier_in: uranium
+            carrier_out: power
+        constraints:
+            resource: inf
+            energy_eff: 0.40 # Euro-Calliope
+            energy_cap_min_use: 0.5 # Nuclear Energy Agency (2011)
+            lifetime: 50 # Euro-Calliope
+        costs:
+            monetary:
+                interest_rate: 0.1
+                # 2050 values calculated with 2021 costs and cost projections until 2050, check supplmentary materials of paper
+                energy_cap: 5789000 # USD/MW
+                om_annual: 91000 # USD/MW/year
+                om_prod: 1.71 # USD/MWh/year
+                om_con: 2.9 # USD/MWh/year, based on Lazard (2021)
+            emission:
+                om_prod: 0

@@ -1,0 +1,20 @@
+techs:
+
+    pumped_hydro:
+        essentials:
+            name: 'Pumped storage hydropower'
+            parent: storage
+            carrier: power
+        constraints:
+            energy_cap_per_storage_cap_equals: 0.15 # Stocks et al (2021), assuming 2 GWh and 0.3 GW
+            energy_cap_per_unit: 300 # MW
+            energy_eff: 0.87  # 0.87 * 0.87 = 0.75 round trip efficiency, Lombardi et al. (2020)
+            storage_loss: 0.0  # No loss over time assumed, Lombardi et al. (2020)
+            lifetime: 50 # Lombardi et al. (2020)
+        costs:
+            monetary:
+                interest_rate: 0.1
+                # 2050 values calculated with 2021 costs and cost projections until 2050, check supplmentary materials of paper
+                storage_cap: 22082 # USD/MWh
+                om_annual_investment_fraction: 0.01 # based on ref OPEX of 220.82 USD/MWh/year
+                om_prod: 1.4 # USD/MWh/year
