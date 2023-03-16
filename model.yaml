@@ -1,6 +1,7 @@
 import:  # Import other files from paths relative to this file, or absolute paths
     - 'model_config/techs.yaml'  # This file specifies the model's technologies
     - 'model_config/locations.yaml'  # This file specifies the model's locations
+    - 'model_config/links_without_interconnection.yaml' # This file specifies the links between locations without considering inter-island connections
     - 'scenarios.yaml'
 
 # Model configuration: all settings that affect the built model
@@ -30,7 +31,7 @@ run:
 
     mode: plan  # Choices: plan, operate
 
-    objective_options.cost_class: {emission: 1}
+    objective_options.cost_class: {'monetary': 1, 'emission': 1}
 
 #group_constraints:
 #    systemwide_emissions:

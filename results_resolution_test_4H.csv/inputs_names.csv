@@ -1,0 +1,18 @@
+techs,names
+ac_transmission,power transmission
+battery,Battery storage
+biomass,Biomass
+cc_gas,Combined-Cycle Gas
+coal,Coal
+demand_power,Power demand
+diesel,Diesel
+geothermal,Geothermal
+large_hydro,Large hydro
+nuclear,Nuclear
+oc_gas,Open-Cycle Gas
+offshore_wind,Offshore wind
+onshore_wind,Onshore wind
+otec,OTEC
+pumped_hydro,Pumped storage hydropower
+small_hydro,Small hydro
+solar,Solar PV
