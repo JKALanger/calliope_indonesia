@@ -17,7 +17,6 @@ scenarios:
 ##
 overrides:
     one_day:
-#        techs.pumped_hydro.exists: False
         model.subset_time: '2050-01-01' # for testing
     one_day_2040:
         model.subset_time: '2040-01-01' # for testing
