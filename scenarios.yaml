@@ -2,18 +2,25 @@
 # Scenarios are optional, named combinations of overrides
 ##
 scenarios:
-    spores_test: ["spores"]
+    spores_test: ["one_day","spores"]
     resolution_test_1H: ["half_year", "1H_resolution"]
     resolution_test_2H: ["half_year", "2H_resolution"]
     resolution_test_3H: ["half_year", "3H_resolution"]
     resolution_test_4H: ["half_year", "4H_resolution"]
-
+    test: ["one_day"]
+    decarbonisation_by_2050_year_2030: ["one_day", "spores", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050"] # infeasible SPORES
+    decarbonisation_by_2050_year_2040: ["one_day_2040", "4H_resolution", "mean_RET_profiles_leap_year", "costs_2040", "demand_2040_high_fluctuation", "FF_share_in_2040_if_100%_RET_by_2050"] # infeasible SPORES
+    decarbonisation_by_2040_year_2030: ["one_day", "spores", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2040"] # infeasible SPORES
+    test_feasibility: ["FF_share_in_2030_if_100%_RET_by_2050", "no_RET", "no_feasibility", "4H_resolution", "half_year"]
 ##
 # Overrides are the building blocks from which scenarios can be defined
 ##
 overrides:
     one_day:
-        model.subset_time: ['2050-01-01'] # for testing
+#        techs.pumped_hydro.exists: False
+        model.subset_time: '2050-01-01' # for testing
+    one_day_2040:
+        model.subset_time: '2040-01-01' # for testing
     half_year:
         model.subset_time: ['2050-01-01', '2050-06-30']
     1H_resolution:
@@ -24,443 +31,365 @@ overrides:
         model.time: {function: resample, function_options: {'resolution': '3H'}}
     4H_resolution:
         model.time: {function: resample, function_options: {'resolution': '4H'}}
+    leap_year:
+        model.subset_time: ['2040-01-01', '2040-12-31']
+    no_feasibility:
+        run.ensure_feasibility: false  # Switches on the "unmet demand" constraint
+    no_RET:
+        techs.battery.exists: False
+        techs.biomass.exists: False
+        techs.geothermal.exists: False
+        techs.large_hydro.exists: False
+        techs.nuclear.exists: False
+        techs.offshore_wind.exists: False
+        techs.onshore_wind.exists: False
+        techs.otec.exists: False
+        techs.pumped_hydro.exists: False
+        techs.small_hydro.exists: False
+        techs.solar.exists: False
 
-    FF_share_in_2030_if_100%_RET_by_2030:
-        techs.coal.exists: False
-        techs.cc_gas.exists: False
-        techs.oc_gas.exists: False
-        techs.diesel.exists: False
-    FF_share_in_2040_if_100%_RET_by_2030:
-        techs.coal.exists: False
-        techs.cc_gas.exists: False
-        techs.oc_gas.exists: False
-        techs.diesel.exists: False
+
     FF_share_in_2030_if_100%_RET_by_2040:
-        locations.Aceh.techs.coal.constraints.energy_cap_max: 
-        locations.Bali.techs.coal.constraints.energy_cap_max: 
-        locations.Banten.techs.coal.constraints.energy_cap_max: 
-        locations.Bengkulu.techs.coal.constraints.energy_cap_max: 
-        locations.Daerah_Istimewa_Yogyakarta.techs.coal.constraints.energy_cap_max: 
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.coal.constraints.energy_cap_max:
-        locations.Gorontalo.techs.coal.constraints.energy_cap_max: 
-        locations.Jambi.techs.coal.constraints.energy_cap_max: 
-        locations.Jawa_Barat.techs.coal.constraints.energy_cap_max: 
-        locations.Jawa_Tengah.techs.coal.constraints.energy_cap_max: 
-        locations.Jawa_Timur.techs.coal.constraints.energy_cap_max: 
-        locations.Kalimantan_Barat.techs.coal.constraints.energy_cap_max: 
-        locations.Kalimantan_Selatan.techs.coal.constraints.energy_cap_max: 
-        locations.Kalimantan_Tengah.techs.coal.constraints.energy_cap_max: 
-        locations.Kalimantan_Timur.techs.coal.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.coal.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.coal.constraints.energy_cap_max: 
-        locations.Kepulauan_Riau.techs.coal.constraints.energy_cap_max: 
-        locations.Lampung.techs.coal.constraints.energy_cap_max: 
-        locations.Maluku.techs.coal.constraints.energy_cap_max: 
-        locations.Maluku_Utara.techs.coal.constraints.energy_cap_max: 
-        locations.Nusa_Tenggara_Barat.techs.coal.constraints.energy_cap_max: 
-        locations.Nusa_Tenggara_Timur.techs.coal.constraints.energy_cap_max: 
-        locations.Papua.techs.coal.constraints.energy_cap_max: 
-        locations.Papua_Barat.techs.coal.constraints.energy_cap_max: 
-        locations.Riau.techs.coal.constraints.energy_cap_max: 
-        locations.Sulawesi_Barat.techs.coal.constraints.energy_cap_max: 
-        locations.Sulawesi_Selatan.techs.coal.constraints.energy_cap_max: 
-        locations.Sulawesi_Tengah.techs.coal.constraints.energy_cap_max: 
-        locations.Sulawesi_Tenggara.techs.coal.constraints.energy_cap_max: 
-        locations.Sulawesi_Utara.techs.coal.constraints.energy_cap_max: 
-        locations.Sumatera_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.coal.constraints.energy_cap_max: 
-        locations.Sumatera_Utara.techs.coal.constraints.energy_cap_max:
+        locations.Aceh.techs.coal.constraints.energy_cap_equals: 115.75
+        locations.Bali.techs.coal.constraints.energy_cap_equals: 213
+        locations.Banten.techs.coal.constraints.energy_cap_equals: 4587.5
+        locations.Bengkulu.techs.coal.constraints.energy_cap_equals: 115
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.coal.constraints.energy_cap_equals: 200
+        locations.Gorontalo.techs.coal.constraints.energy_cap_equals: 38
+        locations.Jambi.techs.coal.constraints.energy_cap_equals: 10
+        locations.Jawa_Barat.techs.coal.constraints.energy_cap_equals: 1505 
+        locations.Jawa_Tengah.techs.coal.constraints.energy_cap_equals: 3253
+        locations.Jawa_Timur.techs.coal.constraints.energy_cap_equals: 3432.735
+        locations.Kalimantan_Barat.techs.coal.constraints.energy_cap_equals: 155.5
+        locations.Kalimantan_Selatan.techs.coal.constraints.energy_cap_equals: 335.5
+        locations.Kalimantan_Tengah.techs.coal.constraints.energy_cap_equals: 191.035
+        locations.Kalimantan_Timur.techs.coal.constraints.energy_cap_equals: 500.065
+        locations.Kalimantan_Utara.techs.coal.constraints.energy_cap_equals: 9.25
+        locations.Kepulauan_Bangka_Belitung.techs.coal.constraints.energy_cap_equals: 59.96 
+        locations.Kepulauan_Riau.techs.coal.constraints.energy_cap_equals: 72.5
+        locations.Lampung.techs.coal.constraints.energy_cap_equals: 233.5
+        locations.Maluku_Utara.techs.coal.constraints.energy_cap_equals: 7
+        locations.Nusa_Tenggara_Barat.techs.coal.constraints.energy_cap_equals: 154.04
+        locations.Nusa_Tenggara_Timur.techs.coal.constraints.energy_cap_equals: 39.05
+        locations.Papua.techs.coal.constraints.energy_cap_equals: 108.5
+        locations.Papua_Barat.techs.coal.constraints.energy_cap_equals: 6 
+        locations.Riau.techs.coal.constraints.energy_cap_equals: 181.5
+        locations.Sulawesi_Barat.techs.coal.constraints.energy_cap_equals: 30 
+        locations.Sulawesi_Selatan.techs.coal.constraints.energy_cap_equals: 445
+        locations.Sulawesi_Tengah.techs.coal.constraints.energy_cap_equals: 602.55
+        locations.Sulawesi_Tenggara.techs.coal.constraints.energy_cap_equals: 116.75
+        locations.Sulawesi_Utara.techs.coal.constraints.energy_cap_equals: 55
+        locations.Sumatera_Barat.techs.coal.constraints.energy_cap_equals: 216.25
+        locations.Sumatera_Selatan.techs.coal.constraints.energy_cap_equals: 670
+        locations.Sumatera_Utara.techs.coal.constraints.energy_cap_equals: 675
         
-        locations.Aceh.techs.cc_gas.constraints.energy_cap_max:
-        locations.Bali.techs.cc_gas.constraints.energy_cap_max:
-        locations.Banten.techs.cc_gas.constraints.energy_cap_max:
-        locations.Bengkulu.techs.cc_gas.constraints.energy_cap_max:
-        locations.Daerah_Istimewa_Yogyakarta.techs.cc_gas.constraints.energy_cap_max:
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.cc_gas.constraints.energy_cap_max:
-        locations.Gorontalo.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jambi.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jawa_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jawa_Tengah.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jawa_Timur.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Selatan.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Tengah.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Timur.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Riau.techs.cc_gas.constraints.energy_cap_max:
-        locations.Lampung.techs.cc_gas.constraints.energy_cap_max:
-        locations.Maluku.techs.cc_gas.constraints.energy_cap_max:
-        locations.Maluku_Utara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Timur.techs.cc_gas.constraints.energy_cap_max:
-        locations.Papua.techs.cc_gas.constraints.energy_cap_max:
-        locations.Papua_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Riau.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Selatan.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tengah.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tenggara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Utara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Utara.techs.cc_gas.constraints.energy_cap_max:
+        locations.Aceh.techs.cc_gas.constraints.energy_cap_equals: 12
+        locations.Banten.techs.cc_gas.constraints.energy_cap_equals: 429.7
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.cc_gas.constraints.energy_cap_equals: 2219.765
+        locations.Jawa_Barat.techs.cc_gas.constraints.energy_cap_equals: 720.25
+        locations.Jawa_Tengah.techs.cc_gas.constraints.energy_cap_equals: 516.95
+        locations.Jawa_Timur.techs.cc_gas.constraints.energy_cap_equals: 1217.28
+        locations.Kalimantan_Timur.techs.cc_gas.constraints.energy_cap_equals: 44.775
+        locations.Kalimantan_Utara.techs.cc_gas.constraints.energy_cap_equals: 4.455
+        locations.Kepulauan_Riau.techs.cc_gas.constraints.energy_cap_equals: 72.8
+        locations.Nusa_Tenggara_Barat.techs.cc_gas.constraints.energy_cap_equals: 63.44
+        locations.Riau.techs.cc_gas.constraints.energy_cap_equals: 15
+        locations.Sulawesi_Selatan.techs.cc_gas.constraints.energy_cap_equals: 157.5
+        locations.Sumatera_Selatan.techs.cc_gas.constraints.energy_cap_equals: 235
+        locations.Sumatera_Utara.techs.cc_gas.constraints.energy_cap_equals: 408.94
         
-        locations.Aceh.techs.oc_gas.constraints.energy_cap_max:
-        locations.Bali.techs.oc_gas.constraints.energy_cap_max:
-        locations.Banten.techs.oc_gas.constraints.energy_cap_max:
-        locations.Bengkulu.techs.oc_gas.constraints.energy_cap_max:
-        locations.Daerah_Istimewa_Yogyakarta.techs.oc_gas.constraints.energy_cap_max:
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.oc_gas.constraints.energy_cap_max:
-        locations.Gorontalo.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jambi.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jawa_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jawa_Tengah.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jawa_Timur.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Selatan.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Tengah.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Timur.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Riau.techs.oc_gas.constraints.energy_cap_max:
-        locations.Lampung.techs.oc_gas.constraints.energy_cap_max:
-        locations.Maluku.techs.oc_gas.constraints.energy_cap_max:
-        locations.Maluku_Utara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Timur.techs.oc_gas.constraints.energy_cap_max:
-        locations.Papua.techs.oc_gas.constraints.energy_cap_max:
-        locations.Papua_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Riau.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Selatan.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tengah.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tenggara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Utara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Utara.techs.oc_gas.constraints.energy_cap_max:
+        locations.Aceh.techs.oc_gas.constraints.energy_cap_equals: 212.135
+        locations.Bali.techs.oc_gas.constraints.energy_cap_equals: 278.265
+        locations.Banten.techs.oc_gas.constraints.energy_cap_equals: 4.2
+        locations.Gorontalo.techs.oc_gas.constraints.energy_cap_equals: 50
+        locations.Jambi.techs.oc_gas.constraints.energy_cap_equals: 184.985
+        locations.Jawa_Barat.techs.oc_gas.constraints.energy_cap_equals: 1044.85
+        locations.Jawa_Tengah.techs.oc_gas.constraints.energy_cap_equals: 27.5
+        locations.Jawa_Timur.techs.oc_gas.constraints.energy_cap_equals: 381.74
+        locations.Kalimantan_Barat.techs.oc_gas.constraints.energy_cap_equals: 67
+        locations.Kalimantan_Selatan.techs.oc_gas.constraints.energy_cap_equals: 10.5
+        locations.Kalimantan_Tengah.techs.oc_gas.constraints.energy_cap_equals: 78.15
+        locations.Kalimantan_Timur.techs.oc_gas.constraints.energy_cap_equals: 173.33
+        locations.Kalimantan_Utara.techs.oc_gas.constraints.energy_cap_equals: 57.405
+        locations.Kepulauan_Bangka_Belitung.techs.oc_gas.constraints.energy_cap_equals: 37.5
+        locations.Kepulauan_Riau.techs.oc_gas.constraints.energy_cap_equals: 220.27
+        locations.Lampung.techs.oc_gas.constraints.energy_cap_equals: 60.675
+        locations.Maluku.techs.oc_gas.constraints.energy_cap_equals: 73.395
+        locations.Maluku_Utara.techs.oc_gas.constraints.energy_cap_equals: 20
+        locations.Nusa_Tenggara_Barat.techs.oc_gas.constraints.energy_cap_equals: 78.075
+        locations.Nusa_Tenggara_Timur.techs.oc_gas.constraints.energy_cap_equals: 89.705
+        locations.Papua.techs.oc_gas.constraints.energy_cap_equals: 110.77
+        locations.Papua_Barat.techs.oc_gas.constraints.energy_cap_equals: 53
+        locations.Riau.techs.oc_gas.constraints.energy_cap_equals: 261.5
+        locations.Sulawesi_Selatan.techs.oc_gas.constraints.energy_cap_equals: 61.36
+        locations.Sulawesi_Tengah.techs.oc_gas.constraints.energy_cap_equals: 33
+        locations.Sulawesi_Tenggara.techs.oc_gas.constraints.energy_cap_equals: 48.9
+        locations.Sulawesi_Utara.techs.oc_gas.constraints.energy_cap_equals: 63
+        locations.Sumatera_Barat.techs.oc_gas.constraints.energy_cap_equals: 32.025
+        locations.Sumatera_Selatan.techs.oc_gas.constraints.energy_cap_equals: 172.415
+        locations.Sumatera_Utara.techs.oc_gas.constraints.energy_cap_equals: 277.54
         
-        locations.Aceh.techs.diesel.constraints.energy_cap_max:
-        locations.Bali.techs.diesel.constraints.energy_cap_max:
-        locations.Banten.techs.diesel.constraints.energy_cap_max:
-        locations.Bengkulu.techs.diesel.constraints.energy_cap_max:
-        locations.Daerah_Istimewa_Yogyakarta.techs.diesel.constraints.energy_cap_max:
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.diesel.constraints.energy_cap_max:
-        locations.Gorontalo.techs.diesel.constraints.energy_cap_max:
-        locations.Jambi.techs.diesel.constraints.energy_cap_max:
-        locations.Jawa_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Jawa_Tengah.techs.diesel.constraints.energy_cap_max:
-        locations.Jawa_Timur.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Selatan.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Tengah.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Timur.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.diesel.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.diesel.constraints.energy_cap_max:
-        locations.Kepulauan_Riau.techs.diesel.constraints.energy_cap_max:
-        locations.Lampung.techs.diesel.constraints.energy_cap_max:
-        locations.Maluku.techs.diesel.constraints.energy_cap_max:
-        locations.Maluku_Utara.techs.diesel.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Timur.techs.diesel.constraints.energy_cap_max:
-        locations.Papua.techs.diesel.constraints.energy_cap_max:
-        locations.Papua_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Riau.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Selatan.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Tengah.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Tenggara.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Utara.techs.diesel.constraints.energy_cap_max:
-        locations.Sumatera_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.diesel.constraints.energy_cap_max:
-        locations.Sumatera_Utara.techs.diesel.constraints.energy_cap_max:
-    
-    FF_share_in_2040_if_100%_RET_by_2040:
-        techs.coal.exists: False
-        techs.cc_gas.exists: False
-        techs.oc_gas.exists: False
-        techs.diesel.exists: False
+        locations.Aceh.techs.diesel.constraints.energy_cap_equals: 130.58
+        locations.Bali.techs.diesel.constraints.energy_cap_equals: 38.03
+        locations.Banten.techs.diesel.constraints.energy_cap_equals: 15.07
+        locations.Bengkulu.techs.diesel.constraints.energy_cap_equals: 17.36
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.diesel.constraints.energy_cap_equals: 52.65
+        locations.Gorontalo.techs.diesel.constraints.energy_cap_equals: 14.55
+        locations.Jambi.techs.diesel.constraints.energy_cap_equals: 23.385
+        locations.Jawa_Barat.techs.diesel.constraints.energy_cap_equals: 16.24
+        locations.Jawa_Tengah.techs.diesel.constraints.energy_cap_equals: 2.2
+        locations.Jawa_Timur.techs.diesel.constraints.energy_cap_equals: 31.39
+        locations.Kalimantan_Barat.techs.diesel.constraints.energy_cap_equals: 195.13
+        locations.Kalimantan_Selatan.techs.diesel.constraints.energy_cap_equals: 81.655
+        locations.Kalimantan_Tengah.techs.diesel.constraints.energy_cap_equals: 102.255
+        locations.Kalimantan_Timur.techs.diesel.constraints.energy_cap_equals: 150.73
+        locations.Kalimantan_Utara.techs.diesel.constraints.energy_cap_equals: 62.52
+        locations.Kepulauan_Bangka_Belitung.techs.diesel.constraints.energy_cap_equals: 88.885
+        locations.Kepulauan_Riau.techs.diesel.constraints.energy_cap_equals: 97.35
+        locations.Lampung.techs.diesel.constraints.energy_cap_equals: 32.285
+        locations.Maluku.techs.diesel.constraints.energy_cap_equals: 103.28
+        locations.Maluku_Utara.techs.diesel.constraints.energy_cap_equals: 64.24
+        locations.Nusa_Tenggara_Barat.techs.diesel.constraints.energy_cap_equals: 141.81
+        locations.Nusa_Tenggara_Timur.techs.diesel.constraints.energy_cap_equals: 111.985
+        locations.Papua.techs.diesel.constraints.energy_cap_equals: 104.755
+        locations.Papua_Barat.techs.diesel.constraints.energy_cap_equals: 46.305
+        locations.Riau.techs.diesel.constraints.energy_cap_equals: 103.185
+        locations.Sulawesi_Barat.techs.diesel.constraints.energy_cap_equals: 3.905
+        locations.Sulawesi_Selatan.techs.diesel.constraints.energy_cap_equals: 139.405
+        locations.Sulawesi_Tengah.techs.diesel.constraints.energy_cap_equals: 100.815
+        locations.Sulawesi_Tenggara.techs.diesel.constraints.energy_cap_equals: 132
+        locations.Sulawesi_Utara.techs.diesel.constraints.energy_cap_equals: 65.6
+        locations.Sumatera_Barat.techs.diesel.constraints.energy_cap_equals: 5.56
+        locations.Sumatera_Selatan.techs.diesel.constraints.energy_cap_equals: 17.705
+        locations.Sumatera_Utara.techs.diesel.constraints.energy_cap_equals: 138.98
+
     FF_share_in_2030_if_100%_RET_by_2050:
-        locations.Aceh.techs.coal.constraints.energy_cap_max:
-        locations.Bali.techs.coal.constraints.energy_cap_max:
-        locations.Banten.techs.coal.constraints.energy_cap_max:
-        locations.Bengkulu.techs.coal.constraints.energy_cap_max:
-        locations.Daerah_Istimewa_Yogyakarta.techs.coal.constraints.energy_cap_max:
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.coal.constraints.energy_cap_max:
-        locations.Gorontalo.techs.coal.constraints.energy_cap_max:
-        locations.Jambi.techs.coal.constraints.energy_cap_max:
-        locations.Jawa_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Jawa_Tengah.techs.coal.constraints.energy_cap_max:
-        locations.Jawa_Timur.techs.coal.constraints.energy_cap_max:
-        locations.Kalimantan_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Kalimantan_Selatan.techs.coal.constraints.energy_cap_max:
-        locations.Kalimantan_Tengah.techs.coal.constraints.energy_cap_max:
-        locations.Kalimantan_Timur.techs.coal.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.coal.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.coal.constraints.energy_cap_max:
-        locations.Kepulauan_Riau.techs.coal.constraints.energy_cap_max:
-        locations.Lampung.techs.coal.constraints.energy_cap_max:
-        locations.Maluku.techs.coal.constraints.energy_cap_max:
-        locations.Maluku_Utara.techs.coal.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Timur.techs.coal.constraints.energy_cap_max:
-        locations.Papua.techs.coal.constraints.energy_cap_max:
-        locations.Papua_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Riau.techs.coal.constraints.energy_cap_max:
-        locations.Sulawesi_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Sulawesi_Selatan.techs.coal.constraints.energy_cap_max:
-        locations.Sulawesi_Tengah.techs.coal.constraints.energy_cap_max:
-        locations.Sulawesi_Tenggara.techs.coal.constraints.energy_cap_max:
-        locations.Sulawesi_Utara.techs.coal.constraints.energy_cap_max:
-        locations.Sumatera_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.coal.constraints.energy_cap_max:
-        locations.Sumatera_Utara.techs.coal.constraints.energy_cap_max:
+        locations.Aceh.techs.coal.constraints.energy_cap_equals: 154.333
+        locations.Bali.techs.coal.constraints.energy_cap_equals: 284
+        locations.Banten.techs.coal.constraints.energy_cap_equals: 6116.667
+        locations.Bengkulu.techs.coal.constraints.energy_cap_equals: 153.333
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.coal.constraints.energy_cap_equals: 266.667
+        locations.Gorontalo.techs.coal.constraints.energy_cap_equals: 50.667
+        locations.Jambi.techs.coal.constraints.energy_cap_equals: 13.333
+        locations.Jawa_Barat.techs.coal.constraints.energy_cap_equals: 2006.667
+        locations.Jawa_Tengah.techs.coal.constraints.energy_cap_equals: 4337.333
+        locations.Jawa_Timur.techs.coal.constraints.energy_cap_equals: 4576.98
+        locations.Kalimantan_Barat.techs.coal.constraints.energy_cap_equals: 207.333
+        locations.Kalimantan_Selatan.techs.coal.constraints.energy_cap_equals: 447.333
+        locations.Kalimantan_Tengah.techs.coal.constraints.energy_cap_equals: 254.713
+        locations.Kalimantan_Timur.techs.coal.constraints.energy_cap_equals: 666.753
+        locations.Kalimantan_Utara.techs.coal.constraints.energy_cap_equals: 12.333
+        locations.Kepulauan_Bangka_Belitung.techs.coal.constraints.energy_cap_equals: 79.947
+        locations.Kepulauan_Riau.techs.coal.constraints.energy_cap_equals: 96.667
+        locations.Lampung.techs.coal.constraints.energy_cap_equals: 311.333
+        locations.Maluku_Utara.techs.coal.constraints.energy_cap_equals: 9.333
+        locations.Nusa_Tenggara_Barat.techs.coal.constraints.energy_cap_equals: 205.387
+        locations.Nusa_Tenggara_Timur.techs.coal.constraints.energy_cap_equals: 52.067
+        locations.Papua.techs.coal.constraints.energy_cap_equals: 144.667
+        locations.Papua_Barat.techs.coal.constraints.energy_cap_equals: 8
+        locations.Riau.techs.coal.constraints.energy_cap_equals: 242
+        locations.Sulawesi_Barat.techs.coal.constraints.energy_cap_equals: 40
+        locations.Sulawesi_Selatan.techs.coal.constraints.energy_cap_equals: 593.333
+        locations.Sulawesi_Tengah.techs.coal.constraints.energy_cap_equals: 803.4
+        locations.Sulawesi_Tenggara.techs.coal.constraints.energy_cap_equals: 156.667
+        locations.Sulawesi_Utara.techs.coal.constraints.energy_cap_equals: 73.333
+        locations.Sumatera_Barat.techs.coal.constraints.energy_cap_equals: 288.333
+        locations.Sumatera_Selatan.techs.coal.constraints.energy_cap_equals: 893.333
+        locations.Sumatera_Utara.techs.coal.constraints.energy_cap_equals: 900
 
-        locations.Aceh.techs.cc_gas.constraints.energy_cap_max:
-        locations.Bali.techs.cc_gas.constraints.energy_cap_max:
-        locations.Banten.techs.cc_gas.constraints.energy_cap_max:
-        locations.Bengkulu.techs.cc_gas.constraints.energy_cap_max:
-        locations.Daerah_Istimewa_Yogyakarta.techs.cc_gas.constraints.energy_cap_max:
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.cc_gas.constraints.energy_cap_max:
-        locations.Gorontalo.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jambi.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jawa_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jawa_Tengah.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jawa_Timur.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Selatan.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Tengah.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Timur.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Riau.techs.cc_gas.constraints.energy_cap_max:
-        locations.Lampung.techs.cc_gas.constraints.energy_cap_max:
-        locations.Maluku.techs.cc_gas.constraints.energy_cap_max:
-        locations.Maluku_Utara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Timur.techs.cc_gas.constraints.energy_cap_max:
-        locations.Papua.techs.cc_gas.constraints.energy_cap_max:
-        locations.Papua_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Riau.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Selatan.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tengah.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tenggara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Utara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Utara.techs.cc_gas.constraints.energy_cap_max:
+        locations.Aceh.techs.cc_gas.constraints.energy_cap_equals: 16
+        locations.Banten.techs.cc_gas.constraints.energy_cap_equals: 572.933
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.cc_gas.constraints.energy_cap_equals: 2959.687
+        locations.Jawa_Barat.techs.cc_gas.constraints.energy_cap_equals: 960.333
+        locations.Jawa_Tengah.techs.cc_gas.constraints.energy_cap_equals: 689.267
+        locations.Jawa_Timur.techs.cc_gas.constraints.energy_cap_equals: 1623.04
+        locations.Kalimantan_Timur.techs.cc_gas.constraints.energy_cap_equals: 59.7
+        locations.Kalimantan_Utara.techs.cc_gas.constraints.energy_cap_equals: 5.94
+        locations.Kepulauan_Riau.techs.cc_gas.constraints.energy_cap_equals: 97.067
+        locations.Nusa_Tenggara_Barat.techs.cc_gas.constraints.energy_cap_equals: 84.587
+        locations.Riau.techs.cc_gas.constraints.energy_cap_equals: 20
+        locations.Sulawesi_Selatan.techs.cc_gas.constraints.energy_cap_equals: 210
+        locations.Sumatera_Selatan.techs.cc_gas.constraints.energy_cap_equals: 313.333
+        locations.Sumatera_Utara.techs.cc_gas.constraints.energy_cap_equals: 545.253
 
-        locations.Aceh.techs.oc_gas.constraints.energy_cap_max:
-        locations.Bali.techs.oc_gas.constraints.energy_cap_max:
-        locations.Banten.techs.oc_gas.constraints.energy_cap_max:
-        locations.Bengkulu.techs.oc_gas.constraints.energy_cap_max:
-        locations.Daerah_Istimewa_Yogyakarta.techs.oc_gas.constraints.energy_cap_max:
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.oc_gas.constraints.energy_cap_max:
-        locations.Gorontalo.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jambi.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jawa_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jawa_Tengah.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jawa_Timur.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Selatan.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Tengah.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Timur.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Riau.techs.oc_gas.constraints.energy_cap_max:
-        locations.Lampung.techs.oc_gas.constraints.energy_cap_max:
-        locations.Maluku.techs.oc_gas.constraints.energy_cap_max:
-        locations.Maluku_Utara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Timur.techs.oc_gas.constraints.energy_cap_max:
-        locations.Papua.techs.oc_gas.constraints.energy_cap_max:
-        locations.Papua_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Riau.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Selatan.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tengah.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tenggara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Utara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Utara.techs.oc_gas.constraints.energy_cap_max:
+        locations.Aceh.techs.oc_gas.constraints.energy_cap_equals: 282.847
+        locations.Bali.techs.oc_gas.constraints.energy_cap_equals: 371.02
+        locations.Banten.techs.oc_gas.constraints.energy_cap_equals: 5.6
+        locations.Gorontalo.techs.oc_gas.constraints.energy_cap_equals: 66.667
+        locations.Jambi.techs.oc_gas.constraints.energy_cap_equals: 246.647
+        locations.Jawa_Barat.techs.oc_gas.constraints.energy_cap_equals: 1393.133
+        locations.Jawa_Tengah.techs.oc_gas.constraints.energy_cap_equals: 36.667
+        locations.Jawa_Timur.techs.oc_gas.constraints.energy_cap_equals: 508.987
+        locations.Kalimantan_Barat.techs.oc_gas.constraints.energy_cap_equals: 89.333
+        locations.Kalimantan_Selatan.techs.oc_gas.constraints.energy_cap_equals: 14
+        locations.Kalimantan_Tengah.techs.oc_gas.constraints.energy_cap_equals: 104.2
+        locations.Kalimantan_Timur.techs.oc_gas.constraints.energy_cap_equals: 231.107
+        locations.Kalimantan_Utara.techs.oc_gas.constraints.energy_cap_equals: 76.54
+        locations.Kepulauan_Bangka_Belitung.techs.oc_gas.constraints.energy_cap_equals: 50
+        locations.Kepulauan_Riau.techs.oc_gas.constraints.energy_cap_equals: 293.693
+        locations.Lampung.techs.oc_gas.constraints.energy_cap_equals: 80.9
+        locations.Maluku.techs.oc_gas.constraints.energy_cap_equals: 97.86
+        locations.Maluku_Utara.techs.oc_gas.constraints.energy_cap_equals: 26.667
+        locations.Nusa_Tenggara_Barat.techs.oc_gas.constraints.energy_cap_equals: 104.1
+        locations.Nusa_Tenggara_Timur.techs.oc_gas.constraints.energy_cap_equals: 119.607
+        locations.Papua.techs.oc_gas.constraints.energy_cap_equals: 147.693
+        locations.Papua_Barat.techs.oc_gas.constraints.energy_cap_equals: 70.667
+        locations.Riau.techs.oc_gas.constraints.energy_cap_equals: 348.667
+        locations.Sulawesi_Selatan.techs.oc_gas.constraints.energy_cap_equals: 81.813
+        locations.Sulawesi_Tengah.techs.oc_gas.constraints.energy_cap_equals: 44
+        locations.Sulawesi_Tenggara.techs.oc_gas.constraints.energy_cap_equals: 65.2
+        locations.Sulawesi_Utara.techs.oc_gas.constraints.energy_cap_equals: 84
+        locations.Sumatera_Barat.techs.oc_gas.constraints.energy_cap_equals: 42.7
+        locations.Sumatera_Selatan.techs.oc_gas.constraints.energy_cap_equals: 229.887
+        locations.Sumatera_Utara.techs.oc_gas.constraints.energy_cap_equals: 370.053
 
-        locations.Aceh.techs.diesel.constraints.energy_cap_max:
-        locations.Bali.techs.diesel.constraints.energy_cap_max:
-        locations.Banten.techs.diesel.constraints.energy_cap_max:
-        locations.Bengkulu.techs.diesel.constraints.energy_cap_max:
-        locations.Daerah_Istimewa_Yogyakarta.techs.diesel.constraints.energy_cap_max:
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.diesel.constraints.energy_cap_max:
-        locations.Gorontalo.techs.diesel.constraints.energy_cap_max:
-        locations.Jambi.techs.diesel.constraints.energy_cap_max:
-        locations.Jawa_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Jawa_Tengah.techs.diesel.constraints.energy_cap_max:
-        locations.Jawa_Timur.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Selatan.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Tengah.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Timur.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.diesel.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.diesel.constraints.energy_cap_max:
-        locations.Kepulauan_Riau.techs.diesel.constraints.energy_cap_max:
-        locations.Lampung.techs.diesel.constraints.energy_cap_max:
-        locations.Maluku.techs.diesel.constraints.energy_cap_max:
-        locations.Maluku_Utara.techs.diesel.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Timur.techs.diesel.constraints.energy_cap_max:
-        locations.Papua.techs.diesel.constraints.energy_cap_max:
-        locations.Papua_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Riau.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Selatan.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Tengah.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Tenggara.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Utara.techs.diesel.constraints.energy_cap_max:
-        locations.Sumatera_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.diesel.constraints.energy_cap_max:
-        locations.Sumatera_Utara.techs.diesel.constraints.energy_cap_max:
+        locations.Aceh.techs.diesel.constraints.energy_cap_equals: 174.107
+        locations.Bali.techs.diesel.constraints.energy_cap_equals: 50.707
+        locations.Banten.techs.diesel.constraints.energy_cap_equals: 20.093
+        locations.Bengkulu.techs.diesel.constraints.energy_cap_equals: 23.147
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.diesel.constraints.energy_cap_equals: 70.2
+        locations.Gorontalo.techs.diesel.constraints.energy_cap_equals: 19.4
+        locations.Jambi.techs.diesel.constraints.energy_cap_equals: 31.18
+        locations.Jawa_Barat.techs.diesel.constraints.energy_cap_equals: 21.653
+        locations.Jawa_Tengah.techs.diesel.constraints.energy_cap_equals: 2.933
+        locations.Jawa_Timur.techs.diesel.constraints.energy_cap_equals: 41.853
+        locations.Kalimantan_Barat.techs.diesel.constraints.energy_cap_equals: 260.173
+        locations.Kalimantan_Selatan.techs.diesel.constraints.energy_cap_equals: 108.873
+        locations.Kalimantan_Tengah.techs.diesel.constraints.energy_cap_equals: 136.34
+        locations.Kalimantan_Timur.techs.diesel.constraints.energy_cap_equals: 200.973
+        locations.Kalimantan_Utara.techs.diesel.constraints.energy_cap_equals: 83.36
+        locations.Kepulauan_Bangka_Belitung.techs.diesel.constraints.energy_cap_equals: 118.513
+        locations.Kepulauan_Riau.techs.diesel.constraints.energy_cap_equals: 129.8
+        locations.Lampung.techs.diesel.constraints.energy_cap_equals: 43.047
+        locations.Maluku.techs.diesel.constraints.energy_cap_equals: 137.707
+        locations.Maluku_Utara.techs.diesel.constraints.energy_cap_equals: 85.653
+        locations.Nusa_Tenggara_Barat.techs.diesel.constraints.energy_cap_equals: 189.08
+        locations.Nusa_Tenggara_Timur.techs.diesel.constraints.energy_cap_equals: 149.313
+        locations.Papua.techs.diesel.constraints.energy_cap_equals: 139.673
+        locations.Papua_Barat.techs.diesel.constraints.energy_cap_equals: 61.74
+        locations.Riau.techs.diesel.constraints.energy_cap_equals: 137.58
+        locations.Sulawesi_Barat.techs.diesel.constraints.energy_cap_equals: 5.207
+        locations.Sulawesi_Selatan.techs.diesel.constraints.energy_cap_equals: 185.873
+        locations.Sulawesi_Tengah.techs.diesel.constraints.energy_cap_equals: 134.42
+        locations.Sulawesi_Tenggara.techs.diesel.constraints.energy_cap_equals: 176
+        locations.Sulawesi_Utara.techs.diesel.constraints.energy_cap_equals: 87.467
+        locations.Sumatera_Barat.techs.diesel.constraints.energy_cap_equals: 7.413
+        locations.Sumatera_Selatan.techs.diesel.constraints.energy_cap_equals: 23.607
+        locations.Sumatera_Utara.techs.diesel.constraints.energy_cap_equals: 185.307
+
     FF_share_in_2040_if_100%_RET_by_2050:
-        locations.Aceh.techs.coal.constraints.energy_cap_max:
-        locations.Bali.techs.coal.constraints.energy_cap_max:
-        locations.Banten.techs.coal.constraints.energy_cap_max:
-        locations.Bengkulu.techs.coal.constraints.energy_cap_max:
-        locations.Daerah_Istimewa_Yogyakarta.techs.coal.constraints.energy_cap_max:
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.coal.constraints.energy_cap_max:
-        locations.Gorontalo.techs.coal.constraints.energy_cap_max:
-        locations.Jambi.techs.coal.constraints.energy_cap_max:
-        locations.Jawa_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Jawa_Tengah.techs.coal.constraints.energy_cap_max:
-        locations.Jawa_Timur.techs.coal.constraints.energy_cap_max:
-        locations.Kalimantan_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Kalimantan_Selatan.techs.coal.constraints.energy_cap_max:
-        locations.Kalimantan_Tengah.techs.coal.constraints.energy_cap_max:
-        locations.Kalimantan_Timur.techs.coal.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.coal.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.coal.constraints.energy_cap_max:
-        locations.Kepulauan_Riau.techs.coal.constraints.energy_cap_max:
-        locations.Lampung.techs.coal.constraints.energy_cap_max:
-        locations.Maluku.techs.coal.constraints.energy_cap_max:
-        locations.Maluku_Utara.techs.coal.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Timur.techs.coal.constraints.energy_cap_max:
-        locations.Papua.techs.coal.constraints.energy_cap_max:
-        locations.Papua_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Riau.techs.coal.constraints.energy_cap_max:
-        locations.Sulawesi_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Sulawesi_Selatan.techs.coal.constraints.energy_cap_max:
-        locations.Sulawesi_Tengah.techs.coal.constraints.energy_cap_max:
-        locations.Sulawesi_Tenggara.techs.coal.constraints.energy_cap_max:
-        locations.Sulawesi_Utara.techs.coal.constraints.energy_cap_max:
-        locations.Sumatera_Barat.techs.coal.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.coal.constraints.energy_cap_max:
-        locations.Sumatera_Utara.techs.coal.constraints.energy_cap_max:
+        locations.Aceh.techs.coal.constraints.energy_cap_equals: 77.167
+        locations.Bali.techs.coal.constraints.energy_cap_equals: 142
+        locations.Banten.techs.coal.constraints.energy_cap_equals: 2058.333
+        locations.Bengkulu.techs.coal.constraints.energy_cap_equals: 76.667
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.coal.constraints.energy_cap_equals: 133.333
+        locations.Gorontalo.techs.coal.constraints.energy_cap_equals: 25.333
+        locations.Jambi.techs.coal.constraints.energy_cap_equals: 6.667
+        locations.Jawa_Barat.techs.coal.constraints.energy_cap_equals: 1003.333
+        locations.Jawa_Tengah.techs.coal.constraints.energy_cap_equals: 2168.667
+        locations.Jawa_Timur.techs.coal.constraints.energy_cap_equals: 2288.49
+        locations.Kalimantan_Barat.techs.coal.constraints.energy_cap_equals: 103.667
+        locations.Kalimantan_Selatan.techs.coal.constraints.energy_cap_equals: 223.667
+        locations.Kalimantan_Tengah.techs.coal.constraints.energy_cap_equals: 127.357
+        locations.Kalimantan_Timur.techs.coal.constraints.energy_cap_equals: 333.377
+        locations.Kalimantan_Utara.techs.coal.constraints.energy_cap_equals: 6.167
+        locations.Kepulauan_Bangka_Belitung.techs.coal.constraints.energy_cap_equals: 39.973
+        locations.Kepulauan_Riau.techs.coal.constraints.energy_cap_equals: 48.333
+        locations.Lampung.techs.coal.constraints.energy_cap_equals: 155.667
+        locations.Maluku_Utara.techs.coal.constraints.energy_cap_equals: 4.667
+        locations.Nusa_Tenggara_Barat.techs.coal.constraints.energy_cap_equals: 102.693
+        locations.Nusa_Tenggara_Timur.techs.coal.constraints.energy_cap_equals: 26.033
+        locations.Papua.techs.coal.constraints.energy_cap_equals: 72.333
+        locations.Papua_Barat.techs.coal.constraints.energy_cap_equals: 4
+        locations.Riau.techs.coal.constraints.energy_cap_equals: 121
+        locations.Sulawesi_Barat.techs.coal.constraints.energy_cap_equals: 20
+        locations.Sulawesi_Selatan.techs.coal.constraints.energy_cap_equals: 296.667
+        locations.Sulawesi_Tengah.techs.coal.constraints.energy_cap_equals: 401.7
+        locations.Sulawesi_Tenggara.techs.coal.constraints.energy_cap_equals: 77.833
+        locations.Sulawesi_Utara.techs.coal.constraints.energy_cap_equals: 36.667
+        locations.Sumatera_Barat.techs.coal.constraints.energy_cap_equals: 144.167
+        locations.Sumatera_Selatan.techs.coal.constraints.energy_cap_equals: 446.667
+        locations.Sumatera_Utara.techs.coal.constraints.energy_cap_equals: 450
 
-        locations.Aceh.techs.cc_gas.constraints.energy_cap_max:
-        locations.Bali.techs.cc_gas.constraints.energy_cap_max:
-        locations.Banten.techs.cc_gas.constraints.energy_cap_max:
-        locations.Bengkulu.techs.cc_gas.constraints.energy_cap_max:
-        locations.Daerah_Istimewa_Yogyakarta.techs.cc_gas.constraints.energy_cap_max:
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.cc_gas.constraints.energy_cap_max:
-        locations.Gorontalo.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jambi.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jawa_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jawa_Tengah.techs.cc_gas.constraints.energy_cap_max:
-        locations.Jawa_Timur.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Selatan.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Tengah.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Timur.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.cc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Riau.techs.cc_gas.constraints.energy_cap_max:
-        locations.Lampung.techs.cc_gas.constraints.energy_cap_max:
-        locations.Maluku.techs.cc_gas.constraints.energy_cap_max:
-        locations.Maluku_Utara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Timur.techs.cc_gas.constraints.energy_cap_max:
-        locations.Papua.techs.cc_gas.constraints.energy_cap_max:
-        locations.Papua_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Riau.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Selatan.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tengah.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tenggara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Utara.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Barat.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.cc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Utara.techs.cc_gas.constraints.energy_cap_max:
+        locations.Aceh.techs.cc_gas.constraints.energy_cap_equals: 8
+        locations.Banten.techs.cc_gas.constraints.energy_cap_equals: 286.467
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.cc_gas.constraints.energy_cap_equals: 1479.843
+        locations.Jawa_Barat.techs.cc_gas.constraints.energy_cap_equals: 480.167
+        locations.Jawa_Tengah.techs.cc_gas.constraints.energy_cap_equals: 344.633
+        locations.Jawa_Timur.techs.cc_gas.constraints.energy_cap_equals: 811.52
+        locations.Kalimantan_Timur.techs.cc_gas.constraints.energy_cap_equals: 29.85
+        locations.Kalimantan_Utara.techs.cc_gas.constraints.energy_cap_equals: 2.97
+        locations.Kepulauan_Riau.techs.cc_gas.constraints.energy_cap_equals: 48.533
+        locations.Nusa_Tenggara_Barat.techs.cc_gas.constraints.energy_cap_equals: 42.293
+        locations.Riau.techs.cc_gas.constraints.energy_cap_equals: 10
+        locations.Sulawesi_Selatan.techs.cc_gas.constraints.energy_cap_equals: 105
+        locations.Sumatera_Selatan.techs.cc_gas.constraints.energy_cap_equals: 156.667
+        locations.Sumatera_Utara.techs.cc_gas.constraints.energy_cap_equals: 272.627
 
-        locations.Aceh.techs.oc_gas.constraints.energy_cap_max:
-        locations.Bali.techs.oc_gas.constraints.energy_cap_max:
-        locations.Banten.techs.oc_gas.constraints.energy_cap_max:
-        locations.Bengkulu.techs.oc_gas.constraints.energy_cap_max:
-        locations.Daerah_Istimewa_Yogyakarta.techs.oc_gas.constraints.energy_cap_max:
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.oc_gas.constraints.energy_cap_max:
-        locations.Gorontalo.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jambi.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jawa_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jawa_Tengah.techs.oc_gas.constraints.energy_cap_max:
-        locations.Jawa_Timur.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Selatan.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Tengah.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Timur.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.oc_gas.constraints.energy_cap_max:
-        locations.Kepulauan_Riau.techs.oc_gas.constraints.energy_cap_max:
-        locations.Lampung.techs.oc_gas.constraints.energy_cap_max:
-        locations.Maluku.techs.oc_gas.constraints.energy_cap_max:
-        locations.Maluku_Utara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Timur.techs.oc_gas.constraints.energy_cap_max:
-        locations.Papua.techs.oc_gas.constraints.energy_cap_max:
-        locations.Papua_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Riau.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Selatan.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tengah.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Tenggara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sulawesi_Utara.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Barat.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.oc_gas.constraints.energy_cap_max:
-        locations.Sumatera_Utara.techs.oc_gas.constraints.energy_cap_max:
+        locations.Aceh.techs.oc_gas.constraints.energy_cap_equals: 141.423
+        locations.Bali.techs.oc_gas.constraints.energy_cap_equals: 185.51
+        locations.Banten.techs.oc_gas.constraints.energy_cap_equals: 2.8
+        locations.Gorontalo.techs.oc_gas.constraints.energy_cap_equals: 33.333
+        locations.Jambi.techs.oc_gas.constraints.energy_cap_equals: 123.323
+        locations.Jawa_Barat.techs.oc_gas.constraints.energy_cap_equals: 696.567
+        locations.Jawa_Tengah.techs.oc_gas.constraints.energy_cap_equals: 18.333
+        locations.Jawa_Timur.techs.oc_gas.constraints.energy_cap_equals: 254.493
+        locations.Kalimantan_Barat.techs.oc_gas.constraints.energy_cap_equals: 44.667
+        locations.Kalimantan_Selatan.techs.oc_gas.constraints.energy_cap_equals: 7
+        locations.Kalimantan_Tengah.techs.oc_gas.constraints.energy_cap_equals: 52.1
+        locations.Kalimantan_Timur.techs.oc_gas.constraints.energy_cap_equals: 115.553
+        locations.Kalimantan_Utara.techs.oc_gas.constraints.energy_cap_equals: 38.27
+        locations.Kepulauan_Bangka_Belitung.techs.oc_gas.constraints.energy_cap_equals: 25
+        locations.Kepulauan_Riau.techs.oc_gas.constraints.energy_cap_equals: 146.847
+        locations.Lampung.techs.oc_gas.constraints.energy_cap_equals: 40.45
+        locations.Maluku.techs.oc_gas.constraints.energy_cap_equals: 48.93
+        locations.Maluku_Utara.techs.oc_gas.constraints.energy_cap_equals: 13.333
+        locations.Nusa_Tenggara_Barat.techs.oc_gas.constraints.energy_cap_equals: 52.05
+        locations.Nusa_Tenggara_Timur.techs.oc_gas.constraints.energy_cap_equals: 59.803
+        locations.Papua.techs.oc_gas.constraints.energy_cap_equals: 73.847
+        locations.Papua_Barat.techs.oc_gas.constraints.energy_cap_equals: 35.333
+        locations.Riau.techs.oc_gas.constraints.energy_cap_equals: 174.333
+        locations.Sulawesi_Selatan.techs.oc_gas.constraints.energy_cap_equals: 40.907
+        locations.Sulawesi_Tengah.techs.oc_gas.constraints.energy_cap_equals: 22
+        locations.Sulawesi_Tenggara.techs.oc_gas.constraints.energy_cap_equals: 32.6
+        locations.Sulawesi_Utara.techs.oc_gas.constraints.energy_cap_equals: 42
+        locations.Sumatera_Barat.techs.oc_gas.constraints.energy_cap_equals: 21.35
+        locations.Sumatera_Selatan.techs.oc_gas.constraints.energy_cap_equals: 114.943
+        locations.Sumatera_Utara.techs.oc_gas.constraints.energy_cap_equals: 185.027
 
-        locations.Aceh.techs.diesel.constraints.energy_cap_max:
-        locations.Bali.techs.diesel.constraints.energy_cap_max:
-        locations.Banten.techs.diesel.constraints.energy_cap_max:
-        locations.Bengkulu.techs.diesel.constraints.energy_cap_max:
-        locations.Daerah_Istimewa_Yogyakarta.techs.diesel.constraints.energy_cap_max:
-        locations.Daerah_Khususu_Ibukota_Jakarta.techs.diesel.constraints.energy_cap_max:
-        locations.Gorontalo.techs.diesel.constraints.energy_cap_max:
-        locations.Jambi.techs.diesel.constraints.energy_cap_max:
-        locations.Jawa_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Jawa_Tengah.techs.diesel.constraints.energy_cap_max:
-        locations.Jawa_Timur.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Selatan.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Tengah.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Timur.techs.diesel.constraints.energy_cap_max:
-        locations.Kalimantan_Utara.techs.diesel.constraints.energy_cap_max:
-        locations.Kepulauan_Bangka_Belitung.techs.diesel.constraints.energy_cap_max:
-        locations.Kepulauan_Riau.techs.diesel.constraints.energy_cap_max:
-        locations.Lampung.techs.diesel.constraints.energy_cap_max:
-        locations.Maluku.techs.diesel.constraints.energy_cap_max:
-        locations.Maluku_Utara.techs.diesel.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Nusa_Tenggara_Timur.techs.diesel.constraints.energy_cap_max:
-        locations.Papua.techs.diesel.constraints.energy_cap_max:
-        locations.Papua_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Riau.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Selatan.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Tengah.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Tenggara.techs.diesel.constraints.energy_cap_max:
-        locations.Sulawesi_Utara.techs.diesel.constraints.energy_cap_max:
-        locations.Sumatera_Barat.techs.diesel.constraints.energy_cap_max:
-        locations.Sumatera_Selatan.techs.diesel.constraints.energy_cap_max:
-        locations.Sumatera_Utara.techs.diesel.constraints.energy_cap_max:
+        locations.Aceh.techs.diesel.constraints.energy_cap_equals: 87.053
+        locations.Bali.techs.diesel.constraints.energy_cap_equals: 25.353
+        locations.Banten.techs.diesel.constraints.energy_cap_equals: 10.047
+        locations.Bengkulu.techs.diesel.constraints.energy_cap_equals: 11.573
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.diesel.constraints.energy_cap_equals: 35.1
+        locations.Gorontalo.techs.diesel.constraints.energy_cap_equals: 9.7
+        locations.Jambi.techs.diesel.constraints.energy_cap_equals: 15.59
+        locations.Jawa_Barat.techs.diesel.constraints.energy_cap_equals: 10.827
+        locations.Jawa_Tengah.techs.diesel.constraints.energy_cap_equals: 1.467
+        locations.Jawa_Timur.techs.diesel.constraints.energy_cap_equals: 20.927
+        locations.Kalimantan_Barat.techs.diesel.constraints.energy_cap_equals: 130.087
+        locations.Kalimantan_Selatan.techs.diesel.constraints.energy_cap_equals: 54.437
+        locations.Kalimantan_Tengah.techs.diesel.constraints.energy_cap_equals: 68.17
+        locations.Kalimantan_Timur.techs.diesel.constraints.energy_cap_equals: 100.487
+        locations.Kalimantan_Utara.techs.diesel.constraints.energy_cap_equals: 41.68
+        locations.Kepulauan_Bangka_Belitung.techs.diesel.constraints.energy_cap_equals: 59.257
+        locations.Kepulauan_Riau.techs.diesel.constraints.energy_cap_equals: 64.9
+        locations.Lampung.techs.diesel.constraints.energy_cap_equals: 21.523
+        locations.Maluku.techs.diesel.constraints.energy_cap_equals: 68.853
+        locations.Maluku_Utara.techs.diesel.constraints.energy_cap_equals: 42.827
+        locations.Nusa_Tenggara_Barat.techs.diesel.constraints.energy_cap_equals: 94.54
+        locations.Nusa_Tenggara_Timur.techs.diesel.constraints.energy_cap_equals: 74.657
+        locations.Papua.techs.diesel.constraints.energy_cap_equals: 69.837
+        locations.Papua_Barat.techs.diesel.constraints.energy_cap_equals: 30.87
+        locations.Riau.techs.diesel.constraints.energy_cap_equals: 68.79
+        locations.Sulawesi_Barat.techs.diesel.constraints.energy_cap_equals: 2.603
+        locations.Sulawesi_Selatan.techs.diesel.constraints.energy_cap_equals: 92.937
+        locations.Sulawesi_Tengah.techs.diesel.constraints.energy_cap_equals: 67.21
+        locations.Sulawesi_Tenggara.techs.diesel.constraints.energy_cap_equals: 88
+        locations.Sulawesi_Utara.techs.diesel.constraints.energy_cap_equals: 43.733
+        locations.Sumatera_Barat.techs.diesel.constraints.energy_cap_equals: 3.707
+        locations.Sumatera_Selatan.techs.diesel.constraints.energy_cap_equals: 11.803
+        locations.Sumatera_Utara.techs.diesel.constraints.energy_cap_equals: 92.653
 
     demand_2030_high_fluctuation:
         locations.Aceh.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation.csv:Aceh
@@ -643,39 +572,16 @@ overrides:
 
         techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv
         techs.offshore_wind.constraints.resource_unit: energy_per_cap
-        locations.Aceh.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Aceh
-        locations.Bali.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Bali
         locations.Banten.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Banten
-        locations.Bengkulu.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Bengkulu
-        locations.Daerah_Istimewa_Yogyakarta.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Daerah_Istimewa_Yogyakarta
-        locations.Gorontalo.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Gorontalo
-        locations.Jambi.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jambi
         locations.Jawa_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jawa_Barat
         locations.Jawa_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jawa_Tengah
         locations.Jawa_Timur.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jawa_Timur
-        locations.Kalimantan_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Barat
         locations.Kalimantan_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Selatan
         locations.Kalimantan_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Tengah
-        locations.Kalimantan_Timur.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Timur
-        locations.Kalimantan_Utara.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Utara
-        locations.Kepulauan_Bangka_Belitung.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kepulauan_Bangka_Belitung
-        locations.Kepulauan_Riau.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kepulauan_Riau
         locations.Lampung.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Lampung
-        locations.Maluku.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Maluku
-        locations.Maluku_Utara.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Maluku_Utara
-        locations.Nusa_Tenggara_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Nusa_Tenggara_Barat
-        locations.Nusa_Tenggara_Timur.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Nusa_Tenggara_Timur
         locations.Papua.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Papua
         locations.Papua_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Papua_Barat
-        locations.Riau.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Riau
-        locations.Sulawesi_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sulawesi_Barat
         locations.Sulawesi_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sulawesi_Selatan
-        locations.Sulawesi_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sulawesi_Tengah
-        locations.Sulawesi_Tenggara.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sulawesi_Tenggara
-        locations.Sulawesi_Utara.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sulawesi_Utara
-        locations.Sumatera_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sumatera_Barat
-        locations.Sumatera_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sumatera_Selatan
-        locations.Sumatera_Utara.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sumatera_Utara
 
         techs.large_hydro.constraints.resource: file=Hydropower_Profiles_2040_mean.csv
         techs.large_hydro.constraints.resource_unit: energy_per_cap
@@ -753,17 +659,12 @@ overrides:
         locations.Bengkulu.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Bengkulu
         locations.Daerah_Istimewa_Yogyakarta.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Daerah_Istimewa_Yogyakarta
         locations.Gorontalo.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Gorontalo
-        locations.Jambi.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Jambi
         locations.Jawa_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Jawa_Barat
         locations.Jawa_Tengah.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Jawa_Tengah
         locations.Jawa_Timur.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Jawa_Timur
-        locations.Kalimantan_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Kalimantan_Barat
         locations.Kalimantan_Selatan.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Kalimantan_Selatan
-        locations.Kalimantan_Tengah.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Kalimantan_Tengah
         locations.Kalimantan_Timur.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Kalimantan_Timur
         locations.Kalimantan_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Kalimantan_Utara
-        locations.Kepulauan_Bangka_Belitung.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Kepulauan_Bangka_Belitung
-        locations.Kepulauan_Riau.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Kepulauan_Riau
         locations.Lampung.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Lampung
         locations.Maluku.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Maluku
         locations.Maluku_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Maluku_Utara
@@ -771,14 +672,12 @@ overrides:
         locations.Nusa_Tenggara_Timur.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Nusa_Tenggara_Timur
         locations.Papua.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Papua
         locations.Papua_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Papua_Barat
-        locations.Riau.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Riau
         locations.Sulawesi_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sulawesi_Barat
         locations.Sulawesi_Selatan.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sulawesi_Selatan
         locations.Sulawesi_Tengah.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sulawesi_Tengah
         locations.Sulawesi_Tenggara.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sulawesi_Tenggara
         locations.Sulawesi_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sulawesi_Utara
         locations.Sumatera_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sumatera_Barat
-        locations.Sumatera_Selatan.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sumatera_Selatan
         locations.Sumatera_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sumatera_Utara
     
     min_RET_profiles_2050:
@@ -994,141 +893,75 @@ overrides:
         locations.Sumatera_Selatan.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sumatera_Selatan
         locations.Sumatera_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sumatera_Utara
           
+
     costs_2030:
-        techs.battery.costs.monetary.storage_cap:
-        techs.battery.costs.monetary.om_annual_investment_fraction:
-        techs.battery.costs.monetary.om_prod:
-        
-        techs.biomass.costs.monetary.energy_cap:
-        techs.biomass.costs.monetary.om_annual:
-        techs.biomass.costs.monetary.om_prod:
-        techs.biomass.costs.monetary.om_con:
+        techs.battery.costs.monetary.storage_cap: 162186
+
+        techs.biomass.costs.monetary.energy_cap: 1923000
+        techs.biomass.costs.monetary.om_annual: 76000
             
-        techs.cc_gas.costs.monetary.energy_cap:
-        techs.cc_gas.costs.monetary.om_annual:
-        techs.cc_gas.costs.monetary.om_prod:
-        techs.cc_gas.costs.monetary.om_con:
+        techs.cc_gas.costs.monetary.energy_cap: 876000
         
-        techs.coal.costs.monetary.energy_cap:
-        techs.coal.costs.monetary.om_annual:
-        techs.coal.costs.monetary.om_prod:
-        techs.coal.costs.monetary.om_con:
+        techs.coal.costs.monetary.energy_cap: 1535000
         
-        techs.diesel.costs.monetary.energy_cap:
-        techs.diesel.costs.monetary.om_annual:
-        techs.diesel.costs.monetary.om_prod:
-        techs.diesel.costs.monetary.om_con:
+        techs.diesel.costs.monetary.energy_cap: 792000
+        techs.diesel.costs.monetary.om_prod: 6.62
         
-        techs.geothermal.costs.monetary.energy_cap:
-        techs.geothermal.costs.monetary.om_annual:
-        techs.geothermal.costs.monetary.om_prod:
+        techs.geothermal.costs.monetary.energy_cap: 3556000
+        techs.geothermal.costs.monetary.om_annual: 42000
         
-        techs.large_hydro.costs.monetary.energy_cap:
-        techs.large_hydro.costs.monetary.om_annual:
-        techs.large_hydro.costs.monetary.om_prod:
+        techs.large_hydro.costs.monetary.energy_cap: 2262000
+        techs.large_hydro.costs.monetary.om_annual: 45000
+        techs.large_hydro.costs.monetary.om_prod: 0.7
         
-        techs.nuclear.costs.monetary.energy_cap:
-        techs.nuclear.costs.monetary.om_annual:
-        techs.nuclear.costs.monetary.om_prod:
-        techs.nuclear.costs.monetary.om_con:
+        techs.nuclear.costs.monetary.energy_cap: 6330000
+        techs.nuclear.costs.monetary.om_annual: 118000
         
-        techs.oc_gas.costs.monetary.energy_cap:
-        techs.oc_gas.costs.monetary.om_annual:
-        techs.oc_gas.costs.monetary.om_prod:
-        techs.oc_gas.costs.monetary.om_con:
+        techs.oc_gas.costs.monetary.energy_cap: 777000
         
-        techs.offshore_wind.costs.monetary.energy_cap:
-        techs.offshore_wind.costs.monetary.om_annual:
-        techs.offshore_wind.costs.monetary.om_prod:
+        techs.offshore_wind.costs.monetary.energy_cap: 3779000
+        techs.offshore_wind.costs.monetary.om_annual: 17000
+        techs.offshore_wind.costs.monetary.om_prod: 21.82
     
-        techs.onshore_wind.costs.monetary.energy_cap:
-        techs.onshore_wind.costs.monetary.om_annual:
-        techs.onshore_wind.costs.monetary.om_prod:
-        
-        techs.otec.costs.monetary.energy_cap:
-        techs.otec.costs.monetary.om_annual:
-        techs.otec.costs.monetary.om_prod:
+        techs.onshore_wind.costs.monetary.energy_cap: 1497000
+        techs.onshore_wind.costs.monetary.om_annual: 43000
 
-        techs.pumped_hydro.costs.monetary.storage_cap:
-        techs.pumped_hydro.costs.monetary.om_annual_investment_fraction:
-        techs.pumped_hydro.costs.monetary.om_prod:
-        
-        techs.small_hydro.costs.monetary.energy_cap:
-        techs.small_hydro.costs.monetary.om_annual:
-        techs.small_hydro.costs.monetary.om_prod:
-
-        techs.solar.costs.monetary.energy_cap:
-        techs.solar.costs.monetary.om_annual:
-        techs.solar.costs.monetary.om_prod:
-        techs.solar.costs.monetary.om_con:
+        techs.solar.costs.monetary.energy_cap: 825000
+        techs.solar.costs.monetary.om_annual: 13000
     
     costs_2040:
-        techs.battery.costs.monetary.storage_cap:
-        techs.battery.costs.monetary.om_annual_investment_fraction:
-        techs.battery.costs.monetary.om_prod:
+        techs.battery.costs.monetary.storage_cap: 125147
 
-        techs.biomass.costs.monetary.energy_cap:
-        techs.biomass.costs.monetary.om_annual:
-        techs.biomass.costs.monetary.om_prod:
-        techs.biomass.costs.monetary.om_con:
+        techs.biomass.costs.monetary.energy_cap: 1721000
+        techs.biomass.costs.monetary.om_annual: 71000
 
-        techs.cc_gas.costs.monetary.energy_cap:
-        techs.cc_gas.costs.monetary.om_annual:
-        techs.cc_gas.costs.monetary.om_prod:
-        techs.cc_gas.costs.monetary.om_con:
+        techs.cc_gas.costs.monetary.energy_cap: 860000
 
-        techs.coal.costs.monetary.energy_cap:
-        techs.coal.costs.monetary.om_annual:
-        techs.coal.costs.monetary.om_prod:
-        techs.coal.costs.monetary.om_con:
+        techs.coal.costs.monetary.energy_cap: 1523000
 
-        techs.diesel.costs.monetary.energy_cap:
-        techs.diesel.costs.monetary.om_annual:
-        techs.diesel.costs.monetary.om_prod:
-        techs.diesel.costs.monetary.om_con:
+        techs.diesel.costs.monetary.energy_cap: 787000
+        techs.diesel.costs.monetary.om_prod: 6.51
 
-        techs.geothermal.costs.monetary.energy_cap:
-        techs.geothermal.costs.monetary.om_annual:
-        techs.geothermal.costs.monetary.om_prod:
+        techs.geothermal.costs.monetary.energy_cap: 3214000
+        techs.geothermal.costs.monetary.om_annual: 40000
 
-        techs.large_hydro.costs.monetary.energy_cap:
-        techs.large_hydro.costs.monetary.om_annual:
-        techs.large_hydro.costs.monetary.om_prod:
+        techs.large_hydro.costs.monetary.energy_cap: 2262000
+        techs.large_hydro.costs.monetary.om_annual: 44000
+        techs.large_hydro.costs.monetary.om_prod: 0.69
 
-        techs.nuclear.costs.monetary.energy_cap:
-        techs.nuclear.costs.monetary.om_annual:
-        techs.nuclear.costs.monetary.om_prod:
-        techs.nuclear.costs.monetary.om_con:
+        techs.nuclear.costs.monetary.energy_cap: 6059000
+        techs.nuclear.costs.monetary.om_annual: 15000
 
-        techs.oc_gas.costs.monetary.energy_cap:
-        techs.oc_gas.costs.monetary.om_annual:
-        techs.oc_gas.costs.monetary.om_prod:
-        techs.oc_gas.costs.monetary.om_con:
+        techs.oc_gas.costs.monetary.energy_cap: 764000
 
-        techs.offshore_wind.costs.monetary.energy_cap:
-        techs.offshore_wind.costs.monetary.om_annual:
-        techs.offshore_wind.costs.monetary.om_prod:
+        techs.offshore_wind.costs.monetary.energy_cap: 3524000
+        techs.offshore_wind.costs.monetary.om_annual: 15000
+        techs.offshore_wind.costs.monetary.om_prod: 19.77
 
-        techs.onshore_wind.costs.monetary.energy_cap:
-        techs.onshore_wind.costs.monetary.om_annual:
-        techs.onshore_wind.costs.monetary.om_prod:
+        techs.onshore_wind.costs.monetary.energy_cap: 1412000
+        techs.onshore_wind.costs.monetary.om_annual: 39000
 
-        techs.otec.costs.monetary.energy_cap:
-        techs.otec.costs.monetary.om_annual:
-        techs.otec.costs.monetary.om_prod:
-
-        techs.pumped_hydro.costs.monetary.storage_cap:
-        techs.pumped_hydro.costs.monetary.om_annual_investment_fraction:
-        techs.pumped_hydro.costs.monetary.om_prod:
-
-        techs.small_hydro.costs.monetary.energy_cap:
-        techs.small_hydro.costs.monetary.om_annual:
-        techs.small_hydro.costs.monetary.om_prod:
-
-        techs.solar.costs.monetary.energy_cap:
-        techs.solar.costs.monetary.om_annual:
-        techs.solar.costs.monetary.om_prod:
-        techs.solar.costs.monetary.om_con:
+        techs.solar.costs.monetary.energy_cap: 698000
 
     force_offshore_energy:
         group.constraints:
@@ -1140,18 +973,24 @@ overrides:
         run.mode: spores
         run.spores_options:
             score_cost_class: 'spores_score'
-            slack_cost_group: 'systemwide_cost_max'
+            slack_cost_group: 'systemwide_cost_equals'
             slack: 0.1
-            spores_number: 3
+            spores_number: 5
 #            objective_cost_class: {'monetary': 0, 'spores_score': 1}
 #        run.objective_options.cost_class: {'monetary': 1, 'spores_score': 0}
         group_constraints:
-            systemwide_cost_max.cost_max.monetary: .inf  # very large, non-infinite value
-
-        model.time: {function: resample, function_options: {'resolution': '24H'}}
+            systemwide_cost_equals.cost_equals.monetary: .inf  # infinity
 
         techs.battery.costs.spores_score.energy_cap: 0
         techs.battery.costs.spores_score.interest_rate: 1
+        techs.coal.costs.spores_score.energy_cap: 0
+        techs.coal.costs.spores_score.interest_rate: 1
+        techs.cc_gas.costs.spores_score.energy_cap: 0
+        techs.cc_gas.costs.spores_score.interest_rate: 1
+        techs.oc_gas.costs.spores_score.energy_cap: 0
+        techs.oc_gas.costs.spores_score.interest_rate: 1
+        techs.diesel.costs.spores_score.energy_cap: 0
+        techs.diesel.costs.spores_score.interest_rate: 1
         techs.geothermal.costs.spores_score.energy_cap: 0
         techs.geothermal.costs.spores_score.interest_rate: 1
         techs.large_hydro.costs.spores_score.energy_cap: 0
@@ -1168,41 +1007,3 @@ overrides:
         techs.small_hydro.costs.spores_score.interest_rate: 1
         techs.solar.costs.spores_score.energy_cap: 0
         techs.solar.costs.spores_score.interest_rate: 1
-
-#    operate:
-#        run.mode: operate
-#        run.operation:
-#            window: 12
-#            horizon: 24
-#        model.subset_time: ['2005-01-01', '2005-01-10']
-#        locations:
-#            region1.techs.ccgt.constraints.energy_cap_equals: 30000
-#
-#            region2.techs.battery.constraints.energy_cap_equals: 1000
-#            region2.techs.battery.constraints.storage_cap_equals: 5240
-#
-#            region1-1.techs.csp.constraints.energy_cap_equals: 10000
-#            region1-1.techs.csp.constraints.storage_cap_equals: 244301
-#            region1-1.techs.csp.constraints.resource_area_equals: 130385
-#
-#            region1-2.techs.csp.constraints.energy_cap_equals: 0
-#            region1-2.techs.csp.constraints.storage_cap_equals: 0
-#            region1-2.techs.csp.constraints.resource_area_equals: 0
-#
-#            region1-3.techs.csp.constraints.energy_cap_equals: 2534
-#            region1-3.techs.csp.constraints.storage_cap_equals: 25301
-#            region1-3.techs.csp.constraints.resource_area_equals: 8487
-#
-#        links:
-#            region1,region2.techs.ac_transmission.constraints.energy_cap_equals: 3231
-#            region1,region1-1.techs.free_transmission.constraints.energy_cap_equals: 9000
-#            region1,region1-2.techs.free_transmission.constraints.energy_cap_equals: 0
-#            region1,region1-3.techs.free_transmission.constraints.energy_cap_equals: 2281
-#
-#    check_feasibility:
-#        run:
-#            ensure_feasibility: False
-#            objective: 'check_feasibility'
-#        model:
-#            subset_time: '2005-01-04'
-

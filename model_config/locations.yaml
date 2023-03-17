@@ -30,18 +30,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Aceh # MW
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 1136.6 # MW
@@ -52,9 +40,6 @@ locations:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Aceh
                     energy_cap_max: 5062 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Aceh
@@ -63,10 +48,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Aceh
                     energy_cap_max: 15 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Aceh
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Aceh
@@ -88,18 +69,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Bali
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 146.9 # MW
@@ -110,9 +79,6 @@ locations:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Bali
                     energy_cap_max: 208 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Bali
@@ -121,10 +87,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Bali
                     energy_cap_max: 22.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Bali
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Bali
@@ -146,18 +108,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Banten
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 346.5 # MW
@@ -167,9 +117,6 @@ locations:
             large_hydro:
                 constraints:
                     energy_cap_equals: 0 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Banten
@@ -203,21 +150,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Bengkulu
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 3.1 # MW
                     energy_cap_max: 633 # MW
             geothermal:
                 constraints:
@@ -225,11 +159,7 @@ locations:
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Bengkulu
-                    # energy_cap_min: 278.5 # MW
                     energy_cap_max: 775.5 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Bengkulu
@@ -238,10 +168,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Bengkulu
                     energy_cap_max: 17.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Bengkulu
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Bengkulu
@@ -263,21 +189,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Daerah_Istimewa_Yogyakarta
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 3.8 # MW
                     energy_cap_max: 183.1 # MW
             geothermal:
                 constraints:
@@ -285,9 +198,6 @@ locations:
             large_hydro:
                 constraints:
                     energy_cap_equals: 0 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Daerah_Istimewa_Yogyakarta
@@ -296,10 +206,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Daerah_Istimewa_Yogyakarta
                     energy_cap_max: 1117.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Daerah_Istimewa_Yogyakarta
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Daerah_Istimewa_Yogyakarta
@@ -321,56 +227,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Daerah_Khusus_Ibukota_Jakarta
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
-            biomass:
-                constraints:
-                    energy_cap_max: 0.5 # MW
-            geothermal:
-                constraints:
-                    energy_cap_max: 0 # MW
-#            large_hydro:
-#                constraints:
-#                    energy_cap_equals: 0 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 0 # MW
-#            otec:
-#                constraints:
-#                    resource: file=OTEC_Profiles_2050_mean.csv:Daerah_Khusus_Ibukota_Jakarta
-#                    energy_cap_max: 0 # MW_gross
-#            onshore_wind:
-#                constraints:
-#                    resource: file=Onshore_Wind_Profiles_2050_mean.csv:Daerah_Khusus_Ibukota_Jakarta
-#                    energy_cap_max: 0 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Daerah_Khusus_Ibukota_Jakarta
-#                    energy_cap_max: 0 # MW
-#            small_hydro:
-#                constraints:
-#                    resource: file=Hydropower_Profiles_2050_mean.csv:Daerah_Khusus_Ibukota_Jakarta
-#                    energy_cap_max: 0 # MW
-#            solar:
-#                constraints:
-#                    resource: file=Solar_PV_Profiles_2050_mean.csv:Daerah_Khusus_Ibukota_Jakarta
-#                    energy_cap_max: 0 # MW
-            battery:
-                constraints:
-                    energy_cap_max: 0 # MW
-            pumped_hydro:
-                constraints:
-                    energy_cap_max: 0 # MW
 
     Gorontalo:
         coordinates: { lat: 0.625, lon: 122.819 }
@@ -378,21 +234,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Gorontalo
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 0.5 # MW
                     energy_cap_max: 119.1 # MW
             geothermal:
                 constraints:
@@ -400,9 +243,6 @@ locations:
             large_hydro:
                 constraints:
                     energy_cap_equals: 0 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Gorontalo
@@ -411,10 +251,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Gorontalo
                     energy_cap_max: 1042.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Gorontalo
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Gorontalo
@@ -436,21 +272,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jambi
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 46.2 # MW
                     energy_cap_max: 1821.0 # MW
             geothermal:
                 constraints:
@@ -459,17 +282,10 @@ locations:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Jambi
                     energy_cap_max: 775.5 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Jambi
                     energy_cap_max: 30 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Jambi
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Jambi
@@ -491,34 +307,16 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jawa_Barat
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 14 # MW
                     energy_cap_max: 1979.8 # MW
             geothermal:
                 constraints:
-                    # energy_cap_min: 1193.8 # MW
                     energy_cap_max: 2094.8 # MW
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Jawa_Barat
-                    # energy_cap_min: 2033.7 # MW
                     energy_cap_max: 2861 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Jawa_Barat
@@ -552,21 +350,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jawa_Tengah
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 19.8 # MW
                     energy_cap_max: 1884.1 # MW
             geothermal:
                 constraints:
@@ -575,11 +360,7 @@ locations:
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Jawa_Tengah
-                    # energy_cap_min: 322.1 # MW
                     energy_cap_max: 813 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Jawa_Tengah
@@ -613,21 +394,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jawa_Timur
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 147.2 # MW
                     energy_cap_max: 2851.3 # MW
             geothermal:
                 constraints:
@@ -635,11 +403,7 @@ locations:
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Jawa_Timur
-                    # energy_cap_min: 291.7 # MW
                     energy_cap_max: 525 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Jawa_Timur
@@ -673,21 +437,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Barat
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 24 # MW
                     energy_cap_max: 1279.3 # MW
             geothermal:
                 constraints:
@@ -695,19 +446,11 @@ locations:
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Barat
-                    # energy_cap_min: 232.2 # MW
                     energy_cap_max: 4737 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kalimantan_Barat
                     energy_cap_max: 462.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Kalimantan_Barat
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Barat
@@ -729,21 +472,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Selatan
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 11.7 # MW
                     energy_cap_max: 1266.3 # MW
             geothermal:
                 constraints:
@@ -751,11 +481,7 @@ locations:
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Selatan
-                    # energy_cap_min: 30 # MW
                     energy_cap_max: 5615 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Kalimantan_Selatan
@@ -789,21 +515,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Tengah
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 17.4
                     energy_cap_max: 1486.7 # MW
             geothermal:
                 constraints:
@@ -812,9 +525,6 @@ locations:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Tengah
                     energy_cap_max: 5615 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kalimantan_Tengah
@@ -844,21 +554,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Timur
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 20 # MW
                     energy_cap_max: 473.3 # MW
             geothermal:
                 constraints:
@@ -867,9 +564,6 @@ locations:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Timur
                     energy_cap_max: 5615 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Kalimantan_Timur
@@ -878,10 +572,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kalimantan_Timur
                     energy_cap_max: 262.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Kalimantan_Timur
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Timur
@@ -903,18 +593,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Utara
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 473.3 # MW
@@ -924,9 +602,6 @@ locations:
             large_hydro:
                 constraints:
                     energy_cap_equals: 0 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000 # MW
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Kalimantan_Utara
@@ -935,10 +610,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kalimantan_Utara
                     energy_cap_max: 40 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Kalimantan_Utara
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Utara
@@ -960,43 +631,19 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kepulauan_Bangka_Belitung
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 80 # MW
                     energy_cap_max: 217.7 # MW
             geothermal:
                 constraints:
                     energy_cap_max: 0 # MW
-#            large_hydro:
-#                constraints:
-#                    energy_cap_equals: 0 # MW
             nuclear:
                 constraints:
-                    energy_cap_max: 100000000
+                    energy_cap_max: 2000 # MW
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kepulauan_Bangka_Belitung
                     energy_cap_max: 95 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Kepulauan_Bangka_Belitung
-#                    energy_cap_max: 0 # MW
-#            small_hydro:
-#                constraints:
-#                    resource: file=Hydropower_Profiles_2050_mean.csv:Kepulauan_Bangka_Belitung
-#                    energy_cap_max: 0 # MW
             solar:
                 constraints:
                     resource: file=Solar_PV_Profiles_2050_mean.csv:Kepulauan_Bangka_Belitung
@@ -1014,43 +661,16 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kepulauan_Riau
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 1 # MW
                     energy_cap_max: 11.6 # MW
             geothermal:
                 constraints:
                     energy_cap_max: 0 # MW
-#            large_hydro:
-#                constraints:
-#                    energy_cap_equals: 0 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kepulauan_Riau
                     energy_cap_max: 205 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Kepulauan_Riau
-#                    energy_cap_max: 0 # MW
-#            small_hydro:
-#                constraints:
-#                    resource: file=Hydropower_Profiles_2050_mean.csv:Kepulauan_Riau
-#                    energy_cap_max: 0 # MW
             solar:
                 constraints:
                     resource: file=Solar_PV_Profiles_2050_mean.csv:Kepulauan_Riau
@@ -1068,34 +688,16 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Lampung
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 58.1 # MW
                     energy_cap_max: 1407.6 # MW
             geothermal:
                 constraints:
-                    # energy_cap_min: 220 # MW
                     energy_cap_max: 1210 # MW
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Lampung
-                    # energy_cap_min: 174.6 # MW
                     energy_cap_max: 775.5 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Lampung
@@ -1129,18 +731,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Maluku
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 23.6 # MW
@@ -1151,9 +741,6 @@ locations:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Maluku
                     energy_cap_max: 430 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Maluku
@@ -1162,10 +749,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Maluku
                     energy_cap_max: 8420 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Maluku
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Maluku
@@ -1187,18 +770,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Maluku_Utara
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 27.5 # MW
@@ -1209,9 +780,6 @@ locations:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Maluku_Utara
                     energy_cap_equals: 0 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Maluku_Utara
@@ -1220,10 +788,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Maluku_Utara
                     energy_cap_max: 142.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Maluku_Utara
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Maluku_Utara
@@ -1245,18 +809,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Nusa_Tenggara_Barat
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 341.3 # MW
@@ -1267,9 +819,6 @@ locations:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Nusa_Tenggara_Barat
                     energy_cap_max: 208 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Nusa_Tenggara_Barat
@@ -1278,10 +827,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Nusa_Tenggara_Barat
                     energy_cap_max: 2282.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Nusa_Tenggara_Barat
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Nusa_Tenggara_Barat
@@ -1303,32 +848,16 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Nusa_Tenggara_Timur
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 192.5 # MW
             geothermal:
                 constraints:
-                    # energy_cap_min: 12.5 # MW
                     energy_cap_max: 710.5 #MW.
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Nusa_Tenggara_Timur
                     energy_cap_max: 208 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Nusa_Tenggara_Timur
@@ -1337,10 +866,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Nusa_Tenggara_Timur
                     energy_cap_max: 16515 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Nusa_Tenggara_Timur
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Nusa_Tenggara_Timur
@@ -1362,21 +887,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Papua
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 3.5 # MW
                     energy_cap_max: 81.4 # MW
             geothermal:
                 constraints:
@@ -1384,11 +896,7 @@ locations:
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Papua
-                    # energy_cap_min: 20 # MW
                     energy_cap_max: 22371 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Papua
@@ -1422,18 +930,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Papua_Barat
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 50.8 # MW
@@ -1443,9 +939,6 @@ locations:
             large_hydro:
                 constraints:
                     energy_cap_equals: 0 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Papua_Barat
@@ -1479,21 +972,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Riau
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 1279.4 # MW
                     energy_cap_max: 4157.4 # MW
             geothermal:
                 constraints:
@@ -1501,19 +981,11 @@ locations:
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Riau
-                    # energy_cap_min: 114 # MW
                     energy_cap_max: 1803.5 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Riau
                     energy_cap_max: 12.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Riau
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Riau
@@ -1535,18 +1007,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Barat
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 197.8 # MW
@@ -1556,9 +1016,6 @@ locations:
             large_hydro:
                 constraints:
                     energy_cap_equals: 0 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Sulawesi_Barat
@@ -1567,10 +1024,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sulawesi_Barat
                     energy_cap_max: 322.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Sulawesi_Barat
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Barat
@@ -1592,21 +1045,8 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Selatan
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 17.2 # MW
                     energy_cap_max: 890.3 # MW
             geothermal:
                 constraints:
@@ -1614,11 +1054,7 @@ locations:
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Selatan
-                    # energy_cap_min: 513.5 # MW
                     energy_cap_max: 3170 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Sulawesi_Selatan
@@ -1652,18 +1088,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Tengah
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 307.4 # MW
@@ -1673,11 +1097,7 @@ locations:
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Tengah
-                    # energy_cap_min: 321 # MW
                     energy_cap_max: 1983.5 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Sulawesi_Tengah
@@ -1686,10 +1106,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sulawesi_Tengah
                     energy_cap_max: 1993 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Sulawesi_Tengah
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Tengah
@@ -1711,18 +1127,6 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Tenggara
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 132.8 # MW
@@ -1732,9 +1136,6 @@ locations:
             large_hydro:
                 constraints:
                     energy_cap_equals: 0 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Sulawesi_Tenggara
@@ -1743,10 +1144,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sulawesi_Tenggara
                     energy_cap_max: 202.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Sulawesi_Tenggara
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Tenggara
@@ -1769,33 +1166,16 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Utara
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
                     energy_cap_max: 150.2 # MW
             geothermal:
                 constraints:
-                    # energy_cap_min: 120 # MW
                     energy_cap_max: 670 # MW
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Utara
-                    # energy_cap_min: 51.4 # MW
                     energy_cap_max: 1983.5 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Sulawesi_Utara
@@ -1804,10 +1184,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sulawesi_Utara
                     energy_cap_max: 275 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Sulawesi_Utara
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Utara
@@ -1829,34 +1205,16 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sumatera_Barat
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 1.2 # MW
                     energy_cap_max: 923.1 # MW
             geothermal:
                 constraints:
-                    # energy_cap_min: 85 # MW
                     energy_cap_max: 745 # MW
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sumatera_Barat
-                    # energy_cap_min: 253.5 # MW
                     energy_cap_max: 1803.5 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Sumatera_Barat
@@ -1865,10 +1223,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sumatera_Barat
                     energy_cap_max: 587.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Sumatera_Barat
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sumatera_Barat
@@ -1890,41 +1244,20 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sumatera_Selatan
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 12.8 # MW
                     energy_cap_max: 2061.4 # MW
             geothermal:
                 constraints:
-                    # energy_cap_min: 55 # MW
                     energy_cap_max: 369 # MW
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sumatera_Selatan
                     energy_cap_max: 775.5 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sumatera_Selatan
                     energy_cap_max: 102.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Sumatera_Selatan
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sumatera_Selatan
@@ -1946,34 +1279,16 @@ locations:
             demand_power:
                 constraints:
                     resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sumatera_Utara
-            coal:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            diesel:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            oc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW
-            cc_gas:
-                constraints:
-                    energy_cap_max: 100000000 # MW  
             biomass:
                 constraints:
-                    # energy_cap_min: 139.7 # MW
                     energy_cap_max: 2796.1 # MW
             geothermal:
                 constraints:
-                    # energy_cap_min: 384.4 # MW
                     energy_cap_max: 1393.4 # MW
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sumatera_Utara
-                    # energy_cap_min: 1002.5 # MW
                     energy_cap_max: 3808 # MW
-            nuclear:
-                constraints:
-                    energy_cap_max: 100000000
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Sumatera_Utara
@@ -1982,10 +1297,6 @@ locations:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sumatera_Utara
                     energy_cap_max: 652.5 # MW
-#            offshore_wind:
-#                constraints:
-#                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Sumatera_Utara
-#                    energy_cap_max: 0 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sumatera_Utara

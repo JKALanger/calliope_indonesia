@@ -23,17 +23,12 @@ model:
 run:
     solver: gurobi
 
-    ensure_feasibility: false  # Switches on the "unmet demand" constraint
+    ensure_feasibility: true  # Switches on the "unmet demand" constraint
 
-    # bigM: 1e9  # Sets the scale of unmet demand, which cannot be too high, otherwise the optimisation will not converge
+    bigM: 1e9  # Sets the scale of unmet demand, which cannot be too high, otherwise the optimisation will not converge
 
     zero_threshold: 1e-6  # Any value coming out of the backend that is smaller than this (due to floating point errors, probably) will be set to zero
 
     mode: plan  # Choices: plan, operate
 
-    objective_options.cost_class: {'monetary': 1, 'emission': 1}
-
-#group_constraints:
-#    systemwide_emissions:
-#        cost_max:
-#            emission: 0
+    objective_options.cost_class: {monetary: 1}

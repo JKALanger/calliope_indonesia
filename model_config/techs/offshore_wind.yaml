@@ -3,7 +3,7 @@ techs:
     offshore_wind:
         essentials:
             name: 'Offshore wind'
-            parent: supply_plus
+            parent: supply
             carrier_out: power
         constraints:
             resource: file=Offshore_Wind_Profiles_2050_mean.csv # gross power production

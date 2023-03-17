@@ -237,6 +237,12 @@ links:
                 constraints:
                     energy_cap_max: 100000
 
+    Kepulauan_Riau,Riau:
+        techs:
+            ac_transmission:
+                constraints:
+                    energy_cap_max: 100000
+
     Nusa_Tenggara_Timur,Nusa_Tenggara_Barat:
         techs:
             ac_transmission:

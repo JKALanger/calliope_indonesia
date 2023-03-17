@@ -3,7 +3,7 @@ techs:
     onshore_wind:
         essentials:
             name: 'Onshore wind'
-            parent: supply_plus
+            parent: supply
             carrier_out: power
         constraints:
             resource: file=Onshore_Wind_Profiles_2050_mean.csv # gross power production

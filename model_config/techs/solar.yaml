@@ -3,7 +3,7 @@ techs:
     solar:
         essentials:
             name: 'Solar PV'
-            parent: supply_plus
+            parent: supply
             carrier_out: power
         constraints: # all based on DEN 2021 technology catalogue, year 2050
             resource: file=Solar_PV_Profiles_2050_mean.csv # net power production using total BoS efficiency of 90.7% (DC cables: 98%; Inverter: 97.8%; AC cables: 99.5%; availability: 99.5%; Soiling: 96.5%)
