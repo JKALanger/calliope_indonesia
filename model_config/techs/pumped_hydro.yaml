@@ -7,10 +7,8 @@ techs:
             carrier: power
         constraints:
             energy_cap_per_storage_cap_equals: 0.15 # Stocks et al (2021), assuming 2 GWh and 0.3 GW
-            energy_cap_per_unit: 300 # MW
             energy_eff: 0.87  # 0.87 * 0.87 = 0.75 round trip efficiency, Lombardi et al. (2020)
             storage_loss: 0.0  # No loss over time assumed, Lombardi et al. (2020)
-            storage_initial: 1 # Let storage start at 100%
             lifetime: 50 # Lombardi et al. (2020)
         costs:
             monetary:

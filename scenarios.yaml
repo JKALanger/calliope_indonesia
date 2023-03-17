@@ -7,10 +7,14 @@ scenarios:
     resolution_test_2H: ["half_year", "2H_resolution"]
     resolution_test_3H: ["half_year", "3H_resolution"]
     resolution_test_4H: ["half_year", "4H_resolution"]
-    test: ["one_day"]
-    decarbonisation_by_2050_year_2030: ["one_day", "spores", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050"] # infeasible SPORES
-    decarbonisation_by_2050_year_2040: ["one_day_2040", "4H_resolution", "mean_RET_profiles_leap_year", "costs_2040", "demand_2040_high_fluctuation", "FF_share_in_2040_if_100%_RET_by_2050"] # infeasible SPORES
-    decarbonisation_by_2040_year_2030: ["one_day", "spores", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2040"] # infeasible SPORES
+    test: ["one_day","no_feasibility"]
+    decarbonisation_by_2050_year_2030: ["spores", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050"]
+    decarbonisation_by_2050_year_2040: ["spores", "4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year"]
+    decarbonisation_by_2050_year_2050: ["spores", "4H_resolution"]
+    decarbonisation_by_2040_year_2030: ["spores", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2040"]
+    decarbonisation_by_2040_year_2040: ["spores", "4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "mean_RET_profiles_leap_year","leap_year"]
+    decarbonisation_by_2030_year_2030: ["spores", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation"]
+
     test_feasibility: ["FF_share_in_2030_if_100%_RET_by_2050", "no_RET", "no_feasibility", "4H_resolution", "half_year"]
 ##
 # Overrides are the building blocks from which scenarios can be defined
@@ -963,22 +967,30 @@ overrides:
         techs.solar.costs.monetary.energy_cap: 698000
 
     force_offshore_energy:
-        group.constraints:
-            techs: ['offshore_wind','otec']
-            demand_share_min:
-                power: 0.2
+        group_constraints:
+            min_carrier_prod_share_group:
+                techs: ['offshore_wind','otec']
+                demand_share_min:
+                    power: 0.2
+
+    force_solar:
+        group_constraints:
+            min_carrier_prod_share_group:
+                techs: ['solar']
+                carrier_prod_share_min:
+                    power: 0.2
 
     spores:
         run.mode: spores
         run.spores_options:
             score_cost_class: 'spores_score'
-            slack_cost_group: 'systemwide_cost_equals'
+            slack_cost_group: 'systemwide_cost_max'
             slack: 0.1
-            spores_number: 5
-#            objective_cost_class: {'monetary': 0, 'spores_score': 1}
-#        run.objective_options.cost_class: {'monetary': 1, 'spores_score': 0}
+            spores_number: 10
+            objective_cost_class: {'monetary': 0, 'spores_score': 1}
+        run.objective_options.cost_class: {'monetary': 1, 'spores_score': 0}
         group_constraints:
-            systemwide_cost_equals.cost_equals.monetary: .inf  # infinity
+            systemwide_cost_max.cost_max.monetary: 1e10  # infinity
 
         techs.battery.costs.spores_score.energy_cap: 0
         techs.battery.costs.spores_score.interest_rate: 1
@@ -990,6 +1002,8 @@ overrides:
         techs.oc_gas.costs.spores_score.interest_rate: 1
         techs.diesel.costs.spores_score.energy_cap: 0
         techs.diesel.costs.spores_score.interest_rate: 1
+        techs.biomass.costs.spores_score.energy_cap: 0
+        techs.biomass.costs.spores_score.interest_rate: 1
         techs.geothermal.costs.spores_score.energy_cap: 0
         techs.geothermal.costs.spores_score.interest_rate: 1
         techs.large_hydro.costs.spores_score.energy_cap: 0
@@ -1000,6 +1014,8 @@ overrides:
         techs.otec.costs.spores_score.interest_rate: 1
         techs.onshore_wind.costs.spores_score.energy_cap: 0
         techs.onshore_wind.costs.spores_score.interest_rate: 1
+        techs.offshore_wind.costs.spores_score.energy_cap: 0
+        techs.offshore_wind.costs.spores_score.interest_rate: 1
         techs.pumped_hydro.costs.spores_score.energy_cap: 0
         techs.pumped_hydro.costs.spores_score.interest_rate: 1
         techs.small_hydro.costs.spores_score.energy_cap: 0
