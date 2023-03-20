@@ -9,6 +9,7 @@ techs:
             energy_cap_per_storage_cap_max: 0.25 # Lombardi et al (2020)
             energy_eff: 0.954  # 0.96 * 0.96 = 0.92 round trip efficiency, updated DEN 2021 technology catalogue, year 2050
             storage_loss: 0.00004  # per hour, updated DEN 2021 technology catalogue, year 2050
+#            storage_initial: 0.5
             lifetime: 30
         costs:
             monetary:
