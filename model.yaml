@@ -23,6 +23,15 @@ model:
 run:
     solver: gurobi
 
+    solver_options: # only works for gurobi
+        Method: 2 # Barrier method (if not forced, gurobi tries all other methods in parallel)
+        Crossover: 0 # turns off crossover (it validates optimal solution, but kind of useless)
+        BarConvTol: 1e-4
+        # BarHomogeneous: 1 # use this if you encounter numerical issues
+        # BarIterLimit: 10000 # use this if you encounter numerical issues
+        OptimalityTol: 1e-4
+        FeasibilityTol: 1e-4
+
     ensure_feasibility: false  # Switches on the "unmet demand" constraint
 
     zero_threshold: 1e-6  # Any value coming out of the backend that is smaller than this (due to floating point errors, probably) will be set to zero

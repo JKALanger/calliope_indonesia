@@ -5,7 +5,7 @@
 # assumptions for energy_cap_max/equals:
 # - geothermal: sum of possible, proven, and expected potentials (ESDM Geoportal) as well as already installed capacity from ESDM Statistik
 # - large_hydro: Potentials in RUEN
-# - nuclear: 1000000, but only in Kepulauan Bangka Belitung (https://katadata.co.id/happyfajrian/ekonomi-hijau/62dff3cd517a4/thorcon-akan-bangun-pltn-500-mw-di-bangka-belitung-beroperasi-2030)
+# - nuclear: only in Kalimantan Barat (ESDM, set to 100 GW) and Kepulauan Bangka Belitung (https://katadata.co.id/happyfajrian/ekonomi-hijau/62dff3cd517a4/thorcon-akan-bangun-pltn-500-mw-di-bangka-belitung-beroperasi-2030)
 # - onshore_wind: from Langer et al. (2023). Introducing site selection flexibility to technical and economic onshore wind potential assessments: New method with application to Indonesia.
 #       energy_cap is the technical potential. Only sites with wind speed of >= 4 m/s are considered.
 #       Tech potential is based on median IEC wind class III turbines studied in the paper, yielding median capacity of 2.5 MW and diameter of 116 m, respectively.
@@ -442,6 +442,9 @@ locations:
             geothermal:
                 constraints:
                     energy_cap_max: 0 # MW
+            nuclear:
+                constraints:
+                    energy_cap_max: 100000 # MW
             large_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Barat
