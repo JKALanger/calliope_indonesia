@@ -961,18 +961,19 @@ overrides:
         techs.large_hydro.costs.monetary.om_prod: 0.69
 
         techs.nuclear.costs.monetary.energy_cap: 6059000
-        techs.nuclear.costs.monetary.om_annual: 15000
+        techs.nuclear.costs.monetary.om_annual: 104000
 
         techs.oc_gas.costs.monetary.energy_cap: 764000
 
         techs.offshore_wind.costs.monetary.energy_cap: 3524000
-        techs.offshore_wind.costs.monetary.om_annual: 104000
+        techs.offshore_wind.costs.monetary.om_annual: 15000
         techs.offshore_wind.costs.monetary.om_prod: 19.77
 
         techs.onshore_wind.costs.monetary.energy_cap: 1412000
         techs.onshore_wind.costs.monetary.om_annual: 39000
 
         techs.solar.costs.monetary.energy_cap: 698000
+        techs.solar.costs.monetary.om_annual: 11000
 
     force_offshore_energy:
         group_constraints:
