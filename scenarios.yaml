@@ -7,13 +7,20 @@ scenarios:
     resolution_test_2H: ["half_year", "2H_resolution"]
     resolution_test_3H: ["half_year", "3H_resolution"]
     resolution_test_4H: ["half_year", "4H_resolution"]
-    test: ["spores","one_day","ensure_feasibility","demand_2040_high_fluctuation", "mean_RET_profiles_leap_year"]
-    decarbonisation_by_2050_year_2030: ["spores", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050"]
-    decarbonisation_by_2050_year_2040: ["spores", "4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year"]
-    decarbonisation_by_2050_year_2050: ["spores", "4H_resolution"]
-    decarbonisation_by_2040_year_2030: ["spores", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2040"]
-    decarbonisation_by_2040_year_2040: ["spores", "4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "mean_RET_profiles_leap_year","leap_year"]
-    decarbonisation_by_2030_year_2030: ["spores", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation"]
+    SPORES_test: ["ensure_feasibility", "spores", "4H_resolution", "one_day"]
+    test: ["half_year","4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050"]
+    SPORES_decarbonisation_by_2050_year_2030: ["spores", "ensure_feasibility", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050"]
+    SPORES_decarbonisation_by_2050_year_2040: ["spores", "ensure_feasibility", "4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year"]
+    SPORES_decarbonisation_by_2050_year_2050: ["spores", "ensure_feasibility", "4H_resolution"]
+    SPORES_decarbonisation_by_2040_year_2030: ["spores", "ensure_feasibility", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2040"]
+    SPORES_decarbonisation_by_2040_year_2040: ["spores", "ensure_feasibility", "4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "mean_RET_profiles_leap_year","leap_year"]
+    SPORES_decarbonisation_by_2030_year_2030: ["spores", "ensure_feasibility", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation"]
+    decarbonisation_by_2050_year_2030: ["4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050" ]
+    decarbonisation_by_2050_year_2040: ["4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" ]
+    decarbonisation_by_2050_year_2050: ["4H_resolution"]
+    decarbonisation_by_2040_year_2030: ["4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2040" ]
+    decarbonisation_by_2040_year_2040: ["4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "mean_RET_profiles_leap_year","leap_year" ]
+    decarbonisation_by_2030_year_2030: ["4H_resolution", "costs_2030", "demand_2030_high_fluctuation" ]
 
     test_feasibility: ["FF_share_in_2030_if_100%_RET_by_2050", "no_RET", "no_feasibility", "4H_resolution", "half_year"]
 ##
@@ -23,9 +30,13 @@ overrides:
     one_day:
         model.subset_time: '2050-03-11' # for testing, day with maximum demand
     one_day_2040:
-        model.subset_time: '2040-01-01' # for testing
+        model.subset_time: '2040-03-11' # for testing
+    one_month:
+        model.subset_time: '2050-03' # for testing, month with maximum demand
+    one_month_2040:
+        model.subset_time: '2040-01' # for testing
     half_year:
-        model.subset_time: ['2050-01-01', '2050-06-30']
+        model.subset_time: ['2050-07-01', '2050-12-31']
     1H_resolution:
         model.time: {function: resample, function_options: {'resolution': '1H' }}
     2H_resolution:
@@ -166,7 +177,6 @@ overrides:
         locations.Sumatera_Barat.techs.diesel.constraints.energy_cap_equals: 5.56
         locations.Sumatera_Selatan.techs.diesel.constraints.energy_cap_equals: 17.705
         locations.Sumatera_Utara.techs.diesel.constraints.energy_cap_equals: 138.98
-
     FF_share_in_2030_if_100%_RET_by_2050:
         locations.Aceh.techs.coal.constraints.energy_cap_equals: 154.333
         locations.Bali.techs.coal.constraints.energy_cap_equals: 284
@@ -279,8 +289,7 @@ overrides:
         locations.Sulawesi_Utara.techs.diesel.constraints.energy_cap_equals: 87.467
         locations.Sumatera_Barat.techs.diesel.constraints.energy_cap_equals: 7.413
         locations.Sumatera_Selatan.techs.diesel.constraints.energy_cap_equals: 23.607
-        locations.Sumatera_Utara.techs.diesel.constraints.energy_cap_equals: 185.307
-
+        locations.Sumatera_Utara.techs.diesel.constraints.energy_cap_equals: 185.30
     FF_share_in_2040_if_100%_RET_by_2050:
         locations.Aceh.techs.coal.constraints.energy_cap_equals: 77.167
         locations.Bali.techs.coal.constraints.energy_cap_equals: 142
@@ -683,7 +692,6 @@ overrides:
         locations.Sulawesi_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sulawesi_Utara
         locations.Sumatera_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sumatera_Barat
         locations.Sumatera_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sumatera_Utara
-    
     min_RET_profiles_2050:
         techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv
         techs.solar.constraints.resource_unit: energy_per_cap
@@ -932,7 +940,6 @@ overrides:
 
         techs.solar.costs.monetary.energy_cap: 825000
         techs.solar.costs.monetary.om_annual: 13000
-    
     costs_2040:
         techs.battery.costs.monetary.storage_cap: 125147
 
@@ -973,7 +980,6 @@ overrides:
                 techs: ['offshore_wind','otec']
                 demand_share_min:
                     power: 0.2
-
     force_solar:
         group_constraints:
             min_carrier_prod_share_group:
@@ -987,11 +993,11 @@ overrides:
             score_cost_class: 'spores_score'
             slack_cost_group: 'systemwide_cost_max'
             slack: 0.1
-            spores_number: 5
+            spores_number: 4
             objective_cost_class: {'monetary': 0, 'spores_score': 1}
         run.objective_options.cost_class: {'monetary': 1, 'spores_score': 0}
         group_constraints:
-            systemwide_cost_max.cost_max.monetary: 1e10  # infinity
+            systemwide_cost_max.cost_max.monetary: 1e10  # very large, non-infinite number
 
         techs.battery.costs.spores_score.energy_cap: 0
         techs.battery.costs.spores_score.interest_rate: 1
@@ -1023,3 +1029,7 @@ overrides:
         techs.small_hydro.costs.spores_score.interest_rate: 1
         techs.solar.costs.spores_score.energy_cap: 0
         techs.solar.costs.spores_score.interest_rate: 1
+        techs.ac_transmission.costs.spores_score.energy_cap: 0
+        techs.ac_transmission.costs.spores_score.interest_rate: 1
+        techs.hvdc_transmission.costs.spores_score.energy_cap: 0
+        techs.hvdc_transmission.costs.spores_score.interest_rate: 1
