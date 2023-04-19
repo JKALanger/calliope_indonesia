@@ -239,6 +239,7 @@ links:
                 constraints:
                     energy_cap_min: 1
                     energy_cap_max: 100000
+                distance: 135 # km
 
     Kalimantan_Barat,Daerah_Khusus_Ibukota_Jakarta:
         techs:
@@ -246,6 +247,7 @@ links:
                 constraints:
                     energy_cap_min: 1
                     energy_cap_max: 100000
+                distance: 790 # km
 
     Kalimantan_Tengah,Jawa_Tengah:
         techs:
@@ -253,6 +255,7 @@ links:
                 constraints:
                     energy_cap_min: 1
                     energy_cap_max: 100000
+                distance: 690 # km
 
     Kalimantan_Selatan,Jawa_Timur:
         techs:
@@ -260,6 +263,7 @@ links:
                 constraints:
                     energy_cap_min: 1
                     energy_cap_max: 100000
+                distance: 550 # km
 
     Kalimantan_Selatan,Sulawesi_Selatan:
         techs:
@@ -267,6 +271,7 @@ links:
                 constraints:
                     energy_cap_min: 1
                     energy_cap_max: 100000
+                distance: 550 # km
 
     Lampung,Banten:
         techs:
@@ -274,6 +279,7 @@ links:
                 constraints:
                     energy_cap_min: 1
                     energy_cap_max: 100000
+                distance: 180 # km
 
     Kepulauan_Riau,Riau:
         techs:
@@ -281,6 +287,7 @@ links:
                 constraints:
                     energy_cap_min: 1
                     energy_cap_max: 100000
+                distance: 310 # km
 
     Nusa_Tenggara_Timur,Nusa_Tenggara_Barat:
         techs:
@@ -288,3 +295,4 @@ links:
                 constraints:
                     energy_cap_min: 1
                     energy_cap_max: 100000
+                distance: 810 # km

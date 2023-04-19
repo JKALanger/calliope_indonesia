@@ -1,1 +1,0 @@
-(calliope) PS C:\Users\sup-jkalanger\PycharmProjects\calliope_indonesia> calliope run model.yaml --scenario=SPORES_test --save_netcdf=test_SPORES_day.nc

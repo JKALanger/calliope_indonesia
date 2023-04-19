@@ -3,18 +3,24 @@
 ##
 scenarios:
     spores_test: ["one_day","spores"]
-    resolution_test_1H: ["half_year", "1H_resolution"]
-    resolution_test_2H: ["half_year", "2H_resolution"]
-    resolution_test_3H: ["half_year", "3H_resolution"]
-    resolution_test_4H: ["half_year", "4H_resolution"]
-    SPORES_test: ["ensure_feasibility", "spores", "4H_resolution", "one_day"]
-    test: ["half_year","4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050"]
-    SPORES_decarbonisation_by_2050_year_2030: ["spores", "ensure_feasibility", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050"]
-    SPORES_decarbonisation_by_2050_year_2040: ["spores", "ensure_feasibility", "4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year"]
-    SPORES_decarbonisation_by_2050_year_2050: ["spores", "ensure_feasibility", "4H_resolution"]
-    SPORES_decarbonisation_by_2040_year_2030: ["spores", "ensure_feasibility", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2040"]
-    SPORES_decarbonisation_by_2040_year_2040: ["spores", "ensure_feasibility", "4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "mean_RET_profiles_leap_year","leap_year"]
-    SPORES_decarbonisation_by_2030_year_2030: ["spores", "ensure_feasibility", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation"]
+    resolution_test_1H: ["1H_resolution"]
+    resolution_test_2H: ["2H_resolution"]
+    resolution_test_3H: ["3H_resolution"]
+    resolution_test_4H: ["4H_resolution"]
+    resolution_test_6H: ["6H_resolution"]
+    resolution_test_8H: ["8H_resolution"]
+
+    feasible_resolution_test_1H: [ "ensure_feasibility", "1H_resolution" ]
+    feasible_resolution_test_2H: [ "ensure_feasibility", "2H_resolution" ]
+    feasible_resolution_test_3H: [ "ensure_feasibility", "3H_resolution" ]
+    feasible_resolution_test_4H: [ "ensure_feasibility", "4H_resolution" ]
+    feasible_resolution_test_6H: [ "ensure_feasibility", "6H_resolution" ]
+    feasible_resolution_test_8H: [ "ensure_feasibility", "8H_resolution" ]
+
+    test: ["ensure_feasibility","one_day","4H_resolution"]
+
+    # Vanilla runs
+
     decarbonisation_by_2050_year_2030: ["4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050" ]
     decarbonisation_by_2050_year_2040: ["4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" ]
     decarbonisation_by_2050_year_2050: ["4H_resolution"]
@@ -22,7 +28,47 @@ scenarios:
     decarbonisation_by_2040_year_2040: ["4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "mean_RET_profiles_leap_year","leap_year" ]
     decarbonisation_by_2030_year_2030: ["4H_resolution", "costs_2030", "demand_2030_high_fluctuation" ]
 
-    test_feasibility: ["FF_share_in_2030_if_100%_RET_by_2050", "no_RET", "no_feasibility", "4H_resolution", "half_year"]
+    feasible_decarbonisation_by_2050_year_2030: [ "ensure_feasibility", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050" ]
+    feasible_decarbonisation_by_2050_year_2040: [ "ensure_feasibility", "4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" ]
+    feasible_decarbonisation_by_2050_year_2050: [ "ensure_feasibility", "4H_resolution" ]
+    feasible_decarbonisation_by_2040_year_2030: [ "ensure_feasibility", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2040" ]
+    feasible_decarbonisation_by_2040_year_2040: [ "ensure_feasibility", "4H_resolution", "costs_2040", "demand_2040_high_fluctuation", "mean_RET_profiles_leap_year","leap_year" ]
+    feasible_decarbonisation_by_2030_year_2030: [ "ensure_feasibility", "4H_resolution", "costs_2030", "demand_2030_high_fluctuation" ]
+
+    # Extreme demand scenarios (demand growth of 8.3% p.a. in every province based on highest growth estimation in literature)
+
+    extreme_demand_2030: [ "4H_resolution", "costs_2030", "demand_2030_extreme", "FF_share_in_2030_if_100%_RET_by_2050" ]
+    extreme_demand_2040: [ "4H_resolution", "costs_2040", "demand_2040_extreme", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" ]
+    extreme_demand_2050: [ "4H_resolution" , "demand_2050_extreme"]
+
+    feasible_extreme_demand_2030: [ "ensure_feasibility", "4H_resolution", "costs_2030", "demand_2030_extreme", "FF_share_in_2030_if_100%_RET_by_2050" ]
+    feasible_extreme_demand_2040: [ "ensure_feasibility", "4H_resolution", "costs_2040", "demand_2040_extreme", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" ]
+    feasible_extreme_demand_2050: [ "ensure_feasibility", "4H_resolution", "demand_2050_extreme" ]
+
+    # Best-case scenario for nuclear and offshore energies with minimum share 20% and lowest cost
+
+    best_case_nuclear: [ "4H_resolution", "low_cost_nuclear", "force_nuclear"]
+    best_case_offshore: [ "4H_resolution", "low_cost_offshore", "force_offshore"]
+
+    # Worst-case scenario for solar PV and storage with costs from 2021 for 2050 and minimum solar PV production
+
+    worst_case_solar_storage: [ "4H_resolution", "high_cost_solar_storage", "solar_minimum_profile"]
+
+    # Alternative profiles for demand and RET supply
+
+    alternative_demand_profiles: ["4H_resolution", "demand_2050_low_fluctuation"]
+    alternative_RET_profiles: ["4H_resolution", "min_RET_profiles_2050"]
+
+    # No cost reduction scenario
+
+    no_cost_reduction_2030: [ "4H_resolution", "costs_2021", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050" ]
+    no_cost_reduction_2040: [ "4H_resolution", "costs_2021", "demand_2040_high_fluctuation", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" ]
+    no_cost_reduction_2050: [ "4H_resolution", "costs_2021" ]
+
+    feasible_no_cost_reduction_2030: [ "ensure_feasibility", "4H_resolution", "costs_2021", "demand_2030_high_fluctuation", "FF_share_in_2030_if_100%_RET_by_2050" ]
+    feasible_no_cost_reduction_2040: [ "ensure_feasibility", "4H_resolution", "costs_2021", "demand_2040_high_fluctuation", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" ]
+    feasible_no_cost_reduction_2050: [ "ensure_feasibility", "4H_resolution", "costs_2021" ]
+
 ##
 # Overrides are the building blocks from which scenarios can be defined
 ##
@@ -45,24 +91,19 @@ overrides:
         model.time: {function: resample, function_options: {'resolution': '3H'}}
     4H_resolution:
         model.time: {function: resample, function_options: {'resolution': '4H'}}
+    6H_resolution:
+        model.time: {function: resample, function_options: {'resolution': '6H'}}
+    8H_resolution:
+        model.time: {function: resample, function_options: {'resolution': '8H'}}
     leap_year:
         model.subset_time: ['2040-01-01', '2040-12-31']
+
     ensure_feasibility:
+        run.solver_options.Method: -1
         run.ensure_feasibility: true  # Switches on the "unmet demand" constraint
         run.bigM: 1e9  # Sets the scale of unmet demand, which cannot be too high, otherwise the optimisation will not converge
-    no_RET:
-        techs.battery.exists: False
-        techs.biomass.exists: False
-        techs.geothermal.exists: False
-        techs.large_hydro.exists: False
-        techs.nuclear.exists: False
-        techs.offshore_wind.exists: False
-        techs.onshore_wind.exists: False
-        techs.otec.exists: False
-        techs.pumped_hydro.exists: False
-        techs.small_hydro.exists: False
-        techs.solar.exists: False
 
+    # Fossil fuel shares in 2030 and 2040 depending on 100% RET goal
 
     FF_share_in_2030_if_100%_RET_by_2040:
         locations.Aceh.techs.coal.constraints.energy_cap_equals: 115.75
@@ -404,6 +445,8 @@ overrides:
         locations.Sumatera_Selatan.techs.diesel.constraints.energy_cap_equals: 11.803
         locations.Sumatera_Utara.techs.diesel.constraints.energy_cap_equals: 92.653
 
+    # Demand profiles for 2030 and 2040
+
     demand_2030_high_fluctuation:
         locations.Aceh.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation.csv:Aceh
         locations.Bali.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation.csv:Bali
@@ -474,41 +517,152 @@ overrides:
         locations.Sumatera_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation.csv:Sumatera_Barat
         locations.Sumatera_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation.csv:Sumatera_Selatan
         locations.Sumatera_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation.csv:Sumatera_Utara
+        
+    # Alternative demand shape scenario
+        
     demand_2050_low_fluctuation:
-        locations.Aceh.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Aceh
-        locations.Bali.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Bali
-        locations.Banten.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Banten
-        locations.Bengkulu.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Bengkulu
-        locations.Daerah_Istimewa_Yogyakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Daerah_Istimewa_Yogyakarta
-        locations.Daerah_Khusus_Ibukota_Jakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Daerah_Khusus_Ibukota_Jakarta
-        locations.Gorontalo.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Gorontalo
-        locations.Jambi.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jambi
-        locations.Jawa_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jawa_Barat
-        locations.Jawa_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jawa_Tengah
-        locations.Jawa_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jawa_Timur
-        locations.Kalimantan_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Barat
-        locations.Kalimantan_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Selatan
-        locations.Kalimantan_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Tengah
-        locations.Kalimantan_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Timur
-        locations.Kalimantan_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Utara
-        locations.Kepulauan_Bangka_Belitung.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kepulauan_Bangka_Belitung
-        locations.Kepulauan_Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kepulauan_Riau
-        locations.Lampung.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Lampung
-        locations.Maluku.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Maluku
-        locations.Maluku_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Maluku_Utara
-        locations.Nusa_Tenggara_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Nusa_Tenggara_Barat
-        locations.Nusa_Tenggara_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Nusa_Tenggara_Timur
-        locations.Papua.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Papua
-        locations.Papua_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Papua_Barat
-        locations.Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Riau
-        locations.Sulawesi_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Barat
-        locations.Sulawesi_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Selatan
-        locations.Sulawesi_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Tengah
-        locations.Sulawesi_Tenggara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Tenggara
-        locations.Sulawesi_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Utara
-        locations.Sumatera_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sumatera_Barat
-        locations.Sumatera_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sumatera_Selatan
-        locations.Sumatera_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sumatera_Utara
+        locations.Aceh.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Aceh
+        locations.Bali.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Bali
+        locations.Banten.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Banten
+        locations.Bengkulu.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Bengkulu
+        locations.Daerah_Istimewa_Yogyakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Daerah_Istimewa_Yogyakarta
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Daerah_Khusus_Ibukota_Jakarta
+        locations.Gorontalo.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Gorontalo
+        locations.Jambi.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Jambi
+        locations.Jawa_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Jawa_Barat
+        locations.Jawa_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Jawa_Tengah
+        locations.Jawa_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Jawa_Timur
+        locations.Kalimantan_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Kalimantan_Barat
+        locations.Kalimantan_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Kalimantan_Selatan
+        locations.Kalimantan_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Kalimantan_Tengah
+        locations.Kalimantan_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Kalimantan_Timur
+        locations.Kalimantan_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Kalimantan_Utara
+        locations.Kepulauan_Bangka_Belitung.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Kepulauan_Bangka_Belitung
+        locations.Kepulauan_Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Kepulauan_Riau
+        locations.Lampung.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Lampung
+        locations.Maluku.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Maluku
+        locations.Maluku_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Maluku_Utara
+        locations.Nusa_Tenggara_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Nusa_Tenggara_Barat
+        locations.Nusa_Tenggara_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Nusa_Tenggara_Timur
+        locations.Papua.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Papua
+        locations.Papua_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Papua_Barat
+        locations.Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Riau
+        locations.Sulawesi_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Sulawesi_Barat
+        locations.Sulawesi_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Sulawesi_Selatan
+        locations.Sulawesi_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Sulawesi_Tengah
+        locations.Sulawesi_Tenggara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Sulawesi_Tenggara
+        locations.Sulawesi_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Sulawesi_Utara
+        locations.Sumatera_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Sumatera_Barat
+        locations.Sumatera_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Sumatera_Selatan
+        locations.Sumatera_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_low_fluctuation.csv:Sumatera_Utara
+        
+        
+        
+    demand_2030_extreme:
+        locations.Aceh.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Aceh
+        locations.Bali.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Bali
+        locations.Banten.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Banten
+        locations.Bengkulu.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Bengkulu
+        locations.Daerah_Istimewa_Yogyakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Daerah_Istimewa_Yogyakarta
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Daerah_Khusus_Ibukota_Jakarta
+        locations.Gorontalo.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Gorontalo
+        locations.Jambi.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Jambi
+        locations.Jawa_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Jawa_Barat
+        locations.Jawa_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Jawa_Tengah
+        locations.Jawa_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Jawa_Timur
+        locations.Kalimantan_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Kalimantan_Barat
+        locations.Kalimantan_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Kalimantan_Selatan
+        locations.Kalimantan_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Kalimantan_Tengah
+        locations.Kalimantan_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Kalimantan_Timur
+        locations.Kalimantan_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Kalimantan_Utara
+        locations.Kepulauan_Bangka_Belitung.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Kepulauan_Bangka_Belitung
+        locations.Kepulauan_Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Kepulauan_Riau
+        locations.Lampung.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Lampung
+        locations.Maluku.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Maluku
+        locations.Maluku_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Maluku_Utara
+        locations.Nusa_Tenggara_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Nusa_Tenggara_Barat
+        locations.Nusa_Tenggara_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Nusa_Tenggara_Timur
+        locations.Papua.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Papua
+        locations.Papua_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Papua_Barat
+        locations.Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Riau
+        locations.Sulawesi_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Sulawesi_Barat
+        locations.Sulawesi_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Sulawesi_Selatan
+        locations.Sulawesi_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Sulawesi_Tengah
+        locations.Sulawesi_Tenggara.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Sulawesi_Tenggara
+        locations.Sulawesi_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Sulawesi_Utara
+        locations.Sumatera_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Sumatera_Barat
+        locations.Sumatera_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Sumatera_Selatan
+        locations.Sumatera_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_high_fluctuation_extreme.csv:Sumatera_Utara
+    demand_2040_extreme:
+        locations.Aceh.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Aceh
+        locations.Bali.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Bali
+        locations.Banten.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Banten
+        locations.Bengkulu.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Bengkulu
+        locations.Daerah_Istimewa_Yogyakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Daerah_Istimewa_Yogyakarta
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Daerah_Khusus_Ibukota_Jakarta
+        locations.Gorontalo.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Gorontalo
+        locations.Jambi.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Jambi
+        locations.Jawa_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Jawa_Barat
+        locations.Jawa_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Jawa_Tengah
+        locations.Jawa_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Jawa_Timur
+        locations.Kalimantan_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Kalimantan_Barat
+        locations.Kalimantan_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Kalimantan_Selatan
+        locations.Kalimantan_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Kalimantan_Tengah
+        locations.Kalimantan_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Kalimantan_Timur
+        locations.Kalimantan_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Kalimantan_Utara
+        locations.Kepulauan_Bangka_Belitung.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Kepulauan_Bangka_Belitung
+        locations.Kepulauan_Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Kepulauan_Riau
+        locations.Lampung.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Lampung
+        locations.Maluku.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Maluku
+        locations.Maluku_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Maluku_Utara
+        locations.Nusa_Tenggara_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Nusa_Tenggara_Barat
+        locations.Nusa_Tenggara_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Nusa_Tenggara_Timur
+        locations.Papua.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Papua
+        locations.Papua_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Papua_Barat
+        locations.Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Riau
+        locations.Sulawesi_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Sulawesi_Barat
+        locations.Sulawesi_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Sulawesi_Selatan
+        locations.Sulawesi_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Sulawesi_Tengah
+        locations.Sulawesi_Tenggara.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Sulawesi_Tenggara
+        locations.Sulawesi_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Sulawesi_Utara
+        locations.Sumatera_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Sumatera_Barat
+        locations.Sumatera_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Sumatera_Selatan
+        locations.Sumatera_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_high_fluctuation_extreme.csv:Sumatera_Utara
+    demand_2050_extreme:
+        locations.Aceh.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Aceh
+        locations.Bali.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Bali
+        locations.Banten.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Banten
+        locations.Bengkulu.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Bengkulu
+        locations.Daerah_Istimewa_Yogyakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Daerah_Istimewa_Yogyakarta
+        locations.Daerah_Khusus_Ibukota_Jakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Daerah_Khusus_Ibukota_Jakarta
+        locations.Gorontalo.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Gorontalo
+        locations.Jambi.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Jambi
+        locations.Jawa_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Jawa_Barat
+        locations.Jawa_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Jawa_Tengah
+        locations.Jawa_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Jawa_Timur
+        locations.Kalimantan_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Kalimantan_Barat
+        locations.Kalimantan_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Kalimantan_Selatan
+        locations.Kalimantan_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Kalimantan_Tengah
+        locations.Kalimantan_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Kalimantan_Timur
+        locations.Kalimantan_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Kalimantan_Utara
+        locations.Kepulauan_Bangka_Belitung.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Kepulauan_Bangka_Belitung
+        locations.Kepulauan_Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Kepulauan_Riau
+        locations.Lampung.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Lampung
+        locations.Maluku.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Maluku
+        locations.Maluku_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Maluku_Utara
+        locations.Nusa_Tenggara_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Nusa_Tenggara_Barat
+        locations.Nusa_Tenggara_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Nusa_Tenggara_Timur
+        locations.Papua.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Papua
+        locations.Papua_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Papua_Barat
+        locations.Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Riau
+        locations.Sulawesi_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Sulawesi_Barat
+        locations.Sulawesi_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Sulawesi_Selatan
+        locations.Sulawesi_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Sulawesi_Tengah
+        locations.Sulawesi_Tenggara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Sulawesi_Tenggara
+        locations.Sulawesi_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Sulawesi_Utara
+        locations.Sumatera_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Sumatera_Barat
+        locations.Sumatera_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Sumatera_Selatan
+        locations.Sumatera_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_high_fluctuation_extreme.csv:Sumatera_Utara
 
     mean_RET_profiles_leap_year:
         techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv
@@ -767,40 +921,17 @@ overrides:
     
         techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv
         techs.offshore_wind.constraints.resource_unit: energy_per_cap
-        locations.Aceh.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Aceh
-        locations.Bali.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Bali
         locations.Banten.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Banten
-        locations.Bengkulu.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Bengkulu
-        locations.Daerah_Istimewa_Yogyakarta.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Daerah_Istimewa_Yogyakarta
-        locations.Gorontalo.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Gorontalo
-        locations.Jambi.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Jambi
         locations.Jawa_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Jawa_Barat
         locations.Jawa_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Jawa_Tengah
         locations.Jawa_Timur.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Jawa_Timur
-        locations.Kalimantan_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Kalimantan_Barat
         locations.Kalimantan_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Kalimantan_Selatan
         locations.Kalimantan_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Kalimantan_Tengah
-        locations.Kalimantan_Timur.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Kalimantan_Timur
-        locations.Kalimantan_Utara.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Kalimantan_Utara
-        locations.Kepulauan_Bangka_Belitung.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Kepulauan_Bangka_Belitung
-        locations.Kepulauan_Riau.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Kepulauan_Riau
         locations.Lampung.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Lampung
-        locations.Maluku.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Maluku
-        locations.Maluku_Utara.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Maluku_Utara
-        locations.Nusa_Tenggara_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Nusa_Tenggara_Barat
-        locations.Nusa_Tenggara_Timur.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Nusa_Tenggara_Timur
         locations.Papua.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Papua
         locations.Papua_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Papua_Barat
-        locations.Riau.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Riau
-        locations.Sulawesi_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Sulawesi_Barat
         locations.Sulawesi_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Sulawesi_Selatan
-        locations.Sulawesi_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Sulawesi_Tengah
-        locations.Sulawesi_Tenggara.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Sulawesi_Tenggara
-        locations.Sulawesi_Utara.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Sulawesi_Utara
-        locations.Sumatera_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Sumatera_Barat
-        locations.Sumatera_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Sumatera_Selatan
-        locations.Sumatera_Utara.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Sumatera_Utara
-    
+
         techs.large_hydro.constraints.resource: file=Hydropower_Profiles_2050_min.csv
         techs.large_hydro.constraints.resource_unit: energy_per_cap
         locations.Aceh.techs.large_hydro.constraints.resource: file=Hydropower_Profiles_2050_min.csv:Aceh
@@ -877,17 +1008,12 @@ overrides:
         locations.Bengkulu.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Bengkulu
         locations.Daerah_Istimewa_Yogyakarta.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Daerah_Istimewa_Yogyakarta
         locations.Gorontalo.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Gorontalo
-        locations.Jambi.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Jambi
         locations.Jawa_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Jawa_Barat
         locations.Jawa_Tengah.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Jawa_Tengah
         locations.Jawa_Timur.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Jawa_Timur
-        locations.Kalimantan_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Kalimantan_Barat
         locations.Kalimantan_Selatan.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Kalimantan_Selatan
-        locations.Kalimantan_Tengah.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Kalimantan_Tengah
         locations.Kalimantan_Timur.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Kalimantan_Timur
         locations.Kalimantan_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Kalimantan_Utara
-        locations.Kepulauan_Bangka_Belitung.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Kepulauan_Bangka_Belitung
-        locations.Kepulauan_Riau.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Kepulauan_Riau
         locations.Lampung.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Lampung
         locations.Maluku.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Maluku
         locations.Maluku_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Maluku_Utara
@@ -895,17 +1021,46 @@ overrides:
         locations.Nusa_Tenggara_Timur.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Nusa_Tenggara_Timur
         locations.Papua.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Papua
         locations.Papua_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Papua_Barat
-        locations.Riau.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Riau
         locations.Sulawesi_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sulawesi_Barat
         locations.Sulawesi_Selatan.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sulawesi_Selatan
         locations.Sulawesi_Tengah.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sulawesi_Tengah
         locations.Sulawesi_Tenggara.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sulawesi_Tenggara
         locations.Sulawesi_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sulawesi_Utara
         locations.Sumatera_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sumatera_Barat
-        locations.Sumatera_Selatan.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sumatera_Selatan
         locations.Sumatera_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sumatera_Utara
           
 
+    costs_2021:
+        techs.battery.costs.monetary.storage_cap: 324373
+        techs.battery.costs.monetary.om_annual_investment_fraction: 0.0292
+
+        techs.biomass.costs.monetary.energy_cap: 2154000
+        techs.biomass.costs.monetary.om_annual: 83000
+
+        techs.cc_gas.costs.monetary.energy_cap: 895000
+
+        techs.coal.costs.monetary.energy_cap: 1559000
+
+        techs.diesel.costs.monetary.energy_cap: 792000
+        techs.diesel.costs.monetary.om_prod: 7.07
+
+        techs.geothermal.costs.monetary.energy_cap: 3954000
+        techs.geothermal.costs.monetary.om_annual: 45000
+
+        techs.nuclear.costs.monetary.energy_cap: 6716000
+        techs.nuclear.costs.monetary.om_annual: 138000
+
+        techs.oc_gas.costs.monetary.energy_cap: 798000
+
+        techs.offshore_wind.costs.monetary.energy_cap: 4325000
+        techs.offshore_wind.costs.monetary.om_annual: 20000
+        techs.offshore_wind.costs.monetary.om_prod: 25
+
+        techs.onshore_wind.costs.monetary.energy_cap: 1660000
+        techs.onshore_wind.costs.monetary.om_annual: 49000
+
+        techs.solar.costs.monetary.energy_cap: 1194000
+        techs.solar.costs.monetary.om_annual: 16500
     costs_2030:
         techs.battery.costs.monetary.storage_cap: 162186
 
@@ -975,18 +1130,77 @@ overrides:
         techs.solar.costs.monetary.energy_cap: 698000
         techs.solar.costs.monetary.om_annual: 11000
 
-    force_offshore_energy:
+    force_offshore:
         group_constraints:
             min_carrier_prod_share_group:
                 techs: ['offshore_wind','otec']
                 demand_share_min:
                     power: 0.2
-    force_solar:
+    force_nuclear:
         group_constraints:
             min_carrier_prod_share_group:
-                techs: ['solar']
+                techs: ['nuclear']
                 carrier_prod_share_min:
                     power: 0.2
+
+    low_cost_nuclear:
+        techs.nuclear.costs.monetary.energy_cap: 3972000
+        techs.nuclear.costs.monetary.om_annual: 76000
+        techs.nuclear.costs.monetary.om_prod: 1.26
+    low_cost_offshore:
+        techs.offshore_wind.costs.monetary.energy_cap: 3124000
+        techs.offshore_wind.costs.monetary.om_annual: 12000
+        techs.offshore_wind.costs.monetary.om_prod: 17.76
+
+        techs.otec.costs.monetary.energy_cap: 3536000
+
+    high_cost_solar_storage:
+        # 2021 cost (75th percentile)
+        techs.solar.costs.monetary.energy_cap: 1333000
+        techs.solar.costs.monetary.om_annual: 24000
+        techs.solar.costs.monetary.om_prod: 0.45
+
+        techs.battery.costs.monetary.storage_cap: 348544
+        techs.battery.costs.monetary.om_annual_investment_fraction: 0.029605
+
+        # pumped hydro costs are not changed because they are assumed to be constant over time
+
+    solar_minimum_profile:
+        techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv
+        techs.solar.constraints.resource_unit: energy_per_cap
+        locations.Aceh.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Aceh
+        locations.Bali.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Bali
+        locations.Banten.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Banten
+        locations.Bengkulu.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Bengkulu
+        locations.Daerah_Istimewa_Yogyakarta.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Daerah_Istimewa_Yogyakarta
+        locations.Gorontalo.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Gorontalo
+        locations.Jambi.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Jambi
+        locations.Jawa_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Jawa_Barat
+        locations.Jawa_Tengah.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Jawa_Tengah
+        locations.Jawa_Timur.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Jawa_Timur
+        locations.Kalimantan_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kalimantan_Barat
+        locations.Kalimantan_Selatan.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kalimantan_Selatan
+        locations.Kalimantan_Tengah.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kalimantan_Tengah
+        locations.Kalimantan_Timur.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kalimantan_Timur
+        locations.Kalimantan_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kalimantan_Utara
+        locations.Kepulauan_Bangka_Belitung.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kepulauan_Bangka_Belitung
+        locations.Kepulauan_Riau.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kepulauan_Riau
+        locations.Lampung.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Lampung
+        locations.Maluku.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Maluku
+        locations.Maluku_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Maluku_Utara
+        locations.Nusa_Tenggara_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Nusa_Tenggara_Barat
+        locations.Nusa_Tenggara_Timur.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Nusa_Tenggara_Timur
+        locations.Papua.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Papua
+        locations.Papua_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Papua_Barat
+        locations.Riau.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Riau
+        locations.Sulawesi_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sulawesi_Barat
+        locations.Sulawesi_Selatan.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sulawesi_Selatan
+        locations.Sulawesi_Tengah.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sulawesi_Tengah
+        locations.Sulawesi_Tenggara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sulawesi_Tenggara
+        locations.Sulawesi_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sulawesi_Utara
+        locations.Sumatera_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sumatera_Barat
+        locations.Sumatera_Selatan.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sumatera_Selatan
+        locations.Sumatera_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sumatera_Utara
 
     spores:
         run.mode: spores
@@ -998,18 +1212,18 @@ overrides:
             objective_cost_class: {'monetary': 0, 'spores_score': 1}
         run.objective_options.cost_class: {'monetary': 1, 'spores_score': 0}
         group_constraints:
-            systemwide_cost_max.cost_max.monetary: 1e10  # very large, non-infinite number
+            systemwide_cost_max.cost_max.monetary: 1e20  # very large, non-infinite number
 
         techs.battery.costs.spores_score.energy_cap: 0
         techs.battery.costs.spores_score.interest_rate: 1
-        techs.coal.costs.spores_score.energy_cap: 0
-        techs.coal.costs.spores_score.interest_rate: 1
-        techs.cc_gas.costs.spores_score.energy_cap: 0
-        techs.cc_gas.costs.spores_score.interest_rate: 1
-        techs.oc_gas.costs.spores_score.energy_cap: 0
-        techs.oc_gas.costs.spores_score.interest_rate: 1
-        techs.diesel.costs.spores_score.energy_cap: 0
-        techs.diesel.costs.spores_score.interest_rate: 1
+#        techs.coal.costs.spores_score.energy_cap: 0
+#        techs.coal.costs.spores_score.interest_rate: 1
+#        techs.cc_gas.costs.spores_score.energy_cap: 0
+#        techs.cc_gas.costs.spores_score.interest_rate: 1
+#        techs.oc_gas.costs.spores_score.energy_cap: 0
+#        techs.oc_gas.costs.spores_score.interest_rate: 1
+#        techs.diesel.costs.spores_score.energy_cap: 0
+#        techs.diesel.costs.spores_score.interest_rate: 1
         techs.biomass.costs.spores_score.energy_cap: 0
         techs.biomass.costs.spores_score.interest_rate: 1
         techs.geothermal.costs.spores_score.energy_cap: 0
