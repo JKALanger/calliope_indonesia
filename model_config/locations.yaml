@@ -7,12 +7,12 @@
 # - large_hydro: Potentials in RUEN
 # - nuclear: only in Kalimantan Barat (ESDM, set to 100 GW) and Kepulauan Bangka Belitung (https://katadata.co.id/happyfajrian/ekonomi-hijau/62dff3cd517a4/thorcon-akan-bangun-pltn-500-mw-di-bangka-belitung-beroperasi-2030)
 # - onshore_wind: from Langer et al. (2023). Introducing site selection flexibility to technical and economic onshore wind potential assessments: New method with application to Indonesia.
-#       energy_cap is the technical potential. Only sites with wind speed of >= 4 m/s are considered.
+#       energy_cap is the technical potential. Only sites with wind speed of >= 4 m/s outside of conservation and high-risk catastrophe zones are considered.
 #       Tech potential is based on median IEC wind class III turbines studied in the paper, yielding median capacity of 2.5 MW and diameter of 116 m, respectively.
 #       Assumed capacity density is 5Dx10D with D being the rotor diameter
 # - offshore_wind: from Langer et al. (2022). How offshore wind could become economically attractive in low-resource regions like Indonesia.
-#       energy_cap is the technical potential excluding sites with 100m wind speeds below 5 m/s, distance to shore of more than 50 km, and water depths below 55m (essentially excluding floating wind).
-#       Tech potential is based on the IEC III wind turbine SG2.1-114 with a capacity of 2.1 MW and rotor diameter of 114 m.
+#       energy_cap is the technical potential excluding sites with 100m wind speeds below 4 m/s and water depths below 55m (essentially excluding floating wind).
+#       Tech potential is based on the IEC III wind turbine SG2.1-114 with a capacity of 2.1 MW and rotor diameter of 114 m, and capacity density 10Dx10D.
 # - small hydro: Based on dataset by Hoes et al. (2017). See Langer et al. (2023) how the dataset has been further processed for Calliope
 #       Nature conservation and high-risk natural catastrophe zones are excluded. If potential is more than 100,000 MW, energy_cap_max is set to 1000000
 # - solar PV: from Langer et al. (2023) [TITLE OF SOLAR PV PAPER].
@@ -28,7 +28,7 @@ locations:
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Aceh # MW
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Aceh # MW
             biomass:
                 constraints:
                     energy_cap_max: 1136.6 # MW
@@ -46,7 +46,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Aceh
-                    energy_cap_max: 7062.5 # MW
+                    energy_cap_max: 152.5 # MW
+            offshore_wind:
+                constraints:
+                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Aceh
+                    energy_cap_max: 394.8 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Aceh
@@ -61,13 +65,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Bali:
         coordinates: {lat: -8.538, lon: 115.122}
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Bali
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Bali
             biomass:
                 constraints:
                     energy_cap_max: 146.9 # MW
@@ -85,7 +92,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Bali
-                    energy_cap_max: 1762.5 # MW
+                    energy_cap_max: 457.5 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Bali
@@ -100,13 +107,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Banten:
         coordinates: {lat: -6.147, lon: 106.306}
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Banten
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Banten
             biomass:
                 constraints:
                     energy_cap_max: 346.5 # MW
@@ -123,11 +133,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Banten
-                    energy_cap_max: 7075 # MW
+                    energy_cap_max: 702.5 # MW
             offshore_wind:
                 constraints:
                     resource: file=Offshore_Wind_Profiles_2050_mean.csv:Banten
-                    energy_cap_max: 102.9 # MW
+                    energy_cap_max: 325.5 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Banten
@@ -142,13 +152,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1998 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Bengkulu:
         coordinates: { lat: -3.652, lon: 102.553 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Bengkulu
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Bengkulu
             biomass:
                 constraints:
                     energy_cap_max: 633 # MW
@@ -166,7 +179,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Bengkulu
-                    energy_cap_max: 3537.5 # MW
+                    energy_cap_max: 167.5 # MW
+            offshore_wind:
+                constraints:
+                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Bengkulu
+                    energy_cap_max: 1333.5 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Bengkulu
@@ -181,13 +198,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Daerah_Istimewa_Yogyakarta:
         coordinates: { lat: -7.814, lon: 110.354 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Daerah_Istimewa_Yogyakarta
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Daerah_Istimewa_Yogyakarta
             biomass:
                 constraints:
                     energy_cap_max: 183.1 # MW
@@ -204,7 +224,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Daerah_Istimewa_Yogyakarta
-                    energy_cap_max: 3185 # MW
+                    energy_cap_max: 2170 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Daerah_Istimewa_Yogyakarta
@@ -219,20 +239,23 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 4329 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Daerah_Khusus_Ibukota_Jakarta:
         coordinates: { lat: -6.177, lon: 106.850}
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Daerah_Khusus_Ibukota_Jakarta
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Daerah_Khusus_Ibukota_Jakarta
 
     Gorontalo:
         coordinates: { lat: 0.625, lon: 122.819 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Gorontalo
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Gorontalo
             biomass:
                 constraints:
                     energy_cap_max: 119.1 # MW
@@ -249,7 +272,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Gorontalo
-                    energy_cap_max: 5355 # MW
+                    energy_cap_max: 3427.5 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Gorontalo
@@ -264,13 +287,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Jambi:
         coordinates: { lat: -1.608, lon: 103.134 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jambi
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Jambi
             biomass:
                 constraints:
                     energy_cap_max: 1821.0 # MW
@@ -284,7 +310,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Jambi
-                    energy_cap_max: 2202.5 # MW
+                    energy_cap_max: 547.5 # MW
+            offshore_wind:
+                constraints:
+                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Jambi
+                    energy_cap_max: 5546 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Jambi
@@ -299,13 +329,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Jawa_Barat:
         coordinates: { lat: -6.649, lon: 107.401 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jawa_Barat
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Jawa_Barat
             biomass:
                 constraints:
                     energy_cap_max: 1979.8 # MW
@@ -323,11 +356,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Jawa_Barat
-                    energy_cap_max: 18102.5 # MW
+                    energy_cap_max: 11087.5 # MW
             offshore_wind:
                 constraints:
                     resource: file=Offshore_Wind_Profiles_2050_mean.csv:Jawa_Barat
-                    energy_cap_max: 2727.9 # MW
+                    energy_cap_max: 34421 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Jawa_Barat
@@ -342,13 +375,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Jawa_Tengah:
         coordinates: { lat: -7.250, lon: 110.219 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jawa_Tengah
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Jawa_Tengah
             biomass:
                 constraints:
                     energy_cap_max: 1884.1 # MW
@@ -367,11 +403,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Jawa_Tengah
-                    energy_cap_max: 22645 # MW
+                    energy_cap_max: 19515 # MW
             offshore_wind:
                 constraints:
                     resource: file=Offshore_Wind_Profiles_2050_mean.csv:Jawa_Tengah
-                    energy_cap_max: 1633.8 # MW
+                    energy_cap_max: 39841 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Jawa_Tengah
@@ -386,13 +422,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Jawa_Timur:
         coordinates: { lat: -7.512, lon: 112.633 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Jawa_Timur
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Jawa_Timur
             biomass:
                 constraints:
                     energy_cap_max: 2851.3 # MW
@@ -410,11 +449,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Jawa_Timur
-                    energy_cap_max: 41977.5 # MW
+                    energy_cap_max: 29735 # MW
             offshore_wind:
                 constraints:
                     resource: file=Offshore_Wind_Profiles_2050_mean.csv:Jawa_Timur
-                    energy_cap_max: 1329.3 # MW
+                    energy_cap_max: 1655 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Jawa_Timur
@@ -429,13 +468,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Kalimantan_Barat:
         coordinates: { lat: 0.510, lon: 109.423 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Barat
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Kalimantan_Barat
             biomass:
                 constraints:
                     energy_cap_max: 1279.3 # MW
@@ -452,7 +494,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kalimantan_Barat
-                    energy_cap_max: 5957.5 # MW
+                    energy_cap_max: 5102.5 # MW
+            offshore_wind:
+                constraints:
+                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Kalimantan_Barat
+                    energy_cap_max: 68504 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Barat
@@ -467,13 +513,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Kalimantan_Selatan:
         coordinates: { lat: -3.222, lon: 115.061 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Selatan
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Kalimantan_Selatan
             biomass:
                 constraints:
                     energy_cap_max: 1266.3 # MW
@@ -491,11 +540,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kalimantan_Selatan
-                    energy_cap_max: 12372.5 # MW
+                    energy_cap_max: 10325 # MW
             offshore_wind:
                 constraints:
                     resource: file=Offshore_Wind_Profiles_2050_mean.csv:Kalimantan_Selatan
-                    energy_cap_max: 403.2 # MW
+                    energy_cap_max: 26527 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Selatan
@@ -510,13 +559,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Kalimantan_Tengah:
         coordinates: { lat: -2.135, lon: 113.757 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Tengah
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Kalimantan_Tengah
             biomass:
                 constraints:
                     energy_cap_max: 1486.7 # MW
@@ -530,11 +582,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kalimantan_Tengah
-                    energy_cap_max: 5165 # MW
+                    energy_cap_max: 5087.5 # MW
             offshore_wind:
                 constraints:
                     resource: file=Offshore_Wind_Profiles_2050_mean.csv:Kalimantan_Tengah
-                    energy_cap_max: 4993.8 # MW
+                    energy_cap_max: 52813 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Tengah
@@ -549,13 +601,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Kalimantan_Timur:
         coordinates: { lat: -0.748, lon: 116.966 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Timur
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Kalimantan_Timur
             biomass:
                 constraints:
                     energy_cap_max: 473.3 # MW
@@ -573,7 +628,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kalimantan_Timur
-                    energy_cap_max: 2712.5 # MW
+                    energy_cap_max: 2655 # MW
+            offshore_wind:
+                constraints:
+                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Kalimantan_Timur
+                    energy_cap_max: 1655 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Timur
@@ -588,13 +647,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Kalimantan_Utara:
         coordinates: { lat: 3.45, lon: 117.230 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kalimantan_Utara
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Kalimantan_Utara
             biomass:
                 constraints:
                     energy_cap_max: 473.3 # MW
@@ -611,7 +673,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kalimantan_Utara
-                    energy_cap_max: 1117.5 # MW
+                    energy_cap_max: 707.5 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Kalimantan_Utara
@@ -626,13 +688,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Kepulauan_Bangka_Belitung:
         coordinates: { lat: -2.303, lon: 106.523 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kepulauan_Bangka_Belitung
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Kepulauan_Bangka_Belitung
             biomass:
                 constraints:
                     energy_cap_max: 217.7 # MW
@@ -645,7 +710,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kepulauan_Bangka_Belitung
-                    energy_cap_max: 11432.5 # MW
+                    energy_cap_max: 10870 # MW
+            offshore_wind:
+                constraints:
+                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Kepulauan_Bangka_Belitung
+                    energy_cap_max: 98249 # MW
             solar:
                 constraints:
                     resource: file=Solar_PV_Profiles_2050_mean.csv:Kepulauan_Bangka_Belitung
@@ -656,13 +725,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 333 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Kepulauan_Riau:
         coordinates: { lat: 1.077, lon: 104.032 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Kepulauan_Riau
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Kepulauan_Riau
             biomass:
                 constraints:
                     energy_cap_max: 11.6 # MW
@@ -672,7 +744,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Kepulauan_Riau
-                    energy_cap_max: 1745 # MW
+                    energy_cap_max: 1717.5 # MW
+            offshore_wind:
+                constraints:
+                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Kepulauan_Riau
+                    energy_cap_max: 74027 # MW
             solar:
                 constraints:
                     resource: file=Solar_PV_Profiles_2050_mean.csv:Kepulauan_Riau
@@ -683,13 +759,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1332 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Lampung:
         coordinates: { lat: -5.186, lon: 105.059 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Lampung
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Lampung
             biomass:
                 constraints:
                     energy_cap_max: 1407.6 # MW
@@ -707,11 +786,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Lampung
-                    energy_cap_max: 8170 # MW
+                    energy_cap_max: 4440 # MW
             offshore_wind:
                 constraints:
                     resource: file=Offshore_Wind_Profiles_2050_mean.csv:Lampung
-                    energy_cap_max: 50.4 # MW
+                    energy_cap_max: 5376 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Lampung
@@ -726,13 +805,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Maluku:
         coordinates: { lat: -3.100, lon: 129.600 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Maluku
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Maluku
             biomass:
                 constraints:
                     energy_cap_max: 23.6 # MW
@@ -750,7 +832,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Maluku
-                    energy_cap_max: 43515 # MW
+                    energy_cap_max: 28085 # MW
+            offshore_wind:
+                constraints:
+                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Maluku
+                    energy_cap_max: 73088 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Maluku
@@ -765,13 +851,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Maluku_Utara:
         coordinates: { lat: 0.764, lon: 127.339 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Maluku_Utara
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Maluku_Utara
             biomass:
                 constraints:
                     energy_cap_max: 27.5 # MW
@@ -789,7 +878,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Maluku_Utara
-                    energy_cap_max: 1447.5 # MW
+                    energy_cap_max: 1217.5 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Maluku_Utara
@@ -804,13 +893,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Nusa_Tenggara_Barat:
         coordinates: { lat: -8.616, lon: 116.350 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Nusa_Tenggara_Barat
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Nusa_Tenggara_Barat
             biomass:
                 constraints:
                     energy_cap_max: 341.3 # MW
@@ -828,7 +920,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Nusa_Tenggara_Barat
-                    energy_cap_max: 15297.5 # MW
+                    energy_cap_max: 11407.5 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Nusa_Tenggara_Barat
@@ -843,13 +935,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Nusa_Tenggara_Timur:
         coordinates: { lat: -10.296, lon: 123.476 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Nusa_Tenggara_Timur
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Nusa_Tenggara_Timur
             biomass:
                 constraints:
                     energy_cap_max: 192.5 # MW
@@ -867,7 +962,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Nusa_Tenggara_Timur
-                    energy_cap_max: 62912.5 # MW
+                    energy_cap_max: 33622.5 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Nusa_Tenggara_Timur
@@ -882,13 +977,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Papua:
         coordinates: { lat: -2.601, lon: 140.735 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Papua
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Papua
             biomass:
                 constraints:
                     energy_cap_max: 81.4 # MW
@@ -906,11 +1004,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Papua
-                    energy_cap_max: 16417.5 # MW
+                    energy_cap_max: 11927.5 # MW
             offshore_wind:
                 constraints:
                     resource: file=Offshore_Wind_Profiles_2050_mean.csv:Papua
-                    energy_cap_max: 3481.8 # MW
+                    energy_cap_max: 219660 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Papua
@@ -925,13 +1023,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Papua_Barat:
         coordinates: { lat: -1.003, lon: 131.291 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Papua_Barat
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Papua_Barat
             biomass:
                 constraints:
                     energy_cap_max: 50.8 # MW
@@ -948,11 +1049,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Papua_Barat
-                    energy_cap_max: 7840 # MW
+                    energy_cap_max: 2537.5 # MW
             offshore_wind:
                 constraints:
                     resource: file=Offshore_Wind_Profiles_2050_mean.csv:Papua_Barat
-                    energy_cap_max: 592.2 # MW
+                    energy_cap_max: 13291 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Papua_Barat
@@ -967,13 +1068,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Riau:
         coordinates: { lat: 0.663, lon: 101.234 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Riau
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Riau
             biomass:
                 constraints:
                     energy_cap_max: 4157.4 # MW
@@ -987,7 +1091,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Riau
-                    energy_cap_max: 455 # MW
+                    energy_cap_max: 230 # MW
+            offshore_wind:
+                constraints:
+                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Riau
+                    energy_cap_max: 1762 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Riau
@@ -1002,13 +1110,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 5994 # MW
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Sulawesi_Barat:
         coordinates: { lat: -2.542, lon: 119.161 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Barat
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Sulawesi_Barat
             biomass:
                 constraints:
                     energy_cap_max: 197.8 # MW
@@ -1025,7 +1136,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sulawesi_Barat
-                    energy_cap_max: 1030 # MW
+                    energy_cap_max: 960 # MW
+            offshore_wind:
+                constraints:
+                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Sulawesi_Barat
+                    energy_cap_max: 1928 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Barat
@@ -1040,13 +1155,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Sulawesi_Selatan:
         coordinates: { lat: -4.284, lon: 119.827 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Selatan
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Sulawesi_Selatan
             biomass:
                 constraints:
                     energy_cap_max: 890.3 # MW
@@ -1064,11 +1182,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sulawesi_Selatan
-                    energy_cap_max: 34632.5 # MW
+                    energy_cap_max: 26932.5 # MW
             offshore_wind:
                 constraints:
                     resource: file=Offshore_Wind_Profiles_2050_mean.csv:Sulawesi_Selatan
-                    energy_cap_max: 172.2 # MW
+                    energy_cap_max: 9992 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Selatan
@@ -1083,13 +1201,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Sulawesi_Tengah:
         coordinates: { lat: -1.310, lon: 120.351 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Tengah
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Sulawesi_Tengah
             biomass:
                 constraints:
                     energy_cap_max: 307.4 # MW
@@ -1107,7 +1228,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sulawesi_Tengah
-                    energy_cap_max: 10795 # MW
+                    energy_cap_max: 8807.5 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Tengah
@@ -1122,13 +1243,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Sulawesi_Tenggara:
         coordinates: { lat: -3.891, lon: 121.920 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Tenggara
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Sulawesi_Tenggara
             biomass:
                 constraints:
                     energy_cap_max: 132.8 # MW
@@ -1145,7 +1269,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sulawesi_Tenggara
-                    energy_cap_max: 4305 # MW
+                    energy_cap_max: 3047.5 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Tenggara
@@ -1160,6 +1284,9 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
 
     Sulawesi_Utara:
@@ -1167,7 +1294,7 @@ locations:
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sulawesi_Utara
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Sulawesi_Utara
             biomass:
                 constraints:
                     energy_cap_max: 150.2 # MW
@@ -1185,7 +1312,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sulawesi_Utara
-                    energy_cap_max: 5772.5 # MW
+                    energy_cap_max: 2190 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sulawesi_Utara
@@ -1200,13 +1327,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Sumatera_Barat:
         coordinates: { lat: -0.690, lon: 100.511 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sumatera_Barat
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Sumatera_Barat
             biomass:
                 constraints:
                     energy_cap_max: 923.1 # MW
@@ -1224,7 +1354,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sumatera_Barat
-                    energy_cap_max: 5245 # MW
+                    energy_cap_max: 2620 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sumatera_Barat
@@ -1239,13 +1369,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Sumatera_Selatan:
         coordinates: { lat: -3.221, lon: 104.377 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sumatera_Selatan
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Sumatera_Selatan
             biomass:
                 constraints:
                     energy_cap_max: 2061.4 # MW
@@ -1259,7 +1392,11 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sumatera_Selatan
-                    energy_cap_max: 12177.5 # MW
+                    energy_cap_max: 9880 # MW
+            offshore_wind:
+                constraints:
+                    resource: file=Offshore_Wind_Profiles_2050_mean.csv:Sumatera_Selatan
+                    energy_cap_max: 7478 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sumatera_Selatan
@@ -1274,13 +1411,16 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
+                constraints:
+                    energy_cap_max: 1000000
 
     Sumatera_Utara:
         coordinates: { lat: 2.907, lon: 98.863 }
         techs:
             demand_power:
                 constraints:
-                    resource: file=Demand_Profiles_2050_high_fluctuation.csv:Sumatera_Utara
+                    resource: file=Demand_Profiles_2050_MAY_RUPTL.csv:Sumatera_Utara
             biomass:
                 constraints:
                     energy_cap_max: 2796.1 # MW
@@ -1298,7 +1438,7 @@ locations:
             onshore_wind:
                 constraints:
                     resource: file=Onshore_Wind_Profiles_2050_mean.csv:Sumatera_Utara
-                    energy_cap_max: 15662.5 # MW
+                    energy_cap_max: 4647.5 # MW
             small_hydro:
                 constraints:
                     resource: file=Hydropower_Profiles_2050_mean.csv:Sumatera_Utara
@@ -1311,5 +1451,8 @@ locations:
                 constraints:
                     energy_cap_max: 1000000
             pumped_hydro:
+                constraints:
+                    energy_cap_max: 1000000
+            filler_gen: # in case of unmet demand
                 constraints:
                     energy_cap_max: 1000000

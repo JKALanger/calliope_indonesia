@@ -14,6 +14,7 @@ import:
     - 'techs/oc_gas.yaml'
     - 'techs/battery.yaml'
     - 'techs/pumped_hydro.yaml'
+    - 'techs/filler_gen.yaml'
 
 techs:
     # Demand
