@@ -13,7 +13,7 @@ techs:
             monetary:
                 interest_rate: 0.1
                 # cost assumptions from 2021, we assume no future cost reductions as they depend on OTEC's global development
-                energy_cap: 6708438 # USD/MW_gross
+                energy_cap: 4974000 # USD/MW_gross
                 om_annual_investment_fraction: 0.03 # based on our earlier work
                 om_prod: 0 # USD/MWh/year
                 om_con: 0 # USD/MWh/year

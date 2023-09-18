@@ -17,4 +17,4 @@ techs:
                 # 2050 values, based on median value between Breyer et al. (2017) (2020 value) and DEN's 2017 technology catalogue
                 storage_cap: 88108  # USD/MWh
                 om_annual_investment_fraction: 0.0268 # based on ref OPEX of 2360.1 US$/MWh/year
-                om_prod: 0.13 # USD/MWh/year
+                om_prod: 0.25 # USD/MWh/year

@@ -17,7 +17,7 @@ techs:
             monetary:
                 interest_rate: 0.1
                 energy_cap: 10000000
-                om_annual: 0
+                om_annual: 100000
                 om_prod: 1000
             emission:
                 om_con: 0

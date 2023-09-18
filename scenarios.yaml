@@ -2,7 +2,7 @@
 # Scenarios are optional, named combinations of overrides
 ##
 scenarios:
-    spores_test: ["one_day","spores"]
+    test: ["one_day"]
     resolution_test_1H: ["1H_resolution"]
     resolution_test_2H: ["2H_resolution"]
     resolution_test_3H: ["3H_resolution"]
@@ -711,17 +711,28 @@ overrides:
 
         techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv
         techs.offshore_wind.constraints.resource_unit: energy_per_cap
+        locations.Aceh.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Aceh
         locations.Banten.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Banten
+        locations.Bengkulu.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Bengkulu
+        locations.Jambi.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jambi
         locations.Jawa_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jawa_Barat
         locations.Jawa_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jawa_Tengah
         locations.Jawa_Timur.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jawa_Timur
+        locations.Kalimantan_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Barat
         locations.Kalimantan_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Selatan
         locations.Kalimantan_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Tengah
+        locations.Kalimantan_Timur.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Timur
+        locations.Kepulauan_Bangka_Belitung.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kepulauan_Bangka_Belitung
+        locations.Kepulauan_Riau.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kepulauan_Riau
         locations.Lampung.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Lampung
+        locations.Maluku.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Maluku
         locations.Papua.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Papua
         locations.Papua_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Papua_Barat
+        locations.Riau.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Riau
+        locations.Sulawesi_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sulawesi_Barat
         locations.Sulawesi_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sulawesi_Selatan
-
+        locations.Sumatera_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sumatera_Selatan
+        
         techs.large_hydro.constraints.resource: file=Hydropower_Profiles_2040_mean.csv
         techs.large_hydro.constraints.resource_unit: energy_per_cap
         locations.Aceh.techs.large_hydro.constraints.resource: file=Hydropower_Profiles_2040_mean.csv:Aceh
@@ -1002,11 +1013,35 @@ overrides:
         locations.Sumatera_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sumatera_Utara
           
 
-    costs_2021:
-        techs.battery.costs.monetary.storage_cap: 324373
+    costs_2021_maximum:
+        techs.battery.costs.monetary.storage_cap: 373000
+        techs.battery.costs.monetary.om_annual_investment_fraction: 0.03
+
+        techs.biomass.costs.monetary.energy_cap: 3325000
+        techs.biomass.costs.monetary.om_annual: 108600
+
+        techs.geothermal.costs.monetary.energy_cap: 5601000
+        techs.geothermal.costs.monetary.om_annual: 59000
+
+        techs.nuclear.costs.monetary.energy_cap: 10300000
+        techs.nuclear.costs.monetary.om_annual: 184000
+
+        techs.offshore_wind.costs.monetary.energy_cap: 4325000
+        techs.offshore_wind.costs.monetary.om_annual: 20000
+        techs.offshore_wind.costs.monetary.om_prod: 25
+
+        techs.otec.costs.monetary.energy_cap: 6668000
+
+        techs.onshore_wind.costs.monetary.energy_cap: 2462000
+        techs.onshore_wind.costs.monetary.om_annual: 66000
+
+        techs.solar.costs.monetary.energy_cap: 2314000
+        techs.solar.costs.monetary.om_annual: 27700
+    costs_2021_median:
+        techs.battery.costs.monetary.storage_cap: 324000
         techs.battery.costs.monetary.om_annual_investment_fraction: 0.0292
 
-        techs.biomass.costs.monetary.energy_cap: 2154000
+        techs.biomass.costs.monetary.energy_cap: 2208000
         techs.biomass.costs.monetary.om_annual: 83000
 
         techs.cc_gas.costs.monetary.energy_cap: 895000
@@ -1028,6 +1063,8 @@ overrides:
         techs.offshore_wind.costs.monetary.om_annual: 20000
         techs.offshore_wind.costs.monetary.om_prod: 25
 
+        techs.otec.costs.monetary.energy_cap: 6668000
+
         techs.onshore_wind.costs.monetary.energy_cap: 1660000
         techs.onshore_wind.costs.monetary.om_annual: 49000
 
@@ -1035,72 +1072,93 @@ overrides:
         techs.solar.costs.monetary.om_annual: 16500
     costs_2030:
         techs.battery.costs.monetary.storage_cap: 162186
+        techs.battery.costs.monetary.om_annual_investment_fraction: 0.0292
 
-        techs.biomass.costs.monetary.energy_cap: 1923000
+        techs.biomass.costs.monetary.energy_cap: 1971000
         techs.biomass.costs.monetary.om_annual: 76000
             
-        techs.cc_gas.costs.monetary.energy_cap: 876000
+        techs.cc_gas.costs.monetary.energy_cap: 872000
         
         techs.coal.costs.monetary.energy_cap: 1535000
         
         techs.diesel.costs.monetary.energy_cap: 792000
-        techs.diesel.costs.monetary.om_prod: 6.62
+        techs.diesel.costs.monetary.om_prod: 6.63
         
         techs.geothermal.costs.monetary.energy_cap: 3556000
         techs.geothermal.costs.monetary.om_annual: 42000
         
-        techs.large_hydro.costs.monetary.energy_cap: 2262000
-        techs.large_hydro.costs.monetary.om_annual: 45000
-        techs.large_hydro.costs.monetary.om_prod: 0.7
-        
         techs.nuclear.costs.monetary.energy_cap: 6330000
         techs.nuclear.costs.monetary.om_annual: 118000
         
-        techs.oc_gas.costs.monetary.energy_cap: 777000
+        techs.oc_gas.costs.monetary.energy_cap: 781000
         
-        techs.offshore_wind.costs.monetary.energy_cap: 3779000
+        techs.offshore_wind.costs.monetary.energy_cap: 3778000
         techs.offshore_wind.costs.monetary.om_annual: 17000
         techs.offshore_wind.costs.monetary.om_prod: 21.82
-    
+
+        techs.otec.costs.monetary.energy_cap: 6048000
+
         techs.onshore_wind.costs.monetary.energy_cap: 1497000
         techs.onshore_wind.costs.monetary.om_annual: 43000
 
         techs.solar.costs.monetary.energy_cap: 825000
         techs.solar.costs.monetary.om_annual: 13000
     costs_2040:
-        techs.battery.costs.monetary.storage_cap: 125147
+        techs.battery.costs.monetary.storage_cap: 125000
+        techs.battery.costs.monetary.om_annual_investment_fraction: 0.0284
 
-        techs.biomass.costs.monetary.energy_cap: 1721000
+        techs.biomass.costs.monetary.energy_cap: 1764000
         techs.biomass.costs.monetary.om_annual: 71000
 
-        techs.cc_gas.costs.monetary.energy_cap: 860000
+        techs.cc_gas.costs.monetary.energy_cap: 857000
 
-        techs.coal.costs.monetary.energy_cap: 1523000
+        techs.coal.costs.monetary.energy_cap: 1524000
 
         techs.diesel.costs.monetary.energy_cap: 787000
-        techs.diesel.costs.monetary.om_prod: 6.51
+        techs.diesel.costs.monetary.om_prod: 6.52
 
         techs.geothermal.costs.monetary.energy_cap: 3214000
         techs.geothermal.costs.monetary.om_annual: 40000
 
-        techs.large_hydro.costs.monetary.energy_cap: 2262000
-        techs.large_hydro.costs.monetary.om_annual: 44000
-        techs.large_hydro.costs.monetary.om_prod: 0.69
-
-        techs.nuclear.costs.monetary.energy_cap: 6059000
+        techs.nuclear.costs.monetary.energy_cap: 6060000
         techs.nuclear.costs.monetary.om_annual: 104000
 
-        techs.oc_gas.costs.monetary.energy_cap: 764000
+        techs.oc_gas.costs.monetary.energy_cap: 766000
 
         techs.offshore_wind.costs.monetary.energy_cap: 3524000
         techs.offshore_wind.costs.monetary.om_annual: 15000
         techs.offshore_wind.costs.monetary.om_prod: 19.77
+
+        techs.otec.costs.monetary.energy_cap: 5511000
 
         techs.onshore_wind.costs.monetary.energy_cap: 1412000
         techs.onshore_wind.costs.monetary.om_annual: 39000
 
         techs.solar.costs.monetary.energy_cap: 698000
         techs.solar.costs.monetary.om_annual: 11000
+    costs_2050_minimum:
+        techs.battery.costs.monetary.storage_cap: 69000
+        techs.battery.costs.monetary.om_annual_investment_fraction: 0.0233
+
+        techs.biomass.costs.monetary.energy_cap: 882000
+        techs.biomass.costs.monetary.om_annual: 37000
+
+        techs.geothermal.costs.monetary.energy_cap: 1634000
+        techs.geothermal.costs.monetary.om_annual: 9000
+
+        techs.nuclear.costs.monetary.energy_cap: 3828000
+
+        techs.offshore_wind.costs.monetary.energy_cap: 3114000
+        techs.offshore_wind.costs.monetary.om_annual: 11000
+        techs.offshore_wind.costs.monetary.om_prod: 17.73
+
+        techs.otec.costs.monetary.energy_cap: 3274000
+
+        techs.onshore_wind.costs.monetary.energy_cap: 855000
+        techs.onshore_wind.costs.monetary.om_annual: 18000
+
+        techs.solar.costs.monetary.energy_cap: 370000
+        techs.solar.costs.monetary.om_annual: 5000
 
     force_offshore:
         group_constraints:
@@ -1113,6 +1171,13 @@ overrides:
             min_carrier_prod_share_group:
                 techs: ['nuclear']
                 carrier_prod_share_min:
+                    power: 0.2
+
+    max_nuclear:
+        group_constraints:
+            min_carrier_prod_share_group:
+                techs: [ 'nuclear' ]
+                energy_cap_max:
                     power: 0.2
 
     low_cost_nuclear:

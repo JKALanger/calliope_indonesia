@@ -14,9 +14,9 @@ techs:
         costs:
             monetary:
                 interest_rate: 0.1
-                energy_cap: 751000 # USD/MW, median from literature since 2016
+                energy_cap: 752000 # USD/MW, median from literature since 2016
                 om_annual: 22000 # USD/MW, median from literature since 2016
-                om_prod: 4.625 # usd/MWh, median from literature since 2016
+                om_prod: 4.63 # usd/MWh, median from literature since 2016
                 om_con: 23.33 # USD/MWh_th, based on PLN Statistik 2020, see assumptions below
                 # Exchange rate IDR->USD: 14572 (based on BPP 2021), energy content 38 MJ/m3 (from IEA World Energy Balances 2019)
                 # Conversion from standard cubic feet to standard cubic metre: 0.02833
