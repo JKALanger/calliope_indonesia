@@ -1145,7 +1145,7 @@ locations:
                     energy_cap_max: 92 # MW
             large_hydro:
                 constraints:
-                    energy_cap_equals: 1983.5 # MW
+                    energy_cap_max: 1983.5 # MW
             otec:
                 constraints:
                     resource: file=OTEC_Profiles_2050_mean.csv:Sulawesi_Tenggara

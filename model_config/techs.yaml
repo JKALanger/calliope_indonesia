@@ -34,6 +34,8 @@ techs:
         constraints:
             energy_eff: 0.98 # Transmission losses based on PLN Statistik 2020
             lifetime: 40 # Lombardi et al. (2020)
+            energy_cap_min: 1
+            energy_cap_max: 50000
         costs:
             monetary:
                 interest_rate: 0.1
@@ -49,6 +51,8 @@ techs:
             energy_eff_per_distance: 0.9999565 # % per km, Kiger (2012). https://www.nationalgeographic.com/science/article/121206-high-voltage-dc-breakthrough
             # mentions 6-8% losses per 1000 miles. We take average value and convert miles to km (1 mile = 1.609 km)
             lifetime: 40 # Lombardi et al. (2020)
+            energy_cap_min: 1
+            energy_cap_max: 50000
         costs:
             monetary:
                 interest_rate: 0.1

@@ -10,185 +10,123 @@ links:
     Aceh,Sumatera_Utara:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Bali,Jawa_Timur:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Banten,Daerah_Khusus_Ibukota_Jakarta:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Banten,Jawa_Barat:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Bengkulu,Sumatera_Barat:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Bengkulu,Sumatera_Selatan:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Daerah_Istimewa_Yogyakarta,Jawa_Tengah:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Daerah_Khusus_Ibukota_Jakarta,Jawa_Barat:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Gorontalo,Sulawesi_Utara:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Jambi,Sumatera_Barat:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Jambi,Sumatera_Selatan:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Jawa_Barat,Jawa_Tengah:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Jawa_Tengah,Jawa_Timur:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Kalimantan_Barat,Kalimantan_Tengah:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Kalimantan_Barat,Kalimantan_Utara:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Kalimantan_Selatan,Kalimantan_Tengah:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Kalimantan_Selatan,Kalimantan_Timur:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Kalimantan_Tengah,Kalimantan_Timur:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Kalimantan_Timur,Kalimantan_Utara:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Kepulauan_Bangka_Belitung,Sumatera_Selatan:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Lampung,Sumatera_Selatan:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Riau,Jambi:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Riau,Sumatera_Barat:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Riau,Sumatera_Utara:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Sulawesi_Barat,Sulawesi_Selatan:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Sulawesi_Barat,Sulawesi_Tengah:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Sulawesi_Selatan,Sulawesi_Tengah:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Sulawesi_Selatan,Sulawesi_Tenggara:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Sulawesi_Tengah,Gorontalo:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Sulawesi_Tengah,Sulawesi_Tenggara:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
 
     Sumatera_Utara,Sumatera_Barat:
         techs:
             ac_transmission:
-                constraints:
-                    energy_cap_max: 100000
