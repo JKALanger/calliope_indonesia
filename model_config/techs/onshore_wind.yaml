@@ -16,7 +16,7 @@ techs:
                 # 2050 values calculated with 2021 costs and cost projections until 2050, check supplmentary materials of paper
                 energy_cap: 1326000 # USD/MW
                 om_annual: 35000 # USD/MW/year
-                om_prod: 0.9 # USD/MWh/year
+                om_prod: 0 # USD/MWh/year
                 om_con: 0 # USD/MWh/year
             emission:
                 om_prod: 0

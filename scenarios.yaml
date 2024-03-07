@@ -17,7 +17,6 @@ scenarios:
     decarbonisation_by_2050_year_2050: ["4H_resolution", "no_filler"]
     decarbonisation_by_2040_year_2030: ["4H_resolution", "costs_2030", "demand_2030", "FF_share_in_2030_if_100%_RET_by_2040" , "no_filler"]
     decarbonisation_by_2040_year_2040: ["4H_resolution", "costs_2040", "demand_2040", "mean_RET_profiles_leap_year","leap_year" , "no_filler"]
-    decarbonisation_by_2030_year_2030: ["4H_resolution", "costs_2030", "demand_2030" , "no_filler"]
 
     # Extreme demand scenarios (demand growth of 8.3% p.a. in every province based on highest growth estimation in literature)
 
@@ -82,6 +81,9 @@ scenarios:
     sensitivity_small_hydro_cost_max: [ "4H_resolution", "small_hydro_cost_max" ]
     sensitivity_small_hydro_cost_med: [ "4H_resolution", "small_hydro_cost_med" ]
     sensitivity_small_hydro_cost_min: [ "4H_resolution", "small_hydro_cost_min" ]
+
+    impact_alternative_solar: ["4H_resolution", "no_filler", "alternative_solar"]
+    impact_alternative_solar_extreme_demand: ["4H_resolution", "no_filler", "alternative_solar", "demand_2050_extreme"]
 ##
 # Overrides are the building blocks from which scenarios can be defined
 ##
@@ -1679,63 +1681,18 @@ overrides:
         techs.small_hydro.costs.monetary.om_annual: 46000
         techs.small_hydro.costs.monetary.om_prod: 0.5
 
-#    force_offshore:
-#        group_constraints:
-#            min_carrier_prod_share_group:
-#                techs: ['offshore_wind','otec']
-#                demand_share_min:
-#                    power: 0.2
-#    force_nuclear:
-#        group_constraints:
-#            min_carrier_prod_share_group:
-#                techs: ['nuclear']
-#                carrier_prod_share_min:
-#                    power: 0.2
-#
-
-#    spores:
-#        run.mode: spores
-#        run.spores_options:
-#            score_cost_class: 'spores_score'
-#            slack_cost_group: 'systemwide_cost_max'
-#            slack: 0.1
-#            spores_number: 25
-#            objective_cost_class: {'monetary': 0, 'spores_score': 1}
-#        run.objective_options.cost_class: {'monetary': 1, 'spores_score': 0}
-#        group_constraints:
-#            systemwide_cost_max.cost_max.monetary: 1e20  # very large, non-infinite number
-#
-#        techs.battery.costs.spores_score.energy_cap: 0
-#        techs.battery.costs.spores_score.interest_rate: 1
-##        techs.coal.costs.spores_score.energy_cap: 0
-##        techs.coal.costs.spores_score.interest_rate: 1
-##        techs.cc_gas.costs.spores_score.energy_cap: 0
-##        techs.cc_gas.costs.spores_score.interest_rate: 1
-##        techs.oc_gas.costs.spores_score.energy_cap: 0
-##        techs.oc_gas.costs.spores_score.interest_rate: 1
-##        techs.diesel.costs.spores_score.energy_cap: 0
-##        techs.diesel.costs.spores_score.interest_rate: 1
-#        techs.biomass.costs.spores_score.energy_cap: 0
-#        techs.biomass.costs.spores_score.interest_rate: 1
-#        techs.geothermal.costs.spores_score.energy_cap: 0
-#        techs.geothermal.costs.spores_score.interest_rate: 1
-#        techs.large_hydro.costs.spores_score.energy_cap: 0
-#        techs.large_hydro.costs.spores_score.interest_rate: 1
-#        techs.nuclear.costs.spores_score.energy_cap: 0
-#        techs.nuclear.costs.spores_score.interest_rate: 1
-#        techs.otec.costs.spores_score.energy_cap: 0
-#        techs.otec.costs.spores_score.interest_rate: 1
-#        techs.onshore_wind.costs.spores_score.energy_cap: 0
-#        techs.onshore_wind.costs.spores_score.interest_rate: 1
-#        techs.offshore_wind.costs.spores_score.energy_cap: 0
-#        techs.offshore_wind.costs.spores_score.interest_rate: 1
-#        techs.pumped_hydro.costs.spores_score.energy_cap: 0
-#        techs.pumped_hydro.costs.spores_score.interest_rate: 1
-#        techs.small_hydro.costs.spores_score.energy_cap: 0
-#        techs.small_hydro.costs.spores_score.interest_rate: 1
-#        techs.solar.costs.spores_score.energy_cap: 0
-#        techs.solar.costs.spores_score.interest_rate: 1
-#        techs.ac_transmission.costs.spores_score.energy_cap: 0
-#        techs.ac_transmission.costs.spores_score.interest_rate: 1
-#        techs.hvdc_transmission.costs.spores_score.energy_cap: 0
-#        techs.hvdc_transmission.costs.spores_score.interest_rate: 1
+    alternative_solar:
+        locations.Bali.techs.solar_floating.exists: True
+        locations.Banten.techs.solar_floating.exists: True
+        locations.Daerah_Istimewa_Yogyakarta.techs.solar_floating.exists: True
+        locations.Jawa_Barat.techs.solar_floating.exists: True
+        locations.Jawa_Tengah.techs.solar_floating.exists: True
+        locations.Jawa_Timur.techs.solar_floating.exists: True
+        
+        locations.Bali.techs.solar_rooftop.exists: True
+        locations.Banten.techs.solar_rooftop.exists: True
+        locations.Daerah_Istimewa_Yogyakarta.techs.solar_rooftop.exists: True
+        locations.Jawa_Barat.techs.solar_rooftop.exists: True
+        locations.Jawa_Tengah.techs.solar_rooftop.exists: True
+        locations.Jawa_Timur.techs.solar_rooftop.exists: True
+        

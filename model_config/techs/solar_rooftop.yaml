@@ -1,0 +1,21 @@
+techs:
+
+    solar_rooftop:
+        essentials:
+            name: 'Solar PV Rooftop'
+            parent: supply
+            carrier_out: power
+        constraints: # all based on DEN 2021 technology catalogue, year 2050
+            resource: file=Solar_PV_Profiles_2050_mean.csv # net power production using total BoS efficiency of 90.7% (DC cables: 98%; Inverter: 97.8%; AC cables: 99.5%; availability: 99.5%; Soiling: 96.5%)
+            resource_unit: energy_per_cap
+            lifetime: 40
+        costs:
+            monetary:
+                interest_rate: 0.1
+                # 2050 values calculated with 2021 costs and cost projections until 2050, check supplmentary materials of paper
+                energy_cap: 1142000 # USD/MW, just test value, use proper data later
+                om_annual: 11000 # USD/MW/year, just test value, use proper data later
+                om_prod: 0 # USD/MWh/year
+                om_con: 0 # USD/MWh/year
+            emission:
+                om_prod: 0

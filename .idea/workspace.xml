@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9e427d6f-63dd-434e-a839-8764d163c9d6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/calliope_indonesia.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/model.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_config/links_with_interconnection.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/model_config/links_with_interconnection.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_config/techs.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/model_config/techs.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_config/techs/onshore_wind.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/model_config/techs/onshore_wind.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_config/techs/solar.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/model_config/techs/solar.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenarios.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2N3RvT6xSuZTfMxBBqgLtu7fnqj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sup-jkalanger/PycharmProjects/calliope_kalimantan_grid/model_config/techs.yaml&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sup-jkalanger\PycharmProjects\calliope_indonesia\model_config" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e427d6f-63dd-434e-a839-8764d163c9d6" name="Changes" comment="" />
+      <created>1678891028903</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678891028903</updated>
+      <workItem from="1678891030532" duration="948000" />
+      <workItem from="1678957833692" duration="47117000" />
+      <workItem from="1679220816166" duration="889000" />
+      <workItem from="1679231189139" duration="68000" />
+      <workItem from="1679296197068" duration="23054000" />
+      <workItem from="1681288794244" duration="5773000" />
+      <workItem from="1681368830611" duration="10038000" />
+      <workItem from="1681482921281" duration="23424000" />
+      <workItem from="1681972385688" duration="44000" />
+      <workItem from="1681972564230" duration="10123000" />
+      <workItem from="1683031536668" duration="3697000" />
+      <workItem from="1684161459469" duration="3129000" />
+      <workItem from="1688383324678" duration="14224000" />
+      <workItem from="1694435165822" duration="19878000" />
+      <workItem from="1694766932263" duration="41666000" />
+      <workItem from="1697206337311" duration="2322000" />
+      <workItem from="1700143288786" duration="18126000" />
+      <workItem from="1703164132839" duration="3682000" />
+      <workItem from="1705326535248" duration="2108000" />
+      <workItem from="1705998042470" duration="609000" />
+      <workItem from="1706783192290" duration="13440000" />
+      <workItem from="1707225685888" duration="11289000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

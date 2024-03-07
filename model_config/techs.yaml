@@ -15,6 +15,8 @@ import:
     - 'techs/battery.yaml'
     - 'techs/pumped_hydro.yaml'
     - 'techs/filler_gen.yaml'
+    - 'techs/solar_floating.yaml'
+    - 'techs/solar_rooftop.yaml'
 
 techs:
     # Demand
@@ -48,13 +50,12 @@ techs:
             parent: transmission
             carrier: power
         constraints:
-            energy_eff_per_distance: 0.9999565 # % per km, Kiger (2012). https://www.nationalgeographic.com/science/article/121206-high-voltage-dc-breakthrough
-            # mentions 6-8% losses per 1000 miles. We take average value and convert miles to km (1 mile = 1.609 km)
-            lifetime: 40 # Lombardi et al. (2020)
-            energy_cap_min: 1
+            energy_eff_per_distance: 0.999965 # % per km, Zappa et al
+            lifetime: 40 # years, Zappa et al
             energy_cap_max: 50000
         costs:
             monetary:
                 interest_rate: 0.1
-                energy_cap: 870000 # US$(2021)/MW
-                om_prod: 2.552 # US$(2021)/MWh
+                energy_cap_per_distance: 293 # US$(2021)/MW/km line costs from Zappa et al, converted from EUR(2016) to US$(2021)
+                energy_cap: 121000 # US$(2021)/MW substations and converters from Zappa et al, converted from EUR(2016) to US$(2021)
+                om_annual_investment_fraction: 0.035  # % of CAPEX Zappa et al

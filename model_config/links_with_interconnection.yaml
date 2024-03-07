@@ -145,27 +145,27 @@ links:
     Kalimantan_Barat,Daerah_Khusus_Ibukota_Jakarta:
         techs:
             hvdc_transmission:
-                distance: 790 # km
+                distance: 520 # km
 
     Kalimantan_Tengah,Jawa_Tengah:
         techs:
             hvdc_transmission:
-                distance: 690 # km
+                distance: 330 # km
 
     Kalimantan_Selatan,Jawa_Timur:
         techs:
             hvdc_transmission:
-                distance: 550 # km
+                distance: 380 # km
 
     Kalimantan_Selatan,Sulawesi_Selatan:
         techs:
             hvdc_transmission:
-                distance: 550 # km
+                distance: 400 # km
 
     Lampung,Banten:
         techs:
             hvdc_transmission:
-                distance: 180 # km
+                distance: 30 # km
 
     Kepulauan_Riau,Riau:
         techs:
@@ -175,4 +175,4 @@ links:
     Nusa_Tenggara_Timur,Nusa_Tenggara_Barat:
         techs:
             hvdc_transmission:
-                distance: 810 # km
+                distance: 90 # km

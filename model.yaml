@@ -14,7 +14,7 @@ model:
     # Time series data path - can either be a path relative to this file, or an absolute path
     timeseries_data_path: 'timeseries_data'
 
-    subset_time: ['2050-01-01', '2050-12-31']  # Subset of timesteps
+    subset_time: ['2050-01-01', '2050-01-02']  # Subset of timesteps
 
     reserve_margin:
         power: 0.4 # See PLN RUPTL 2021-2030 page II-12 (35% used for Jawa-Bali system, 40% used for rest of country)
