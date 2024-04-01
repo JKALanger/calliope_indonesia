@@ -2,7 +2,8 @@ import:
     - 'techs/large_hydro.yaml'
     - 'techs/small_hydro.yaml'
     - 'techs/geothermal.yaml'
-    - 'techs/solar.yaml'
+    - 'techs/solar_onshore.yaml'
+    - 'techs/solar_floating.yaml'
     - 'techs/onshore_wind.yaml'
     - 'techs/offshore_wind.yaml'
     - 'techs/biomass.yaml'
@@ -14,9 +15,7 @@ import:
     - 'techs/oc_gas.yaml'
     - 'techs/battery.yaml'
     - 'techs/pumped_hydro.yaml'
-    - 'techs/filler_gen.yaml'
-    - 'techs/solar_floating.yaml'
-    - 'techs/solar_rooftop.yaml'
+
 
 techs:
     # Demand
@@ -56,6 +55,6 @@ techs:
         costs:
             monetary:
                 interest_rate: 0.1
-                energy_cap_per_distance: 293 # US$(2021)/MW/km line costs from Zappa et al, converted from EUR(2016) to US$(2021)
-                energy_cap: 121000 # US$(2021)/MW substations and converters from Zappa et al, converted from EUR(2016) to US$(2021)
-                om_annual_investment_fraction: 0.035  # % of CAPEX Zappa et al
+                energy_cap_per_distance: 293 # US$(2021)/MW/km
+                energy_cap: 170557 # US$(2021)/MW
+                om_annual_investment_fraction: 0.017  # % of CAPEX

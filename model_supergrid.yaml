@@ -15,6 +15,7 @@ model:
     timeseries_data_path: 'timeseries_data'
 
     subset_time: ['2050-01-01', '2050-12-31']  # Subset of timesteps
+    time: {function: resample, function_options: {'resolution': '3H'}}
 
     reserve_margin:
         power: 0.4 # See PLN RUPTL 2021-2030 page II-12 (35% used for Jawa-Bali system, 40% used for rest of country)

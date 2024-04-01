@@ -7,14 +7,14 @@ techs:
             carrier: power
         constraints:
             energy_cap_per_storage_cap_max: 0.25 # Lombardi et al (2020)
-            energy_eff: 0.954  # 0.96 * 0.96 = 0.92 round trip efficiency, updated DEN 2021 technology catalogue, year 2050
-            storage_loss: 0.00004  # per hour, updated DEN 2021 technology catalogue, year 2050
+            energy_eff: 0.98  # for 96% round-trip efficiency
+            storage_loss: 0.00004167  # per hour
 #            storage_initial: 0.5
             lifetime: 30
         costs:
             monetary:
                 interest_rate: 0.1
                 # 2050 values, based on median value between Breyer et al. (2017) (2020 value) and DEN's 2017 technology catalogue
-                storage_cap: 88108  # USD/MWh
-                om_annual_investment_fraction: 0.0268 # based on ref OPEX of 2360.1 US$/MWh/year
-                om_prod: 0.25 # USD/MWh/year
+                storage_cap: 207784  # USD/MWh
+                om_annual: 1710 # USD/MWh/year
+                om_prod: 1.5 # USD/MWh/year

@@ -16,9 +16,9 @@ techs:
             monetary:
                 interest_rate: 0.1
                 # 2050 values calculated with 2021 costs and cost projections until 2050, check supplmentary materials of paper
-                energy_cap: 2263000 # USD/MW, set to zero since we assume no more reservoir plant will be built
-                om_annual: 43000 # USD/MW/year
-                om_prod: 0.68 # USD/MWh/year
+                energy_cap: 1824000 # USD/MW, set to zero since we assume no more reservoir plant will be built
+                om_annual: 35000 # USD/MW/year
+                om_prod: 0.6 # USD/MWh/year
                 om_con: 0 # USD/MWh/year
             emission:
                 om_prod: 0

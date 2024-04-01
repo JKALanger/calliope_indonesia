@@ -14,9 +14,9 @@ techs:
             monetary:
                 interest_rate: 0.1
                 # 2050 values calculated with 2021 costs and cost projections until 2050, check supplementary materials of paper
-                energy_cap: 3269000 # USD/MW
-                om_annual: 13000 # USD/MW/year
-                om_prod: 17.7 # USD/MWh/year
+                energy_cap: 2670000 # USD/MW
+                om_annual: 76000 # USD/MW/year
+                om_prod: 3.6 # USD/MWh/year
                 om_con: 0 # USD/MWh/year
             emission:
                 om_prod: 0

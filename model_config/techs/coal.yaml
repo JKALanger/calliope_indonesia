@@ -12,7 +12,7 @@ techs:
             # https://earthjournalism.net/stories/coal-fever-in-indonesia
             resource: inf
             energy_eff: 0.4
-            energy_cap_min_use: 0.2
+            energy_cap_min_use: 0.4
             lifetime: 30
         costs:
             monetary:

@@ -14,9 +14,9 @@ techs:
         costs:
             monetary:
                 interest_rate: 0.1
-                energy_cap: 1558000  # USD/MW, median from literature since 2016
-                om_annual: 66000 # USD/MW, median from literature since 2016
-                om_prod: 5.2 # USD/MWh, median from literature since 2016
+                energy_cap: 1693000  # USD/MW, median from literature since 2016
+                om_annual: 40000 # USD/MW, median from literature since 2016
+                om_prod: 2.5 # USD/MWh, median from literature since 2016
                 om_con: 9 # USD/MWh - assuming fuel price 2.5 USD/GJ (mean value from Danish Energy Agency's updated technology catalogue)
             emission:
                 om_prod: 0 # kgCO2eq/MWh

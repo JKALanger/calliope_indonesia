@@ -2,7 +2,7 @@
 # Scenarios are optional, named combinations of overrides
 ##
 scenarios:
-    test: ["4H_resolution", "no_filler"]
+    test: ["one_day", "no_biomass"]
     resolution_test_1H: ["1H_resolution"]
     resolution_test_2H: ["2H_resolution"]
     resolution_test_3H: ["3H_resolution"]
@@ -12,78 +12,84 @@ scenarios:
 
     # Vanilla runs
 
-    decarbonisation_by_2050_year_2030: ["4H_resolution", "costs_2030", "demand_2030", "FF_share_in_2030_if_100%_RET_by_2050" , "no_filler"]
-    decarbonisation_by_2050_year_2040: ["4H_resolution", "costs_2040", "demand_2040", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" , "no_filler"]
-    decarbonisation_by_2050_year_2050: ["4H_resolution", "no_filler"]
-    decarbonisation_by_2040_year_2030: ["4H_resolution", "costs_2030", "demand_2030", "FF_share_in_2030_if_100%_RET_by_2040" , "no_filler"]
-    decarbonisation_by_2040_year_2040: ["4H_resolution", "costs_2040", "demand_2040", "mean_RET_profiles_leap_year","leap_year" , "no_filler"]
+    decarbonisation_by_2050_year_2030: ["costs_2030", "demand_2030", "FF_share_in_2030_if_100%_RET_by_2050" ]
+    decarbonisation_by_2050_year_2040: ["costs_2040", "demand_2040", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" ]
+#   decarbonisation_by_2050_year_2050 is the default model
+    decarbonisation_by_2040_year_2030: ["costs_2030", "demand_2030", "FF_share_in_2030_if_100%_RET_by_2040" ]
+    decarbonisation_by_2040_year_2040: ["costs_2040", "demand_2040", "mean_RET_profiles_leap_year","leap_year" ]
 
     # Extreme demand scenarios (demand growth of 8.3% p.a. in every province based on highest growth estimation in literature)
 
-    extreme_demand_2030: [ "4H_resolution", "costs_2030", "demand_2030_extreme", "FF_share_in_2030_if_100%_RET_by_2050" , "no_filler"]
-    extreme_demand_2040: [ "4H_resolution", "costs_2040", "demand_2040_extreme", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" , "no_filler"]
-    extreme_demand_2050: [ "4H_resolution" , "demand_2050_extreme", "no_filler"]
+    extreme_demand_2030: [ "costs_2030", "demand_2030_extreme", "FF_share_in_2030_if_100%_RET_by_2050" ]
+    extreme_demand_2040: [ "costs_2040", "demand_2040_extreme", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" ]
+    extreme_demand_2050: [ "demand_2050_extreme"]
 
     # Alternative profiles for demand and RET supply
 
-    alternative_demand_profiles: ["4H_resolution", "demand_2050_KAL"]
-    alternative_RET_profiles: ["4H_resolution", "min_RET_profiles_2050"]
+    alternative_demand_profiles: ["demand_2050_KAL"]
+    alternative_RET_profiles: ["min_RET_profiles_2050"]
+
+    solar_only: ["remove_non-solar"]
+    solar_only_5%_DR: ["remove_non-solar", 'discount_rate_5%']
 
     # Different cost reduction scenarios
 
-#    no_cost_reduction_2030: [ "4H_resolution", "costs_2021_median", "demand_2030", "FF_share_in_2030_if_100%_RET_by_2050" ]
-#    no_cost_reduction_2040: [ "4H_resolution", "costs_2021_median", "demand_2040", "FF_share_in_2040_if_100%_RET_by_2050", "mean_RET_profiles_leap_year","leap_year" ]
-    weak_cost_reduction_2050: [ "4H_resolution", "costs_2050_maximum" ]
-    strong_cost_reduction_2050: [ "4H_resolution", "costs_2050_minimum" ]
+    weak_cost_reduction_2050: [ "costs_2050_maximum" ]
+    strong_cost_reduction_2050: [ "costs_2050_minimum" ]
 
-    sensitivity_potentials_50: [ "4H_resolution", "fifty_percent_potential_increase"]
-    sensitivity_potentials_100: [ "4H_resolution", "hundred_percent_potential_increase"]
+    sensitivity_potentials_+50: [ "fifty_percent_potential_increase"]
+    sensitivity_potentials_-50: [ "fifty_percent_potential_decrease"]
+    
+    sensitivity_discount_rate_5: [ "discount_rate_5%" ]
+    sensitivity_discount_rate_15: [ "discount_rate_15%" ]
 
-    sensitivity_trans_cap_5: [ "4H_resolution", "trans_cap_5GW"]
-    sensitivity_trans_cap_10: [ "4H_resolution", "trans_cap_10GW"]
-    sensitivity_trans_cap_25: [ "4H_resolution", "trans_cap_25GW"]
+    sensitivity_trans_cap_5: [ "trans_cap_5GW"]
+    sensitivity_trans_cap_10: [ "trans_cap_10GW"]
+    sensitivity_trans_cap_25: [ "trans_cap_25GW"]
 
-    sensitivity_trans_cost_higher: [ "4H_resolution", "trans_cost_higher" ]
-    sensitivity_trans_cost_highest: [ "4H_resolution", "trans_cost_highest" ]
+    sensitivity_hvdc_transmission_cost_max: [ "hvdc_transmission_cost_max" ]
+    sensitivity_hvdc_transmission_cost_min: [ "hvdc_transmission_cost_min" ]
 
-    sensitivity_solar_cost_max: [ "4H_resolution", "solar_cost_max"]
-    sensitivity_solar_cost_med: [ "4H_resolution", "solar_cost_med"]
-    sensitivity_solar_cost_min: [ "4H_resolution", "solar_cost_min"]
-    
-    sensitivity_onshore_wind_cost_max: [ "4H_resolution", "onshore_wind_cost_max" ]
-    sensitivity_onshore_wind_cost_med: [ "4H_resolution", "onshore_wind_cost_med" ]
-    sensitivity_onshore_wind_cost_min: [ "4H_resolution", "onshore_wind_cost_min" ]
-    
-    sensitivity_offshore_wind_cost_max: [ "4H_resolution", "offshore_wind_cost_max" ]
-    sensitivity_offshore_wind_cost_med: [ "4H_resolution", "offshore_wind_cost_med" ]
-    sensitivity_offshore_wind_cost_min: [ "4H_resolution", "offshore_wind_cost_min" ]
-    
-    sensitivity_otec_cost_max: [ "4H_resolution", "otec_cost_max" ]
-    sensitivity_otec_cost_med: [ "4H_resolution", "otec_cost_med" ]
-    sensitivity_otec_cost_min: [ "4H_resolution", "otec_cost_min" ]
+    sensitivity_solar_onshore_cost_max: [ "solar_onshore_cost_max"]
+    sensitivity_solar_onshore_cost_med: [ "solar_onshore_cost_med"]
+    sensitivity_solar_onshore_cost_min: [ "solar_onshore_cost_min"]
 
-    sensitivity_nuclear_cost_max: [ "4H_resolution", "nuclear_cost_max" ]
-    sensitivity_nuclear_cost_med: [ "4H_resolution", "nuclear_cost_med" ]
-    sensitivity_nuclear_cost_min: [ "4H_resolution", "nuclear_cost_min" ]
+    sensitivity_solar_floating_cost_max: [ "solar_floating_cost_max" ]
+    sensitivity_solar_floating_cost_med: [ "solar_floating_cost_med" ]
+    sensitivity_solar_floating_cost_min: [ "solar_floating_cost_min" ]
     
-    sensitivity_biomass_cost_max: [ "4H_resolution", "biomass_cost_max" ]
-    sensitivity_biomass_cost_med: [ "4H_resolution", "biomass_cost_med" ]
-    sensitivity_biomass_cost_min: [ "4H_resolution", "biomass_cost_min" ]
+    sensitivity_onshore_wind_cost_max: [ "onshore_wind_cost_max" ]
+    sensitivity_onshore_wind_cost_med: [ "onshore_wind_cost_med" ]
+    sensitivity_onshore_wind_cost_min: [ "onshore_wind_cost_min" ]
     
-    sensitivity_geothermal_cost_max: [ "4H_resolution", "geothermal_cost_max" ]
-    sensitivity_geothermal_cost_med: [ "4H_resolution", "geothermal_cost_med" ]
-    sensitivity_geothermal_cost_min: [ "4H_resolution", "geothermal_cost_min" ]
+    sensitivity_offshore_wind_cost_max: [ "offshore_wind_cost_max" ]
+    sensitivity_offshore_wind_cost_med: [ "offshore_wind_cost_med" ]
+    sensitivity_offshore_wind_cost_min: [ "offshore_wind_cost_min" ]
     
-    sensitivity_large_hydro_cost_max: [ "4H_resolution", "large_hydro_cost_max" ]
-    sensitivity_large_hydro_cost_med: [ "4H_resolution", "large_hydro_cost_med" ]
-    sensitivity_large_hydro_cost_min: [ "4H_resolution", "large_hydro_cost_min" ]
-    
-    sensitivity_small_hydro_cost_max: [ "4H_resolution", "small_hydro_cost_max" ]
-    sensitivity_small_hydro_cost_med: [ "4H_resolution", "small_hydro_cost_med" ]
-    sensitivity_small_hydro_cost_min: [ "4H_resolution", "small_hydro_cost_min" ]
+    sensitivity_otec_cost_max: [ "otec_cost_max" ]
+    sensitivity_otec_cost_med: [ "otec_cost_med" ]
+    sensitivity_otec_cost_min: [ "otec_cost_min" ]
 
-    impact_alternative_solar: ["4H_resolution", "no_filler", "alternative_solar"]
-    impact_alternative_solar_extreme_demand: ["4H_resolution", "no_filler", "alternative_solar", "demand_2050_extreme"]
+    sensitivity_nuclear_cost_max: [ "nuclear_cost_max" ]
+    sensitivity_nuclear_cost_med: [ "nuclear_cost_med" ]
+    sensitivity_nuclear_cost_min: [ "nuclear_cost_min" ]
+    
+    sensitivity_biomass_cost_max: [ "biomass_cost_max" ]
+    sensitivity_biomass_cost_med: [ "biomass_cost_med" ]
+    sensitivity_biomass_cost_min: [ "biomass_cost_min" ]
+    
+    sensitivity_geothermal_cost_max: [ "geothermal_cost_max" ]
+    sensitivity_geothermal_cost_med: [ "geothermal_cost_med" ]
+    sensitivity_geothermal_cost_min: [ "geothermal_cost_min" ]
+    
+    sensitivity_large_hydro_cost_max: [ "large_hydro_cost_max" ]
+    sensitivity_large_hydro_cost_med: [ "large_hydro_cost_med" ]
+    sensitivity_large_hydro_cost_min: [ "large_hydro_cost_min" ]
+    
+    sensitivity_small_hydro_cost_max: [ "small_hydro_cost_max" ]
+    sensitivity_small_hydro_cost_med: [ "small_hydro_cost_med" ]
+    sensitivity_small_hydro_cost_min: [ "small_hydro_cost_min" ]
+
 ##
 # Overrides are the building blocks from which scenarios can be defined
 ##
@@ -93,8 +99,8 @@ overrides:
     one_day:
         model.subset_time: '2050-03-11' # for testing, day with maximum demand
 
-    no_filler:
-        techs.filler_gen.exists: false
+    no_biomass:
+        techs.biomass.exists: False
 
     ### SCENARIO ANALYSIS ###
 
@@ -455,6 +461,50 @@ overrides:
         locations.Sumatera_Selatan.techs.diesel.constraints.energy_cap_equals: 11.803
         locations.Sumatera_Utara.techs.diesel.constraints.energy_cap_equals: 92.653
 
+    # Solar-only
+
+    remove_non-solar:
+        techs.biomass.exists: False
+        techs.geothermal.exists: False
+        techs.large_hydro.exists: False
+        techs.nuclear.exists: False
+        techs.offshore_wind.exists: False
+        techs.onshore_wind.exists: False
+        techs.otec.exists: False
+        techs.small_hydro.exists: False
+
+    discount_rate_5%:
+        techs.ac_transmission.costs.monetary.interest_rate: 0.05
+        techs.hvdc_transmission.costs.monetary.interest_rate: 0.05
+        techs.solar_onshore.costs.monetary.interest_rate: 0.05
+        techs.solar_floating.costs.monetary.interest_rate: 0.05
+        techs.biomass.costs.monetary.interest_rate: 0.05
+        techs.geothermal.costs.monetary.interest_rate: 0.05
+        techs.large_hydro.costs.monetary.interest_rate: 0.05
+        techs.nuclear.costs.monetary.interest_rate: 0.05
+        techs.offshore_wind.costs.monetary.interest_rate: 0.05
+        techs.onshore_wind.costs.monetary.interest_rate: 0.05
+        techs.otec.costs.monetary.interest_rate: 0.05
+        techs.small_hydro.costs.monetary.interest_rate: 0.05
+        techs.battery.costs.monetary.interest_rate: 0.05
+        techs.pumped_hydro.costs.monetary.interest_rate: 0.05
+    
+    discount_rate_15%:
+        techs.ac_transmission.costs.monetary.interest_rate: 0.15
+        techs.hvdc_transmission.costs.monetary.interest_rate: 0.15
+        techs.solar_onshore.costs.monetary.interest_rate: 0.15
+        techs.solar_floating.costs.monetary.interest_rate: 0.15
+        techs.biomass.costs.monetary.interest_rate: 0.15
+        techs.geothermal.costs.monetary.interest_rate: 0.15
+        techs.large_hydro.costs.monetary.interest_rate: 0.15
+        techs.nuclear.costs.monetary.interest_rate: 0.15
+        techs.offshore_wind.costs.monetary.interest_rate: 0.15
+        techs.onshore_wind.costs.monetary.interest_rate: 0.15
+        techs.otec.costs.monetary.interest_rate: 0.15
+        techs.small_hydro.costs.monetary.interest_rate: 0.15
+        techs.battery.costs.monetary.interest_rate: 0.15
+        techs.pumped_hydro.costs.monetary.interest_rate: 0.15
+
     # Demand profiles for 2030 and 2040
 
     demand_2030:
@@ -567,77 +617,7 @@ overrides:
         locations.Sumatera_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_KAL.csv:Sumatera_Utara
         
         
-        
-    demand_2030_extreme:
-        locations.Aceh.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Aceh
-        locations.Bali.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Bali
-        locations.Banten.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Banten
-        locations.Bengkulu.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Bengkulu
-        locations.Daerah_Istimewa_Yogyakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Daerah_Istimewa_Yogyakarta
-        locations.Daerah_Khusus_Ibukota_Jakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Daerah_Khusus_Ibukota_Jakarta
-        locations.Gorontalo.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Gorontalo
-        locations.Jambi.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Jambi
-        locations.Jawa_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Jawa_Barat
-        locations.Jawa_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Jawa_Tengah
-        locations.Jawa_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Jawa_Timur
-        locations.Kalimantan_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Kalimantan_Barat
-        locations.Kalimantan_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Kalimantan_Selatan
-        locations.Kalimantan_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Kalimantan_Tengah
-        locations.Kalimantan_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Kalimantan_Timur
-        locations.Kalimantan_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Kalimantan_Utara
-        locations.Kepulauan_Bangka_Belitung.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Kepulauan_Bangka_Belitung
-        locations.Kepulauan_Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Kepulauan_Riau
-        locations.Lampung.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Lampung
-        locations.Maluku.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Maluku
-        locations.Maluku_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Maluku_Utara
-        locations.Nusa_Tenggara_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Nusa_Tenggara_Barat
-        locations.Nusa_Tenggara_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Nusa_Tenggara_Timur
-        locations.Papua.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Papua
-        locations.Papua_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Papua_Barat
-        locations.Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Riau
-        locations.Sulawesi_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Sulawesi_Barat
-        locations.Sulawesi_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Sulawesi_Selatan
-        locations.Sulawesi_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Sulawesi_Tengah
-        locations.Sulawesi_Tenggara.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Sulawesi_Tenggara
-        locations.Sulawesi_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Sulawesi_Utara
-        locations.Sumatera_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Sumatera_Barat
-        locations.Sumatera_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Sumatera_Selatan
-        locations.Sumatera_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2030_MAY_extreme.csv:Sumatera_Utara
-    demand_2040_extreme:
-        locations.Aceh.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Aceh
-        locations.Bali.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Bali
-        locations.Banten.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Banten
-        locations.Bengkulu.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Bengkulu
-        locations.Daerah_Istimewa_Yogyakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Daerah_Istimewa_Yogyakarta
-        locations.Daerah_Khusus_Ibukota_Jakarta.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Daerah_Khusus_Ibukota_Jakarta
-        locations.Gorontalo.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Gorontalo
-        locations.Jambi.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Jambi
-        locations.Jawa_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Jawa_Barat
-        locations.Jawa_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Jawa_Tengah
-        locations.Jawa_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Jawa_Timur
-        locations.Kalimantan_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Kalimantan_Barat
-        locations.Kalimantan_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Kalimantan_Selatan
-        locations.Kalimantan_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Kalimantan_Tengah
-        locations.Kalimantan_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Kalimantan_Timur
-        locations.Kalimantan_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Kalimantan_Utara
-        locations.Kepulauan_Bangka_Belitung.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Kepulauan_Bangka_Belitung
-        locations.Kepulauan_Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Kepulauan_Riau
-        locations.Lampung.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Lampung
-        locations.Maluku.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Maluku
-        locations.Maluku_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Maluku_Utara
-        locations.Nusa_Tenggara_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Nusa_Tenggara_Barat
-        locations.Nusa_Tenggara_Timur.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Nusa_Tenggara_Timur
-        locations.Papua.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Papua
-        locations.Papua_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Papua_Barat
-        locations.Riau.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Riau
-        locations.Sulawesi_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Sulawesi_Barat
-        locations.Sulawesi_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Sulawesi_Selatan
-        locations.Sulawesi_Tengah.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Sulawesi_Tengah
-        locations.Sulawesi_Tenggara.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Sulawesi_Tenggara
-        locations.Sulawesi_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Sulawesi_Utara
-        locations.Sumatera_Barat.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Sumatera_Barat
-        locations.Sumatera_Selatan.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Sumatera_Selatan
-        locations.Sumatera_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2040_MAY_extreme.csv:Sumatera_Utara
+
     demand_2050_extreme:
         locations.Aceh.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_MAY_extreme.csv:Aceh
         locations.Bali.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_MAY_extreme.csv:Bali
@@ -675,47 +655,82 @@ overrides:
         locations.Sumatera_Utara.techs.demand_power.constraints.resource: file=Demand_Profiles_2050_MAY_extreme.csv:Sumatera_Utara
 
     mean_RET_profiles_leap_year:
-        techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv
-        techs.solar.constraints.resource_unit: energy_per_cap
-        locations.Aceh.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Aceh
-        locations.Bali.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Bali
-        locations.Banten.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Banten
-        locations.Bengkulu.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Bengkulu
-        locations.Daerah_Istimewa_Yogyakarta.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Daerah_Istimewa_Yogyakarta
-        locations.Gorontalo.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Gorontalo
-        locations.Jambi.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Jambi
-        locations.Jawa_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Jawa_Barat
-        locations.Jawa_Tengah.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Jawa_Tengah
-        locations.Jawa_Timur.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Jawa_Timur
-        locations.Kalimantan_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Kalimantan_Barat
-        locations.Kalimantan_Selatan.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Kalimantan_Selatan
-        locations.Kalimantan_Tengah.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Kalimantan_Tengah
-        locations.Kalimantan_Timur.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Kalimantan_Timur
-        locations.Kalimantan_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Kalimantan_Utara
-        locations.Kepulauan_Bangka_Belitung.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Kepulauan_Bangka_Belitung
-        locations.Kepulauan_Riau.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Kepulauan_Riau
-        locations.Lampung.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Lampung
-        locations.Maluku.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Maluku
-        locations.Maluku_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Maluku_Utara
-        locations.Nusa_Tenggara_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Nusa_Tenggara_Barat
-        locations.Nusa_Tenggara_Timur.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Nusa_Tenggara_Timur
-        locations.Papua.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Papua
-        locations.Papua_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Papua_Barat
-        locations.Riau.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Riau
-        locations.Sulawesi_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Sulawesi_Barat
-        locations.Sulawesi_Selatan.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Sulawesi_Selatan
-        locations.Sulawesi_Tengah.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Sulawesi_Tengah
-        locations.Sulawesi_Tenggara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Sulawesi_Tenggara
-        locations.Sulawesi_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Sulawesi_Utara
-        locations.Sumatera_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Sumatera_Barat
-        locations.Sumatera_Selatan.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Sumatera_Selatan
-        locations.Sumatera_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2040_mean.csv:Sumatera_Utara
+        techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv
+        techs.solar_onshore.constraints.resource_unit: energy_per_cap
+        locations.Aceh.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Aceh
+        locations.Bali.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Bali
+        locations.Banten.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Banten
+        locations.Bengkulu.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Bengkulu
+        locations.Daerah_Istimewa_Yogyakarta.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Daerah_Istimewa_Yogyakarta
+        locations.Gorontalo.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Gorontalo
+        locations.Jambi.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Jambi
+        locations.Jawa_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Jawa_Barat
+        locations.Jawa_Tengah.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Jawa_Tengah
+        locations.Jawa_Timur.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Jawa_Timur
+        locations.Kalimantan_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Kalimantan_Barat
+        locations.Kalimantan_Selatan.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Kalimantan_Selatan
+        locations.Kalimantan_Tengah.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Kalimantan_Tengah
+        locations.Kalimantan_Timur.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Kalimantan_Timur
+        locations.Kalimantan_Utara.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Kalimantan_Utara
+        locations.Kepulauan_Bangka_Belitung.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Kepulauan_Bangka_Belitung
+        locations.Kepulauan_Riau.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Kepulauan_Riau
+        locations.Lampung.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Lampung
+        locations.Maluku.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Maluku
+        locations.Maluku_Utara.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Maluku_Utara
+        locations.Nusa_Tenggara_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Nusa_Tenggara_Barat
+        locations.Nusa_Tenggara_Timur.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Nusa_Tenggara_Timur
+        locations.Papua.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Papua
+        locations.Papua_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Papua_Barat
+        locations.Riau.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Riau
+        locations.Sulawesi_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Sulawesi_Barat
+        locations.Sulawesi_Selatan.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Sulawesi_Selatan
+        locations.Sulawesi_Tengah.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Sulawesi_Tengah
+        locations.Sulawesi_Tenggara.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Sulawesi_Tenggara
+        locations.Sulawesi_Utara.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Sulawesi_Utara
+        locations.Sumatera_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Sumatera_Barat
+        locations.Sumatera_Selatan.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Sumatera_Selatan
+        locations.Sumatera_Utara.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2040_mean.csv:Sumatera_Utara
+        
+        techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv
+        techs.solar_floating.constraints.resource_unit: energy_per_cap
+        locations.Aceh.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Aceh
+        locations.Bali.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Bali
+        locations.Banten.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Banten
+        locations.Bengkulu.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Bengkulu
+        locations.Daerah_Istimewa_Yogyakarta.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Daerah_Istimewa_Yogyakarta
+        locations.Gorontalo.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Gorontalo
+        locations.Jambi.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Jambi
+        locations.Jawa_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Jawa_Barat
+        locations.Jawa_Tengah.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Jawa_Tengah
+        locations.Jawa_Timur.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Jawa_Timur
+        locations.Kalimantan_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Kalimantan_Barat
+        locations.Kalimantan_Selatan.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Kalimantan_Selatan
+        locations.Kalimantan_Tengah.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Kalimantan_Tengah
+        locations.Kalimantan_Timur.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Kalimantan_Timur
+        locations.Kalimantan_Utara.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Kalimantan_Utara
+        locations.Kepulauan_Bangka_Belitung.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Kepulauan_Bangka_Belitung
+        locations.Kepulauan_Riau.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Kepulauan_Riau
+        locations.Lampung.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Lampung
+        locations.Maluku.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Maluku
+        locations.Maluku_Utara.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Maluku_Utara
+        locations.Nusa_Tenggara_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Nusa_Tenggara_Barat
+        locations.Nusa_Tenggara_Timur.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Nusa_Tenggara_Timur
+        locations.Papua.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Papua
+        locations.Papua_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Papua_Barat
+        locations.Riau.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Riau
+        locations.Sulawesi_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Sulawesi_Barat
+        locations.Sulawesi_Selatan.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Sulawesi_Selatan
+        locations.Sulawesi_Tengah.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Sulawesi_Tengah
+        locations.Sulawesi_Tenggara.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Sulawesi_Tenggara
+        locations.Sulawesi_Utara.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Sulawesi_Utara
+        locations.Sumatera_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Sumatera_Barat
+        locations.Sumatera_Selatan.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Sumatera_Selatan
+        locations.Sumatera_Utara.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2040_mean.csv:Sumatera_Utara
 
         techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2040_mean.csv
         techs.onshore_wind.constraints.resource_unit: energy_per_cap
         locations.Aceh.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2040_mean.csv:Aceh
         locations.Bali.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2040_mean.csv:Bali
-        locations.Banten.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2040_mean.csv:Banten
         locations.Bengkulu.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2040_mean.csv:Bengkulu
         locations.Daerah_Istimewa_Yogyakarta.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2040_mean.csv:Daerah_Istimewa_Yogyakarta
         locations.Gorontalo.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2040_mean.csv:Gorontalo
@@ -749,28 +764,9 @@ overrides:
 
         techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv
         techs.offshore_wind.constraints.resource_unit: energy_per_cap
-        locations.Aceh.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Aceh
-        locations.Banten.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Banten
-        locations.Bengkulu.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Bengkulu
-        locations.Jambi.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jambi
-        locations.Jawa_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jawa_Barat
-        locations.Jawa_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jawa_Tengah
-        locations.Jawa_Timur.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Jawa_Timur
-        locations.Kalimantan_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Barat
-        locations.Kalimantan_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Selatan
-        locations.Kalimantan_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Tengah
-        locations.Kalimantan_Timur.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kalimantan_Timur
-        locations.Kepulauan_Bangka_Belitung.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kepulauan_Bangka_Belitung
-        locations.Kepulauan_Riau.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Kepulauan_Riau
-        locations.Lampung.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Lampung
         locations.Maluku.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Maluku
         locations.Papua.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Papua
-        locations.Papua_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Papua_Barat
-        locations.Riau.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Riau
-        locations.Sulawesi_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sulawesi_Barat
-        locations.Sulawesi_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sulawesi_Selatan
-        locations.Sumatera_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2040_mean.csv:Sumatera_Selatan
-        
+
         techs.large_hydro.constraints.resource: file=Hydropower_Profiles_2040_mean.csv
         techs.large_hydro.constraints.resource_unit: energy_per_cap
         locations.Aceh.techs.large_hydro.constraints.resource: file=Hydropower_Profiles_2040_mean.csv:Aceh
@@ -868,47 +864,82 @@ overrides:
         locations.Sumatera_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sumatera_Barat
         locations.Sumatera_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2040_mean.csv:Sumatera_Utara
     min_RET_profiles_2050:
-        techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv
-        techs.solar.constraints.resource_unit: energy_per_cap
-        locations.Aceh.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Aceh
-        locations.Bali.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Bali
-        locations.Banten.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Banten
-        locations.Bengkulu.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Bengkulu
-        locations.Daerah_Istimewa_Yogyakarta.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Daerah_Istimewa_Yogyakarta
-        locations.Gorontalo.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Gorontalo
-        locations.Jambi.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Jambi
-        locations.Jawa_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Jawa_Barat
-        locations.Jawa_Tengah.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Jawa_Tengah
-        locations.Jawa_Timur.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Jawa_Timur
-        locations.Kalimantan_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kalimantan_Barat
-        locations.Kalimantan_Selatan.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kalimantan_Selatan
-        locations.Kalimantan_Tengah.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kalimantan_Tengah
-        locations.Kalimantan_Timur.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kalimantan_Timur
-        locations.Kalimantan_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kalimantan_Utara
-        locations.Kepulauan_Bangka_Belitung.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kepulauan_Bangka_Belitung
-        locations.Kepulauan_Riau.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Kepulauan_Riau
-        locations.Lampung.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Lampung
-        locations.Maluku.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Maluku
-        locations.Maluku_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Maluku_Utara
-        locations.Nusa_Tenggara_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Nusa_Tenggara_Barat
-        locations.Nusa_Tenggara_Timur.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Nusa_Tenggara_Timur
-        locations.Papua.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Papua
-        locations.Papua_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Papua_Barat
-        locations.Riau.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Riau
-        locations.Sulawesi_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sulawesi_Barat
-        locations.Sulawesi_Selatan.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sulawesi_Selatan
-        locations.Sulawesi_Tengah.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sulawesi_Tengah
-        locations.Sulawesi_Tenggara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sulawesi_Tenggara
-        locations.Sulawesi_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sulawesi_Utara
-        locations.Sumatera_Barat.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sumatera_Barat
-        locations.Sumatera_Selatan.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sumatera_Selatan
-        locations.Sumatera_Utara.techs.solar.constraints.resource: file=Solar_PV_Profiles_2050_min.csv:Sumatera_Utara
+        techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv
+        techs.solar_onshore.constraints.resource_unit: energy_per_cap
+        locations.Aceh.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Aceh
+        locations.Bali.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Bali
+        locations.Banten.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Banten
+        locations.Bengkulu.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Bengkulu
+        locations.Daerah_Istimewa_Yogyakarta.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Daerah_Istimewa_Yogyakarta
+        locations.Gorontalo.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Gorontalo
+        locations.Jambi.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Jambi
+        locations.Jawa_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Jawa_Barat
+        locations.Jawa_Tengah.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Jawa_Tengah
+        locations.Jawa_Timur.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Jawa_Timur
+        locations.Kalimantan_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Kalimantan_Barat
+        locations.Kalimantan_Selatan.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Kalimantan_Selatan
+        locations.Kalimantan_Tengah.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Kalimantan_Tengah
+        locations.Kalimantan_Timur.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Kalimantan_Timur
+        locations.Kalimantan_Utara.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Kalimantan_Utara
+        locations.Kepulauan_Bangka_Belitung.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Kepulauan_Bangka_Belitung
+        locations.Kepulauan_Riau.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Kepulauan_Riau
+        locations.Lampung.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Lampung
+        locations.Maluku.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Maluku
+        locations.Maluku_Utara.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Maluku_Utara
+        locations.Nusa_Tenggara_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Nusa_Tenggara_Barat
+        locations.Nusa_Tenggara_Timur.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Nusa_Tenggara_Timur
+        locations.Papua.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Papua
+        locations.Papua_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Papua_Barat
+        locations.Riau.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Riau
+        locations.Sulawesi_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Sulawesi_Barat
+        locations.Sulawesi_Selatan.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Sulawesi_Selatan
+        locations.Sulawesi_Tengah.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Sulawesi_Tengah
+        locations.Sulawesi_Tenggara.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Sulawesi_Tenggara
+        locations.Sulawesi_Utara.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Sulawesi_Utara
+        locations.Sumatera_Barat.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Sumatera_Barat
+        locations.Sumatera_Selatan.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Sumatera_Selatan
+        locations.Sumatera_Utara.techs.solar_onshore.constraints.resource: file=Onshore_Solar_PV_Profiles_2050_min.csv:Sumatera_Utara
+        
+        techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv
+        techs.solar_floating.constraints.resource_unit: energy_per_cap
+        locations.Aceh.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Aceh
+        locations.Bali.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Bali
+        locations.Banten.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Banten
+        locations.Bengkulu.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Bengkulu
+        locations.Daerah_Istimewa_Yogyakarta.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Daerah_Istimewa_Yogyakarta
+        locations.Gorontalo.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Gorontalo
+        locations.Jambi.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Jambi
+        locations.Jawa_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Jawa_Barat
+        locations.Jawa_Tengah.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Jawa_Tengah
+        locations.Jawa_Timur.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Jawa_Timur
+        locations.Kalimantan_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Kalimantan_Barat
+        locations.Kalimantan_Selatan.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Kalimantan_Selatan
+        locations.Kalimantan_Tengah.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Kalimantan_Tengah
+        locations.Kalimantan_Timur.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Kalimantan_Timur
+        locations.Kalimantan_Utara.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Kalimantan_Utara
+        locations.Kepulauan_Bangka_Belitung.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Kepulauan_Bangka_Belitung
+        locations.Kepulauan_Riau.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Kepulauan_Riau
+        locations.Lampung.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Lampung
+        locations.Maluku.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Maluku
+        locations.Maluku_Utara.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Maluku_Utara
+        locations.Nusa_Tenggara_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Nusa_Tenggara_Barat
+        locations.Nusa_Tenggara_Timur.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Nusa_Tenggara_Timur
+        locations.Papua.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Papua
+        locations.Papua_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Papua_Barat
+        locations.Riau.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Riau
+        locations.Sulawesi_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Sulawesi_Barat
+        locations.Sulawesi_Selatan.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Sulawesi_Selatan
+        locations.Sulawesi_Tengah.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Sulawesi_Tengah
+        locations.Sulawesi_Tenggara.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Sulawesi_Tenggara
+        locations.Sulawesi_Utara.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Sulawesi_Utara
+        locations.Sumatera_Barat.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Sumatera_Barat
+        locations.Sumatera_Selatan.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Sumatera_Selatan
+        locations.Sumatera_Utara.techs.solar_floating.constraints.resource: file=Floating_Solar_PV_Profiles_2050_min.csv:Sumatera_Utara
     
         techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2050_min.csv
         techs.onshore_wind.constraints.resource_unit: energy_per_cap
         locations.Aceh.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2050_min.csv:Aceh
         locations.Bali.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2050_min.csv:Bali
-        locations.Banten.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2050_min.csv:Banten
         locations.Bengkulu.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2050_min.csv:Bengkulu
         locations.Daerah_Istimewa_Yogyakarta.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2050_min.csv:Daerah_Istimewa_Yogyakarta
         locations.Gorontalo.techs.onshore_wind.constraints.resource: file=Onshore_Wind_Profiles_2050_min.csv:Gorontalo
@@ -942,16 +973,8 @@ overrides:
     
         techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv
         techs.offshore_wind.constraints.resource_unit: energy_per_cap
-        locations.Banten.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Banten
-        locations.Jawa_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Jawa_Barat
-        locations.Jawa_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Jawa_Tengah
-        locations.Jawa_Timur.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Jawa_Timur
-        locations.Kalimantan_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Kalimantan_Selatan
-        locations.Kalimantan_Tengah.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Kalimantan_Tengah
-        locations.Lampung.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Lampung
+        locations.Maluku.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Maluku
         locations.Papua.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Papua
-        locations.Papua_Barat.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Papua_Barat
-        locations.Sulawesi_Selatan.techs.offshore_wind.constraints.resource: file=Offshore_Wind_Profiles_2050_min.csv:Sulawesi_Selatan
 
         techs.large_hydro.constraints.resource: file=Hydropower_Profiles_2050_min.csv
         techs.large_hydro.constraints.resource_unit: energy_per_cap
@@ -1050,210 +1073,208 @@ overrides:
         locations.Sumatera_Barat.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sumatera_Barat
         locations.Sumatera_Utara.techs.otec.constraints.resource: file=OTEC_Profiles_2050_min.csv:Sumatera_Utara
 
+    # Cost projections
 
-    costs_2021_maximum:
-        techs.battery.costs.monetary.storage_cap: 373000
-        techs.battery.costs.monetary.om_annual_investment_fraction: 0.03
-
-        techs.biomass.costs.monetary.energy_cap: 3325000
-        techs.biomass.costs.monetary.om_annual: 108600
-
-        techs.geothermal.costs.monetary.energy_cap: 5601000
-        techs.geothermal.costs.monetary.om_annual: 59000
-
-        techs.large_hydro.costs.monetary.energy_cap: 2574000
-        techs.large_hydro.costs.monetary.om_annual: 63000
-        techs.large_hydro.costs.monetary.om_prod: 4.25
-
-        techs.small_hydro.costs.monetary.energy_cap: 3750000
-        techs.small_hydro.costs.monetary.om_annual: 75000
-        techs.small_hydro.costs.monetary.om_prod: 4.25
-
-        techs.nuclear.costs.monetary.energy_cap: 10300000
-        techs.nuclear.costs.monetary.om_annual: 184000
-
-        techs.offshore_wind.costs.monetary.energy_cap: 4325000
-        techs.offshore_wind.costs.monetary.om_annual: 20000
-        techs.offshore_wind.costs.monetary.om_prod: 25
-
-        techs.otec.costs.monetary.energy_cap: 6668000
-
-        techs.onshore_wind.costs.monetary.energy_cap: 2462000
-        techs.onshore_wind.costs.monetary.om_annual: 66000
-
-        techs.solar.costs.monetary.energy_cap: 2314000
-        techs.solar.costs.monetary.om_annual: 27700
-    costs_2021_median:
-        techs.battery.costs.monetary.storage_cap: 324000
-        techs.battery.costs.monetary.om_annual_investment_fraction: 0.0292
-
-        techs.biomass.costs.monetary.energy_cap: 2208000
-        techs.biomass.costs.monetary.om_annual: 83000
-
-        techs.cc_gas.costs.monetary.energy_cap: 895000
-
-        techs.coal.costs.monetary.energy_cap: 1559000
-
-        techs.diesel.costs.monetary.energy_cap: 792000
-        techs.diesel.costs.monetary.om_prod: 7.07
-
-        techs.geothermal.costs.monetary.energy_cap: 3954000
-        techs.geothermal.costs.monetary.om_annual: 45000
-
-        techs.nuclear.costs.monetary.energy_cap: 6716000
-        techs.nuclear.costs.monetary.om_annual: 138000
-
-        techs.oc_gas.costs.monetary.energy_cap: 798000
-
-        techs.offshore_wind.costs.monetary.energy_cap: 4325000
-        techs.offshore_wind.costs.monetary.om_annual: 20000
-        techs.offshore_wind.costs.monetary.om_prod: 25
-
-        techs.otec.costs.monetary.energy_cap: 6668000
-
-        techs.onshore_wind.costs.monetary.energy_cap: 1660000
-        techs.onshore_wind.costs.monetary.om_annual: 49000
-
-        techs.solar.costs.monetary.energy_cap: 1194000
-        techs.solar.costs.monetary.om_annual: 16500
     costs_2030:
-        techs.battery.costs.monetary.storage_cap: 162186
-        techs.battery.costs.monetary.om_annual_investment_fraction: 0.0292
+        techs.battery.costs.monetary.storage_cap: 298125
+        techs.battery.costs.monetary.om_annual: 2442
+        techs.battery.costs.monetary.om_prod: 1.7
 
-        techs.biomass.costs.monetary.energy_cap: 1971000
-        techs.biomass.costs.monetary.om_annual: 76000
+        techs.biomass.costs.monetary.energy_cap: 1926000
+        techs.biomass.costs.monetary.om_annual: 46000
+        techs.biomass.costs.monetary.om_prod: 2.9
 
-        techs.cc_gas.costs.monetary.energy_cap: 872000
+        techs.cc_gas.costs.monetary.energy_cap: 958000
+        techs.cc_gas.costs.monetary.om_annual: 24000
+        techs.cc_gas.costs.monetary.om_prod: 2.3
 
-        techs.coal.costs.monetary.energy_cap: 1535000
+        techs.coal.costs.monetary.energy_cap: 1442000
+        techs.coal.costs.monetary.om_annual: 42000
+        techs.coal.costs.monetary.om_prod: 1.3
 
-        techs.diesel.costs.monetary.energy_cap: 792000
-        techs.diesel.costs.monetary.om_prod: 6.63
+        techs.diesel.costs.monetary.energy_cap: 847000
+        techs.diesel.costs.monetary.om_annual: 8500
+        techs.diesel.costs.monetary.om_prod: 6.4
 
-        techs.geothermal.costs.monetary.energy_cap: 3556000
-        techs.geothermal.costs.monetary.om_annual: 42000
+        techs.geothermal.costs.monetary.energy_cap: 3201000
+        techs.geothermal.costs.monetary.om_annual: 40000
+        techs.geothermal.costs.monetary.om_prod: 0.2
 
-        techs.nuclear.costs.monetary.energy_cap: 6330000
-        techs.nuclear.costs.monetary.om_annual: 118000
+        techs.large_hydro.costs.monetary.energy_cap: 1963000
+        techs.large_hydro.costs.monetary.om_annual: 38000
+        techs.large_hydro.costs.monetary.om_prod: 0.7
 
-        techs.oc_gas.costs.monetary.energy_cap: 781000
+        techs.nuclear.costs.monetary.energy_cap: 7350000
+        techs.nuclear.costs.monetary.om_annual: 112000
+        techs.nuclear.costs.monetary.om_prod: 2.1
 
-        techs.offshore_wind.costs.monetary.energy_cap: 3778000
-        techs.offshore_wind.costs.monetary.om_annual: 17000
-        techs.offshore_wind.costs.monetary.om_prod: 21.82
+        techs.oc_gas.costs.monetary.energy_cap: 986000
+        techs.oc_gas.costs.monetary.om_annual: 24000
+        techs.oc_gas.costs.monetary.om_prod: 3.3
+
+        techs.offshore_wind.costs.monetary.energy_cap: 3322000
+        techs.offshore_wind.costs.monetary.om_annual: 93000
+        techs.offshore_wind.costs.monetary.om_prod: 4.5
 
         techs.otec.costs.monetary.energy_cap: 6048000
 
-        techs.onshore_wind.costs.monetary.energy_cap: 1497000
-        techs.onshore_wind.costs.monetary.om_annual: 43000
+        techs.onshore_wind.costs.monetary.energy_cap: 1116000
+        techs.onshore_wind.costs.monetary.om_annual: 33000
 
-        techs.solar.costs.monetary.energy_cap: 825000
-        techs.solar.costs.monetary.om_annual: 13000
+        techs.small_hydro.costs.monetary.energy_cap: 2410000
+        techs.small_hydro.costs.monetary.om_annual: 54000
+        techs.small_hydro.costs.monetary.om_prod: 0.5
+
+        techs.solar_onshore.costs.monetary.energy_cap: 519000
+        techs.solar_onshore.costs.monetary.om_annual: 5300
+
+        techs.solar_floating.costs.monetary.energy_cap: 848000
     costs_2040:
-        techs.battery.costs.monetary.storage_cap: 125000
-        techs.battery.costs.monetary.om_annual_investment_fraction: 0.0284
+        techs.battery.costs.monetary.storage_cap: 252955
+        techs.battery.costs.monetary.om_annual: 2076
+        techs.battery.costs.monetary.om_prod: 1.6
 
-        techs.biomass.costs.monetary.energy_cap: 1764000
-        techs.biomass.costs.monetary.om_annual: 71000
+        techs.biomass.costs.monetary.energy_cap: 1810000
+        techs.biomass.costs.monetary.om_annual: 43000
+        techs.biomass.costs.monetary.om_prod: 2.7
 
-        techs.cc_gas.costs.monetary.energy_cap: 857000
+        techs.cc_gas.costs.monetary.energy_cap: 921000
+        techs.cc_gas.costs.monetary.om_annual: 24000
+        techs.cc_gas.costs.monetary.om_prod: 2.3
 
-        techs.coal.costs.monetary.energy_cap: 1524000
+        techs.coal.costs.monetary.energy_cap: 1418000
+        techs.coal.costs.monetary.om_annual: 42000
+        techs.coal.costs.monetary.om_prod: 1.2
 
-        techs.diesel.costs.monetary.energy_cap: 787000
-        techs.diesel.costs.monetary.om_prod: 6.52
+        techs.diesel.costs.monetary.energy_cap: 837000
+        techs.diesel.costs.monetary.om_annual: 8400
+        techs.diesel.costs.monetary.om_prod: 6.3
 
-        techs.geothermal.costs.monetary.energy_cap: 3214000
-        techs.geothermal.costs.monetary.om_annual: 40000
+        techs.geothermal.costs.monetary.energy_cap: 2921000
+        techs.geothermal.costs.monetary.om_annual: 37000
+        techs.geothermal.costs.monetary.om_prod: 0.2
 
-        techs.nuclear.costs.monetary.energy_cap: 6060000
-        techs.nuclear.costs.monetary.om_annual: 104000
+        techs.large_hydro.costs.monetary.energy_cap: 1893000
+        techs.large_hydro.costs.monetary.om_annual: 37000
+        techs.large_hydro.costs.monetary.om_prod: 0.6
 
-        techs.oc_gas.costs.monetary.energy_cap: 766000
+        techs.nuclear.costs.monetary.energy_cap: 6839000
+        techs.nuclear.costs.monetary.om_annual: 108000
+        techs.nuclear.costs.monetary.om_prod: 2.1
 
-        techs.offshore_wind.costs.monetary.energy_cap: 3524000
-        techs.offshore_wind.costs.monetary.om_annual: 15000
-        techs.offshore_wind.costs.monetary.om_prod: 19.77
+        techs.oc_gas.costs.monetary.energy_cap: 954000
+        techs.oc_gas.costs.monetary.om_annual: 24000
+        techs.oc_gas.costs.monetary.om_prod: 3.3
+
+        techs.offshore_wind.costs.monetary.energy_cap: 2996000
+        techs.offshore_wind.costs.monetary.om_annual: 84000
+        techs.offshore_wind.costs.monetary.om_prod: 4.1
 
         techs.otec.costs.monetary.energy_cap: 5511000
 
-        techs.onshore_wind.costs.monetary.energy_cap: 1412000
-        techs.onshore_wind.costs.monetary.om_annual: 39000
+        techs.onshore_wind.costs.monetary.energy_cap: 1000000
+        techs.onshore_wind.costs.monetary.om_annual: 31000
 
-        techs.solar.costs.monetary.energy_cap: 698000
-        techs.solar.costs.monetary.om_annual: 11000
-    costs_2050_minimum:
-        techs.battery.costs.monetary.storage_cap: 69000
-        techs.battery.costs.monetary.om_annual_investment_fraction: 0.0233
-        techs.battery.costs.monetary.om_prod: 0.2
-
-        techs.biomass.costs.monetary.energy_cap: 882000
-        techs.biomass.costs.monetary.om_annual: 37000
-        techs.biomass.costs.monetary.om_prod: 2.65
-
-        techs.geothermal.costs.monetary.energy_cap: 1634000
-        techs.geothermal.costs.monetary.om_annual: 9000
-        techs.geothermal.costs.monetary.om_prod: 0.28
-
-        techs.large_hydro.costs.monetary.energy_cap: 1618000
-        techs.large_hydro.costs.monetary.om_annual: 9000
-        techs.large_hydro.costs.monetary.om_prod: 0.64
-
-        techs.small_hydro.costs.monetary.energy_cap: 1780000
-        techs.small_hydro.costs.monetary.om_annual: 46000
+        techs.small_hydro.costs.monetary.energy_cap: 2321000
+        techs.small_hydro.costs.monetary.om_annual: 52000
         techs.small_hydro.costs.monetary.om_prod: 0.5
 
-        techs.nuclear.costs.monetary.energy_cap: 3828000
-        techs.nuclear.costs.monetary.om_annual: 45000
-        techs.nuclear.costs.monetary.om_prod: 0.81
+        techs.solar_onshore.costs.monetary.energy_cap: 446000
+        techs.solar_onshore.costs.monetary.om_annual: 5000
 
-        techs.offshore_wind.costs.monetary.energy_cap: 3114000
-        techs.offshore_wind.costs.monetary.om_annual: 11000
-        techs.offshore_wind.costs.monetary.om_prod: 17.73
+        techs.solar_floating.costs.monetary.energy_cap: 473000
+    costs_2050_minimum:
+        techs.battery.costs.monetary.storage_cap: 153580
+        techs.battery.costs.monetary.om_annual: 582
+        techs.battery.costs.monetary.om_prod: 1.5
+
+        techs.biomass.costs.monetary.energy_cap: 1396000
+        techs.biomass.costs.monetary.om_annual: 34000
+        techs.biomass.costs.monetary.om_prod: 2.2
+
+        techs.geothermal.costs.monetary.energy_cap: 1582000
+        techs.geothermal.costs.monetary.om_annual: 25000
+        techs.geothermal.costs.monetary.om_prod: 0.1
+
+        techs.hvdc_transmission.costs.monetary.energy_cap_per_distance: 171
+        techs.hvdc_transmission.costs.monetary.energy_cap: 148000
+        techs.hvdc_transmission.costs.monetary.om_annual_investment_fraction: 0.007
+
+        techs.large_hydro.costs.monetary.energy_cap: 1368000
+        techs.large_hydro.costs.monetary.om_annual: 27000
+        techs.large_hydro.costs.monetary.om_prod: 0.5
+
+        techs.nuclear.costs.monetary.energy_cap: 4652000
+        techs.nuclear.costs.monetary.om_annual: 19000
+        techs.nuclear.costs.monetary.om_prod: 1.5
+
+        techs.offshore_wind.costs.monetary.energy_cap: 1442000
+        techs.offshore_wind.costs.monetary.om_annual: 57000
+        techs.offshore_wind.costs.monetary.om_prod: 2.5
 
         techs.otec.costs.monetary.energy_cap: 3274000
 
-        techs.onshore_wind.costs.monetary.energy_cap: 855000
-        techs.onshore_wind.costs.monetary.om_annual: 18000
+        techs.onshore_wind.costs.monetary.energy_cap: 558000
+        techs.onshore_wind.costs.monetary.om_annual: 23000
 
-        techs.solar.costs.monetary.energy_cap: 370000
-        techs.solar.costs.monetary.om_annual: 5000
+        techs.pumped_hydro.costs.monetary.energy_cap: 558000
+        techs.pumped_hydro.costs.monetary.om_annual: 3700
+        techs.pumped_hydro.costs.monetary.om_prod: 0.5
+
+        techs.small_hydro.costs.monetary.energy_cap: 1675000
+        techs.small_hydro.costs.monetary.om_annual: 38000
+        techs.small_hydro.costs.monetary.om_prod: 0.4
+
+        techs.solar_onshore.costs.monetary.energy_cap: 225000
+        techs.solar_onshore.costs.monetary.om_annual: 2400
+
+        techs.solar_floating.costs.monetary.energy_cap: 245000
     costs_2050_maximum:
-        techs.battery.costs.monetary.storage_cap: 359000
-        techs.battery.costs.monetary.om_annual_investment_fraction: 0.03
+        techs.battery.costs.monetary.storage_cap: 406535
+        techs.battery.costs.monetary.om_annual: 3490
+        techs.battery.costs.monetary.om_prod: 2.1
 
-        techs.biomass.costs.monetary.energy_cap: 2660000
-        techs.biomass.costs.monetary.om_annual: 109000
-        techs.biomass.costs.monetary.om_prod: 10.77
+        techs.biomass.costs.monetary.energy_cap: 2419000
+        techs.biomass.costs.monetary.om_annual: 57000
+        techs.biomass.costs.monetary.om_prod: 3.6
 
-        techs.geothermal.costs.monetary.energy_cap: 4780000
-        techs.geothermal.costs.monetary.om_annual: 59000
-        techs.geothermal.costs.monetary.om_prod: 37.7
+        techs.geothermal.costs.monetary.energy_cap: 4233000
+        techs.geothermal.costs.monetary.om_annual: 41000
+        techs.geothermal.costs.monetary.om_prod: 0.2
 
-        techs.large_hydro.costs.monetary.energy_cap: 2574000
-        techs.large_hydro.costs.monetary.om_annual: 63000
-        techs.large_hydro.costs.monetary.om_prod: 4.25
+        techs.hvdc_transmission.costs.monetary.energy_cap_per_distance: 1261
+        techs.hvdc_transmission.costs.monetary.energy_cap: 207000
+        techs.hvdc_transmission.costs.monetary.om_annual_investment_fraction: 0.035
 
-        techs.small_hydro.costs.monetary.energy_cap: 3763000
-        techs.small_hydro.costs.monetary.om_annual: 75000
-        techs.small_hydro.costs.monetary.om_prod: 4.25
+        techs.large_hydro.costs.monetary.energy_cap: 2280000
+        techs.large_hydro.costs.monetary.om_annual: 44000
+        techs.large_hydro.costs.monetary.om_prod: 0.8
 
-        techs.nuclear.costs.monetary.energy_cap: 8879000
-        techs.nuclear.costs.monetary.om_annual: 121000
-        techs.nuclear.costs.monetary.om_prod: 4.25
+        techs.nuclear.costs.monetary.energy_cap: 9304000
+        techs.nuclear.costs.monetary.om_annual: 167000
+        techs.nuclear.costs.monetary.om_prod: 2.6
 
-        techs.offshore_wind.costs.monetary.energy_cap: 3424000
-        techs.offshore_wind.costs.monetary.om_annual: 14000
+        techs.offshore_wind.costs.monetary.energy_cap: 2977000
+        techs.offshore_wind.costs.monetary.om_annual: 88000
+        techs.offshore_wind.costs.monetary.om_prod: 4.0
 
         techs.otec.costs.monetary.energy_cap: 6668000
 
-        techs.onshore_wind.costs.monetary.energy_cap: 2094000
-        techs.onshore_wind.costs.monetary.om_annual: 52000
-        techs.onshore_wind.costs.monetary.om_prod: 0.9
+        techs.onshore_wind.costs.monetary.energy_cap: 1721000
+        techs.onshore_wind.costs.monetary.om_annual: 56000
 
-        techs.solar.costs.monetary.energy_cap: 1504000
-        techs.solar.costs.monetary.om_annual: 18000
-        techs.solar.costs.monetary.om_prod: 0.45
+        techs.pumped_hydro.costs.monetary.energy_cap: 5582000
+        techs.pumped_hydro.costs.monetary.om_annual: 28000
+        techs.pumped_hydro.costs.monetary.om_prod: 2.8
+
+        techs.small_hydro.costs.monetary.energy_cap: 2791000
+        techs.small_hydro.costs.monetary.om_annual: 63000
+        techs.small_hydro.costs.monetary.om_prod: 0.6
+
+        techs.solar_onshore.costs.monetary.energy_cap: 465000
+        techs.solar_onshore.costs.monetary.om_annual: 7100
+
+        techs.solar_floating.costs.monetary.energy_cap: 506000
 
     ### SENSITIVITY ANALYSIS ###
 
@@ -1263,296 +1284,231 @@ overrides:
         locations.Aceh.techs.biomass.constraints.energy_cap_max: 1705 # MW
         locations.Aceh.techs.geothermal.constraints.energy_cap_max: 810 # MW
         locations.Aceh.techs.large_hydro.constraints.energy_cap_max: 7593 # MW
-        locations.Aceh.techs.solar.constraints.energy_cap_max: 426274 # MW
         
         locations.Bali.techs.biomass.constraints.energy_cap_max: 220 # MW
         locations.Bali.techs.geothermal.constraints.energy_cap_max: 366 # MW
         locations.Bali.techs.large_hydro.constraints.energy_cap_max: 312 # MW
-        locations.Bali.techs.solar.constraints.energy_cap_max: 16080 # MW
         
         locations.Banten.techs.biomass.constraints.energy_cap_max: 520 # MW
         locations.Banten.techs.geothermal.constraints.energy_cap_max: 485 # MW
-        locations.Banten.techs.solar.constraints.energy_cap_max: 5092 # MW
         
         locations.Bengkulu.techs.biomass.constraints.energy_cap_max: 950 # MW
         locations.Bengkulu.techs.geothermal.constraints.energy_cap_max: 945 # MW
         locations.Bengkulu.techs.large_hydro.constraints.energy_cap_max: 1163 # MW
-        locations.Bengkulu.techs.solar.constraints.energy_cap_max: 136116 # MW
         
         locations.Daerah_Istimewa_Yogyakarta.techs.biomass.constraints.energy_cap_max: 275 # MW
         locations.Daerah_Istimewa_Yogyakarta.techs.geothermal.constraints.energy_cap_max: 15 # MW
-        locations.Daerah_Istimewa_Yogyakarta.techs.solar.constraints.energy_cap_max: 45 # MW
         
         locations.Gorontalo.techs.biomass.constraints.energy_cap_max: 179 # MW
         locations.Gorontalo.techs.geothermal.constraints.energy_cap_max: 30 # MW
-        locations.Gorontalo.techs.solar.constraints.energy_cap_max: 68835 # MW
         
         locations.Jambi.techs.biomass.constraints.energy_cap_max: 2732 # MW
         locations.Jambi.techs.geothermal.constraints.energy_cap_max: 560 # MW
         locations.Jambi.techs.large_hydro.constraints.energy_cap_max: 1163 # MW
-        locations.Jambi.techs.solar.constraints.energy_cap_max: 478198 # MW
         
         locations.Jawa_Barat.techs.biomass.constraints.energy_cap_max: 2970 # MW
         locations.Jawa_Barat.techs.geothermal.constraints.energy_cap_max: 3142 # MW
         locations.Jawa_Barat.techs.large_hydro.constraints.energy_cap_max: 4292 # MW
-        locations.Jawa_Barat.techs.solar.constraints.energy_cap_max: 8335 # MW
         
         locations.Jawa_Tengah.techs.biomass.constraints.energy_cap_max: 2826 # MW
         locations.Jawa_Tengah.techs.geothermal.constraints.energy_cap_max: 1218 # MW
         locations.Jawa_Tengah.techs.large_hydro.constraints.energy_cap_max: 1220 # MW
-        locations.Jawa_Tengah.techs.solar.constraints.energy_cap_max: 6065 # MW
         
         locations.Jawa_Timur.techs.biomass.constraints.energy_cap_max: 4277 # MW
         locations.Jawa_Timur.techs.geothermal.constraints.energy_cap_max: 1386 # MW
         locations.Jawa_Timur.techs.large_hydro.constraints.energy_cap_max: 787.5 # MW
-        locations.Jawa_Timur.techs.solar.constraints.energy_cap_max: 39387 # MW
         
         locations.Kalimantan_Barat.techs.biomass.constraints.energy_cap_max: 1919 # MW
         locations.Kalimantan_Barat.techs.large_hydro.constraints.energy_cap_max: 7106 # MW
-        locations.Kalimantan_Barat.techs.solar.constraints.energy_cap_max: 2159075 # MW
 
         locations.Kalimantan_Selatan.techs.biomass.constraints.energy_cap_max: 1890 # MW
         locations.Kalimantan_Selatan.techs.large_hydro.constraints.energy_cap_max: 8423 # MW
-        locations.Kalimantan_Selatan.techs.solar.constraints.energy_cap_max: 387729 # MW
         
         locations.Kalimantan_Tengah.techs.biomass.constraints.energy_cap_max: 2230 # MW
         locations.Kalimantan_Tengah.techs.large_hydro.constraints.energy_cap_max: 8423 # MW
-        locations.Kalimantan_Tengah.techs.solar.constraints.energy_cap_max: 895040 # MW
         
         locations.Kalimantan_Timur.techs.biomass.constraints.energy_cap_max: 710 # MW
         locations.Kalimantan_Timur.techs.large_hydro.constraints.energy_cap_max: 8423 # MW
-        locations.Kalimantan_Timur.techs.solar.constraints.energy_cap_max: 2296150 # MW
         
         locations.Kalimantan_Utara.techs.biomass.constraints.energy_cap_max: 710 # MW
         locations.Kalimantan_Utara.techs.geothermal.constraints.energy_cap_max: 9 # MW
-        locations.Kalimantan_Utara.techs.solar.constraints.energy_cap_max: 260986 # MW
         
         locations.Kepulauan_Bangka_Belitung.techs.biomass.constraints.energy_cap_max: 327 # MW
-        locations.Kepulauan_Bangka_Belitung.techs.solar.constraints.energy_cap_max: 267924 # MW
         
         locations.Kepulauan_Riau.techs.biomass.constraints.energy_cap_max: 17.4 # MW
-        locations.Kepulauan_Riau.techs.solar.constraints.energy_cap_max: 89957 # MW
         
         locations.Lampung.techs.biomass.constraints.energy_cap_max: 2111 # MW
         locations.Lampung.techs.geothermal.constraints.energy_cap_max: 1815 # MW
         locations.Lampung.techs.large_hydro.constraints.energy_cap_max: 1163 # MW
-        locations.Lampung.techs.solar.constraints.energy_cap_max: 68751 # MW
         
         locations.Maluku.techs.biomass.constraints.energy_cap_max: 35.4 # MW
         locations.Maluku.techs.geothermal.constraints.energy_cap_max: 171 # MW
         locations.Maluku.techs.large_hydro.constraints.energy_cap_max: 645 # MW
-        locations.Maluku.techs.solar.constraints.energy_cap_max: 540088 # MW
         
         locations.Maluku_Utara.techs.biomass.constraints.energy_cap_max: 41 # MW
         locations.Maluku_Utara.techs.geothermal.constraints.energy_cap_max: 569 # MW
-        locations.Maluku_Utara.techs.solar.constraints.energy_cap_max: 234300 # MW
         
         locations.Nusa_Tenggara_Barat.techs.biomass.constraints.energy_cap_max: 512 # MW
         locations.Nusa_Tenggara_Barat.techs.geothermal.constraints.energy_cap_max: 120 # MW
         locations.Nusa_Tenggara_Barat.techs.large_hydro.constraints.energy_cap_max: 312 # MW
-        locations.Nusa_Tenggara_Barat.techs.solar.constraints.energy_cap_max: 163828 # MW
         
         locations.Nusa_Tenggara_Timur.techs.biomass.constraints.energy_cap_max: 289 # MW
         locations.Nusa_Tenggara_Timur.techs.geothermal.constraints.energy_cap_max: 1066 # MW
         locations.Nusa_Tenggara_Timur.techs.large_hydro.constraints.energy_cap_max: 312 # MW
-        locations.Nusa_Tenggara_Timur.techs.solar.constraints.energy_cap_max: 844819 # MW
         
         locations.Papua.techs.biomass.constraints.energy_cap_max: 122 # MW
         locations.Papua.techs.large_hydro.constraints.energy_cap_max: 33557 # MW
-        locations.Papua.techs.solar.constraints.energy_cap_max: 885473 # MW
 
         locations.Papua_Barat.techs.biomass.constraints.energy_cap_max: 76 # MW
-        locations.Papua_Barat.techs.solar.constraints.energy_cap_max: 272950 # MW
 
         locations.Riau.techs.biomass.constraints.energy_cap_max: 6236 # MW
         locations.Riau.techs.large_hydro.constraints.energy_cap_max: 2705 # MW
-        locations.Riau.techs.solar.constraints.energy_cap_max: 170699 # MW
 
         locations.Sulawesi_Barat.techs.biomass.constraints.energy_cap_max: 297 # MW
         locations.Sulawesi_Barat.techs.geothermal.constraints.energy_cap_max: 45 # MW
-        locations.Sulawesi_Barat.techs.solar.constraints.energy_cap_max: 114565 # MW
 
         locations.Sulawesi_Selatan.techs.biomass.constraints.energy_cap_max: 1336 # MW
         locations.Sulawesi_Selatan.techs.geothermal.constraints.energy_cap_max: 209 # MW
         locations.Sulawesi_Selatan.techs.large_hydro.constraints.energy_cap_max: 4755 # MW
-        locations.Sulawesi_Selatan.techs.solar.constraints.energy_cap_max: 385406 # MW
 
         locations.Sulawesi_Tengah.techs.biomass.constraints.energy_cap_max: 461 # MW
         locations.Sulawesi_Tengah.techs.geothermal.constraints.energy_cap_max: 444 # MW
         locations.Sulawesi_Tengah.techs.large_hydro.constraints.energy_cap_max: 2975 # MW
-        locations.Sulawesi_Tengah.techs.solar.constraints.energy_cap_max: 450355 # MW
 
         locations.Sulawesi_Tenggara.techs.biomass.constraints.energy_cap_max: 199 # MW
         locations.Sulawesi_Tenggara.techs.geothermal.constraints.energy_cap_max: 138 # MW
         locations.Sulawesi_Tenggara.techs.large_hydro.constraints.energy_cap_max: 2975 # MW
-        locations.Sulawesi_Tenggara.techs.solar.constraints.energy_cap_max: 446428 # MW
 
         locations.Sulawesi_Utara.techs.biomass.constraints.energy_cap_max: 225 # MW
         locations.Sulawesi_Utara.techs.geothermal.constraints.energy_cap_max: 1005 # MW
         locations.Sulawesi_Utara.techs.large_hydro.constraints.energy_cap_max: 4755 # MW
-        locations.Sulawesi_Utara.techs.solar.constraints.energy_cap_max: 42089 # MW
 
         locations.Sumatera_Barat.techs.biomass.constraints.energy_cap_max: 1385 # MW
         locations.Sumatera_Barat.techs.geothermal.constraints.energy_cap_max: 1118 # MW
         locations.Sumatera_Barat.techs.large_hydro.constraints.energy_cap_max: 2705 # MW
-        locations.Sumatera_Barat.techs.solar.constraints.energy_cap_max: 213233 # MW
 
         locations.Sumatera_Selatan.techs.biomass.constraints.energy_cap_max: 3092 # MW
         locations.Sumatera_Selatan.techs.geothermal.constraints.energy_cap_max: 554 # MW
         locations.Sumatera_Selatan.techs.large_hydro.constraints.energy_cap_max: 1163 # MW
-        locations.Sumatera_Selatan.techs.solar.constraints.energy_cap_max: 466163 # MW
 
         locations.Sumatera_Utara.techs.biomass.constraints.energy_cap_max: 4194 # MW
         locations.Sumatera_Utara.techs.geothermal.constraints.energy_cap_max: 2090 # MW
         locations.Sumatera_Utara.techs.large_hydro.constraints.energy_cap_max: 5712 # MW
-        locations.Sumatera_Utara.techs.solar.constraints.energy_cap_max: 612766 # MW
-    hundred_percent_potential_increase:
-        locations.Aceh.techs.biomass.constraints.energy_cap_max: 2273 # MW
-        locations.Aceh.techs.geothermal.constraints.energy_cap_max: 1080 # MW
-        locations.Aceh.techs.large_hydro.constraints.energy_cap_max: 10124 # MW
-        locations.Aceh.techs.solar.constraints.energy_cap_max: 568365 # MW
 
-        locations.Bali.techs.biomass.constraints.energy_cap_max: 294 # MW
-        locations.Bali.techs.geothermal.constraints.energy_cap_max: 488 # MW
-        locations.Bali.techs.large_hydro.constraints.energy_cap_max: 416 # MW
-        locations.Bali.techs.solar.constraints.energy_cap_max: 21441 # MW
+    fifty_percent_potential_decrease:
+        locations.Aceh.techs.biomass.constraints.energy_cap_max: 568.3 # MW
+        locations.Aceh.techs.geothermal.constraints.energy_cap_max: 270 # MW
+        locations.Aceh.techs.large_hydro.constraints.energy_cap_max: 2531 # MW
 
-        locations.Banten.techs.biomass.constraints.energy_cap_max: 693 # MW
-        locations.Banten.techs.geothermal.constraints.energy_cap_max: 646 # MW
-        locations.Banten.techs.solar.constraints.energy_cap_max: 6790 # MW
+        locations.Bali.techs.biomass.constraints.energy_cap_max: 73.5 # MW
+        locations.Bali.techs.geothermal.constraints.energy_cap_max: 122 # MW
+        locations.Bali.techs.large_hydro.constraints.energy_cap_max: 104 # MW
 
-        locations.Bengkulu.techs.biomass.constraints.energy_cap_max: 1266 # MW
-        locations.Bengkulu.techs.geothermal.constraints.energy_cap_max: 1260 # MW
-        locations.Bengkulu.techs.large_hydro.constraints.energy_cap_max: 1551 # MW
-        locations.Bengkulu.techs.solar.constraints.energy_cap_max: 181488 # MW
+        locations.Banten.techs.biomass.constraints.energy_cap_max: 173.3 # MW
+        locations.Banten.techs.geothermal.constraints.energy_cap_max: 161.5 # MW
 
-        locations.Daerah_Istimewa_Yogyakarta.techs.biomass.constraints.energy_cap_max: 366 # MW
-        locations.Daerah_Istimewa_Yogyakarta.techs.geothermal.constraints.energy_cap_max: 20 # MW
-        locations.Daerah_Istimewa_Yogyakarta.techs.solar.constraints.energy_cap_max: 60 # MW
+        locations.Bengkulu.techs.biomass.constraints.energy_cap_max: 316.5 # MW
+        locations.Bengkulu.techs.geothermal.constraints.energy_cap_max: 315 # MW
+        locations.Bengkulu.techs.large_hydro.constraints.energy_cap_max: 387.8 # MW
 
-        locations.Gorontalo.techs.biomass.constraints.energy_cap_max: 238 # MW
-        locations.Gorontalo.techs.geothermal.constraints.energy_cap_max: 40 # MW
-        locations.Gorontalo.techs.solar.constraints.energy_cap_max: 91780 # MW
+        locations.Daerah_Istimewa_Yogyakarta.techs.biomass.constraints.energy_cap_max: 91.6 # MW
+        locations.Daerah_Istimewa_Yogyakarta.techs.geothermal.constraints.energy_cap_max: 5 # MW
 
-        locations.Jambi.techs.biomass.constraints.energy_cap_max: 3642 # MW
-        locations.Jambi.techs.geothermal.constraints.energy_cap_max: 746 # MW
-        locations.Jambi.techs.large_hydro.constraints.energy_cap_max: 1551 # MW
-        locations.Jambi.techs.solar.constraints.energy_cap_max: 637597 # MW
+        locations.Gorontalo.techs.biomass.constraints.energy_cap_max: 59.6 # MW
+        locations.Gorontalo.techs.geothermal.constraints.energy_cap_max: 10 # MW
 
-        locations.Jawa_Barat.techs.biomass.constraints.energy_cap_max: 3960 # MW
-        locations.Jawa_Barat.techs.geothermal.constraints.energy_cap_max: 746 # MW
-        locations.Jawa_Barat.techs.large_hydro.constraints.energy_cap_max: 1551 # MW
-        locations.Jawa_Barat.techs.solar.constraints.energy_cap_max: 11114 # MW
+        locations.Jambi.techs.biomass.constraints.energy_cap_max: 910.5 # MW
+        locations.Jambi.techs.geothermal.constraints.energy_cap_max: 186.5 # MW
+        locations.Jambi.techs.large_hydro.constraints.energy_cap_max: 387.8 # MW
 
-        locations.Jawa_Tengah.techs.biomass.constraints.energy_cap_max: 3768 # MW
-        locations.Jawa_Tengah.techs.geothermal.constraints.energy_cap_max: 1624 # MW
-        locations.Jawa_Tengah.techs.large_hydro.constraints.energy_cap_max: 1626 # MW
-        locations.Jawa_Tengah.techs.solar.constraints.energy_cap_max: 8087 # MW
+        locations.Jawa_Barat.techs.biomass.constraints.energy_cap_max: 989.9 # MW
+        locations.Jawa_Barat.techs.geothermal.constraints.energy_cap_max: 1047.4 # MW
+        locations.Jawa_Barat.techs.large_hydro.constraints.energy_cap_max: 1430.5 # MW
 
-        locations.Jawa_Timur.techs.biomass.constraints.energy_cap_max: 5703 # MW
-        locations.Jawa_Timur.techs.geothermal.constraints.energy_cap_max: 1848 # MW
-        locations.Jawa_Timur.techs.large_hydro.constraints.energy_cap_max: 1050 # MW
-        locations.Jawa_Timur.techs.solar.constraints.energy_cap_max: 52516 # MW
+        locations.Jawa_Tengah.techs.biomass.constraints.energy_cap_max: 942.1 # MW
+        locations.Jawa_Tengah.techs.geothermal.constraints.energy_cap_max: 406 # MW
+        locations.Jawa_Tengah.techs.large_hydro.constraints.energy_cap_max: 406.5 # MW
 
-        locations.Kalimantan_Barat.techs.biomass.constraints.energy_cap_max: 2559 # MW
-        locations.Kalimantan_Barat.techs.large_hydro.constraints.energy_cap_max: 9474 # MW
-        locations.Kalimantan_Barat.techs.solar.constraints.energy_cap_max: 2878767 # MW
+        locations.Jawa_Timur.techs.biomass.constraints.energy_cap_max: 1425.7 # MW
+        locations.Jawa_Timur.techs.geothermal.constraints.energy_cap_max: 462 # MW
+        locations.Jawa_Timur.techs.large_hydro.constraints.energy_cap_max: 262.5 # MW
 
-        locations.Kalimantan_Selatan.techs.biomass.constraints.energy_cap_max: 2533 # MW
-        locations.Kalimantan_Selatan.techs.large_hydro.constraints.energy_cap_max: 11230 # MW
-        locations.Kalimantan_Selatan.techs.solar.constraints.energy_cap_max: 516872 # MW
+        locations.Kalimantan_Barat.techs.biomass.constraints.energy_cap_max: 639.7 # MW
+        locations.Kalimantan_Barat.techs.large_hydro.constraints.energy_cap_max: 2368.5 # MW
 
-        locations.Kalimantan_Tengah.techs.biomass.constraints.energy_cap_max: 2973 # MW
-        locations.Kalimantan_Tengah.techs.large_hydro.constraints.energy_cap_max: 11230 # MW
-        locations.Kalimantan_Tengah.techs.solar.constraints.energy_cap_max: 1193387 # MW
+        locations.Kalimantan_Selatan.techs.biomass.constraints.energy_cap_max: 633.2 # MW
+        locations.Kalimantan_Selatan.techs.large_hydro.constraints.energy_cap_max: 2807.5 # MW
 
-        locations.Kalimantan_Timur.techs.biomass.constraints.energy_cap_max: 947 # MW
-        locations.Kalimantan_Timur.techs.large_hydro.constraints.energy_cap_max: 11230 # MW
-        locations.Kalimantan_Timur.techs.solar.constraints.energy_cap_max: 3061533 # MW
+        locations.Kalimantan_Tengah.techs.biomass.constraints.energy_cap_max: 743.4 # MW
+        locations.Kalimantan_Tengah.techs.large_hydro.constraints.energy_cap_max: 2807.5 # MW
 
-        locations.Kalimantan_Utara.techs.biomass.constraints.energy_cap_max: 947 # MW
-        locations.Kalimantan_Utara.techs.geothermal.constraints.energy_cap_max: 12 # MW
-        locations.Kalimantan_Utara.techs.solar.constraints.energy_cap_max: 347981 # MW
+        locations.Kalimantan_Timur.techs.biomass.constraints.energy_cap_max: 236.7 # MW
+        locations.Kalimantan_Timur.techs.large_hydro.constraints.energy_cap_max: 2807.5 # MW
 
-        locations.Kepulauan_Bangka_Belitung.techs.biomass.constraints.energy_cap_max: 435 # MW
-        locations.Kepulauan_Bangka_Belitung.techs.solar.constraints.energy_cap_max: 357232 # MW
+        locations.Kalimantan_Utara.techs.biomass.constraints.energy_cap_max: 236.7  # MW
+        locations.Kalimantan_Utara.techs.geothermal.constraints.energy_cap_max: 3 # MW
 
-        locations.Kepulauan_Riau.techs.biomass.constraints.energy_cap_max: 23 # MW
-        locations.Kepulauan_Riau.techs.solar.constraints.energy_cap_max: 119943 # MW
+        locations.Kepulauan_Bangka_Belitung.techs.biomass.constraints.energy_cap_max: 108.9 # MW
 
-        locations.Lampung.techs.biomass.constraints.energy_cap_max: 2815 # MW
-        locations.Lampung.techs.geothermal.constraints.energy_cap_max: 2420 # MW
-        locations.Lampung.techs.large_hydro.constraints.energy_cap_max: 1551 # MW
-        locations.Lampung.techs.solar.constraints.energy_cap_max: 91668 # MW
+        locations.Kepulauan_Riau.techs.biomass.constraints.energy_cap_max: 5.8 # MW
 
-        locations.Maluku.techs.biomass.constraints.energy_cap_max: 47 # MW
-        locations.Maluku.techs.geothermal.constraints.energy_cap_max: 228 # MW
-        locations.Maluku.techs.large_hydro.constraints.energy_cap_max: 860 # MW
-        locations.Maluku.techs.solar.constraints.energy_cap_max: 720117 # MW
+        locations.Lampung.techs.biomass.constraints.energy_cap_max: 703.8 # MW
+        locations.Lampung.techs.geothermal.constraints.energy_cap_max: 605 # MW
+        locations.Lampung.techs.large_hydro.constraints.energy_cap_max: 387.8 # MW
 
-        locations.Maluku_Utara.techs.biomass.constraints.energy_cap_max: 55 # MW
-        locations.Maluku_Utara.techs.geothermal.constraints.energy_cap_max: 758 # MW
-        locations.Maluku_Utara.techs.solar.constraints.energy_cap_max: 312400 # MW
+        locations.Maluku.techs.biomass.constraints.energy_cap_max: 11.8 # MW
+        locations.Maluku.techs.geothermal.constraints.energy_cap_max: 57 # MW
+        locations.Maluku.techs.large_hydro.constraints.energy_cap_max: 215 # MW
 
-        locations.Nusa_Tenggara_Barat.techs.biomass.constraints.energy_cap_max: 683 # MW
-        locations.Nusa_Tenggara_Barat.techs.geothermal.constraints.energy_cap_max: 160 # MW
-        locations.Nusa_Tenggara_Barat.techs.large_hydro.constraints.energy_cap_max: 416 # MW
-        locations.Nusa_Tenggara_Barat.techs.solar.constraints.energy_cap_max: 218437 # MW
+        locations.Maluku_Utara.techs.biomass.constraints.energy_cap_max: 13.75 # MW
+        locations.Maluku_Utara.techs.geothermal.constraints.energy_cap_max: 189.5 # MW
 
-        locations.Nusa_Tenggara_Timur.techs.biomass.constraints.energy_cap_max: 385 # MW
-        locations.Nusa_Tenggara_Timur.techs.geothermal.constraints.energy_cap_max: 1421 # MW
-        locations.Nusa_Tenggara_Timur.techs.large_hydro.constraints.energy_cap_max: 416 # MW
-        locations.Nusa_Tenggara_Timur.techs.solar.constraints.energy_cap_max: 1126425 # MW
+        locations.Nusa_Tenggara_Barat.techs.biomass.constraints.energy_cap_max: 170.7 # MW
+        locations.Nusa_Tenggara_Barat.techs.geothermal.constraints.energy_cap_max: 40 # MW
+        locations.Nusa_Tenggara_Barat.techs.large_hydro.constraints.energy_cap_max: 104 # MW
 
-        locations.Papua.techs.biomass.constraints.energy_cap_max: 163 # MW
-        locations.Papua.techs.large_hydro.constraints.energy_cap_max: 44742 # MW
-        locations.Papua.techs.solar.constraints.energy_cap_max: 1180631 # MW
+        locations.Nusa_Tenggara_Timur.techs.biomass.constraints.energy_cap_max: 96.3 # MW
+        locations.Nusa_Tenggara_Timur.techs.geothermal.constraints.energy_cap_max: 355.3 # MW
+        locations.Nusa_Tenggara_Timur.techs.large_hydro.constraints.energy_cap_max: 104 # MW
 
-        locations.Papua_Barat.techs.biomass.constraints.energy_cap_max: 102 # MW
-        locations.Papua_Barat.techs.solar.constraints.energy_cap_max: 363933 # MW
+        locations.Papua.techs.biomass.constraints.energy_cap_max: 40.7 # MW
+        locations.Papua.techs.large_hydro.constraints.energy_cap_max: 11185.5 # MW
 
-        locations.Riau.techs.biomass.constraints.energy_cap_max: 8315 # MW
-        locations.Riau.techs.large_hydro.constraints.energy_cap_max: 3607 # MW
-        locations.Riau.techs.solar.constraints.energy_cap_max: 227598 # MW
+        locations.Papua_Barat.techs.biomass.constraints.energy_cap_max: 25.4 # MW
 
-        locations.Sulawesi_Barat.techs.biomass.constraints.energy_cap_max: 396 # MW
-        locations.Sulawesi_Barat.techs.geothermal.constraints.energy_cap_max: 60 # MW
-        locations.Sulawesi_Barat.techs.solar.constraints.energy_cap_max: 152753 # MW
+        locations.Riau.techs.biomass.constraints.energy_cap_max: 2078.7 # MW
+        locations.Riau.techs.large_hydro.constraints.energy_cap_max: 901.8 # MW
 
-        locations.Sulawesi_Selatan.techs.biomass.constraints.energy_cap_max: 1781 # MW
-        locations.Sulawesi_Selatan.techs.geothermal.constraints.energy_cap_max: 278 # MW
-        locations.Sulawesi_Selatan.techs.large_hydro.constraints.energy_cap_max: 6340 # MW
-        locations.Sulawesi_Selatan.techs.solar.constraints.energy_cap_max: 513874 # MW
+        locations.Sulawesi_Barat.techs.biomass.constraints.energy_cap_max: 98.9 # MW
+        locations.Sulawesi_Barat.techs.geothermal.constraints.energy_cap_max: 15 # MW
 
-        locations.Sulawesi_Tengah.techs.biomass.constraints.energy_cap_max: 615 # MW
-        locations.Sulawesi_Tengah.techs.geothermal.constraints.energy_cap_max: 592 # MW
-        locations.Sulawesi_Tengah.techs.large_hydro.constraints.energy_cap_max: 3967 # MW
-        locations.Sulawesi_Tengah.techs.solar.constraints.energy_cap_max: 600474 # MW
+        locations.Sulawesi_Selatan.techs.biomass.constraints.energy_cap_max: 445.2 # MW
+        locations.Sulawesi_Selatan.techs.geothermal.constraints.energy_cap_max: 69.5 # MW
+        locations.Sulawesi_Selatan.techs.large_hydro.constraints.energy_cap_max: 1585 # MW
 
-        locations.Sulawesi_Tenggara.techs.biomass.constraints.energy_cap_max: 266 # MW
-        locations.Sulawesi_Tenggara.techs.geothermal.constraints.energy_cap_max: 184 # MW
-        locations.Sulawesi_Tenggara.techs.large_hydro.constraints.energy_cap_max: 3967 # MW
-        locations.Sulawesi_Tenggara.techs.solar.constraints.energy_cap_max: 595237 # MW
+        locations.Sulawesi_Tengah.techs.biomass.constraints.energy_cap_max: 153.7 # MW
+        locations.Sulawesi_Tengah.techs.geothermal.constraints.energy_cap_max: 148 # MW
+        locations.Sulawesi_Tengah.techs.large_hydro.constraints.energy_cap_max: 991.8 # MW
 
-        locations.Sulawesi_Utara.techs.biomass.constraints.energy_cap_max: 300 # MW
-        locations.Sulawesi_Utara.techs.geothermal.constraints.energy_cap_max: 1340 # MW
-        locations.Sulawesi_Utara.techs.large_hydro.constraints.energy_cap_max: 6340 # MW
-        locations.Sulawesi_Utara.techs.solar.constraints.energy_cap_max: 56118 # MW
+        locations.Sulawesi_Tenggara.techs.biomass.constraints.energy_cap_max: 66.4 # MW
+        locations.Sulawesi_Tenggara.techs.geothermal.constraints.energy_cap_max: 46 # MW
+        locations.Sulawesi_Tenggara.techs.large_hydro.constraints.energy_cap_max: 991.8 # MW
 
-        locations.Sumatera_Barat.techs.biomass.constraints.energy_cap_max: 1846 # MW
-        locations.Sumatera_Barat.techs.geothermal.constraints.energy_cap_max: 1490 # MW
-        locations.Sumatera_Barat.techs.large_hydro.constraints.energy_cap_max: 3607 # MW
-        locations.Sumatera_Barat.techs.solar.constraints.energy_cap_max: 284311 # MW
+        locations.Sulawesi_Utara.techs.biomass.constraints.energy_cap_max: 75.1 # MW
+        locations.Sulawesi_Utara.techs.geothermal.constraints.energy_cap_max: 335 # MW
+        locations.Sulawesi_Utara.techs.large_hydro.constraints.energy_cap_max: 1585 # MW
 
-        locations.Sumatera_Selatan.techs.biomass.constraints.energy_cap_max: 4123 # MW
-        locations.Sumatera_Selatan.techs.geothermal.constraints.energy_cap_max: 738 # MW
-        locations.Sumatera_Selatan.techs.large_hydro.constraints.energy_cap_max: 1551 # MW
-        locations.Sumatera_Selatan.techs.solar.constraints.energy_cap_max: 621551 # MW
+        locations.Sumatera_Barat.techs.biomass.constraints.energy_cap_max: 461.6 # MW
+        locations.Sumatera_Barat.techs.geothermal.constraints.energy_cap_max: 372.5 # MW
+        locations.Sumatera_Barat.techs.large_hydro.constraints.energy_cap_max: 901.8 # MW
 
-        locations.Sumatera_Utara.techs.biomass.constraints.energy_cap_max: 5592 # MW
-        locations.Sumatera_Utara.techs.geothermal.constraints.energy_cap_max: 2787 # MW
-        locations.Sumatera_Utara.techs.large_hydro.constraints.energy_cap_max: 7616 # MW
-        locations.Sumatera_Utara.techs.solar.constraints.energy_cap_max: 817022 # MW
+        locations.Sumatera_Selatan.techs.biomass.constraints.energy_cap_max: 1030.7 # MW
+        locations.Sumatera_Selatan.techs.geothermal.constraints.energy_cap_max: 184.5 # MW
+        locations.Sumatera_Selatan.techs.large_hydro.constraints.energy_cap_max: 387.8 # MW
+
+        locations.Sumatera_Utara.techs.biomass.constraints.energy_cap_max: 1398.1 # MW
+        locations.Sumatera_Utara.techs.geothermal.constraints.energy_cap_max: 696.7 # MW
+        locations.Sumatera_Utara.techs.large_hydro.constraints.energy_cap_max: 1904 # MW
 
     trans_cap_5GW:
         techs.hvdc_transmission.constraints.energy_cap_max: 5000 # MW
@@ -1563,136 +1519,90 @@ overrides:
     trans_cap_50GW:
         techs.hvdc_transmission.constraints.energy_cap_max: 50000 # MW
 
-    trans_cost_higher:
-        techs.hvdc_transmission.costs.monetary.energy_cap: 1500000 # US$/MW
-        techs.hvdc_transmission.costs.monetary.om_prod: 4.25 # US$/MWh
-    trans_cost_highest:
-        techs.hvdc_transmission.costs.monetary.energy_cap: 2000000 # US$/MW
-        techs.hvdc_transmission.costs.monetary.om_prod: 6 # US$/MWh
+    hvdc_transmission_cost_max:
+        techs.hvdc_transmission.costs.monetary.energy_cap_per_distance: 1261 # US$(2021)/MW/km
+        techs.hvdc_transmission.costs.monetary.energy_cap: 207000 # US$(2021)/MW
+        techs.hvdc_transmission.costs.monetary.om_annual_investment_fraction: 0.035  # % of CAPEX
+    hvdc_transmission_cost_min:
+        techs.hvdc_transmission.costs.monetary.energy_cap_per_distance: 171 # US$(2021)/MW/km
+        techs.hvdc_transmission.costs.monetary.energy_cap: 148000 # US$(2021)/MW
+        techs.hvdc_transmission.costs.monetary.om_annual_investment_fraction: 0.007  # % of CAPEX
 
-    solar_cost_max:
-        techs.solar.costs.monetary.energy_cap: 2314000 # US$(2021)/kWp
-        techs.solar.costs.monetary.om_annual: 27700 # US$(2021)/kWp/year
-        techs.solar.costs.monetary.om_prod: 0.45
-    solar_cost_med:
-        techs.solar.costs.monetary.energy_cap: 1342000
-        techs.solar.costs.monetary.om_annual: 16000
-        techs.solar.costs.monetary.om_prod: 0.225
-    solar_cost_min:
-        techs.solar.costs.monetary.energy_cap: 370000
-        techs.solar.costs.monetary.om_annual: 5000
-        techs.solar.costs.monetary.om_prod: 0
+    solar_onshore_cost_max:
+        techs.solar_onshore.costs.monetary.energy_cap: 465000
+        techs.solar_onshore.costs.monetary.om_annual: 7100
+    solar_onshore_cost_min:
+        techs.solar_onshore.costs.monetary.energy_cap: 225000
+        techs.solar_onshore.costs.monetary.om_annual: 2400
+
+    solar_floating_cost_max:
+        techs.solar_floating.costs.monetary.energy_cap: 506000
+    solar_floating_cost_min:
+        techs.solar_floating.costs.monetary.energy_cap: 245000
 
     onshore_wind_cost_max:
-        techs.onshore_wind.costs.monetary.energy_cap: 2462000
-        techs.onshore_wind.costs.monetary.om_annual: 66000
-        techs.onshore_wind.costs.monetary.om_prod: 0.9
-    onshore_wind_cost_med:
-        techs.onshore_wind.costs.monetary.energy_cap: 1659000
-        techs.onshore_wind.costs.monetary.om_annual: 42000
-        techs.onshore_wind.costs.monetary.om_prod: 0.45
+        techs.onshore_wind.costs.monetary.energy_cap: 1721000
+        techs.onshore_wind.costs.monetary.om_annual: 56000
     onshore_wind_cost_min:
-        techs.onshore_wind.costs.monetary.energy_cap: 855000
-        techs.onshore_wind.costs.monetary.om_annual: 18000
-        techs.onshore_wind.costs.monetary.om_prod: 0
+        techs.onshore_wind.costs.monetary.energy_cap: 558000
+        techs.onshore_wind.costs.monetary.om_annual: 23000
 
     offshore_wind_cost_max:
-        techs.offshore_wind.costs.monetary.energy_cap: 4325000
-        techs.offshore_wind.costs.monetary.om_annual: 20000
-        techs.offshore_wind.costs.monetary.om_prod: 25
-    offshore_wind_cost_med:
-        techs.offshore_wind.costs.monetary.energy_cap: 3720000
-        techs.offshore_wind.costs.monetary.om_annual: 15500
-        techs.offshore_wind.costs.monetary.om_prod: 21.365
+        techs.offshore_wind.costs.monetary.energy_cap: 2977000
+        techs.offshore_wind.costs.monetary.om_annual: 88000
+        techs.offshore_wind.costs.monetary.om_prod: 4.0
     offshore_wind_cost_min:
-        techs.offshore_wind.costs.monetary.energy_cap: 3114000
-        techs.offshore_wind.costs.monetary.om_annual: 11000
-        techs.offshore_wind.costs.monetary.om_prod: 17.73
+        techs.offshore_wind.costs.monetary.energy_cap: 1442000
+        techs.offshore_wind.costs.monetary.om_annual: 57000
+        techs.offshore_wind.costs.monetary.om_prod: 2.5
 
     otec_cost_max:
         techs.otec.costs.monetary.energy_cap: 6668000
-    otec_cost_med:
-        techs.otec.costs.monetary.energy_cap: 4971000
     otec_cost_min:
         techs.otec.costs.monetary.energy_cap: 3274000
 
     nuclear_cost_max:
-        techs.nuclear.costs.monetary.energy_cap: 10300000
-        techs.nuclear.costs.monetary.om_annual: 184000
-        techs.nuclear.costs.monetary.om_prod: 4.25
-    nuclear_cost_med:
-        techs.nuclear.costs.monetary.energy_cap: 7064000
-        techs.nuclear.costs.monetary.om_annual: 114000
-        techs.nuclear.costs.monetary.om_prod: 2.53
+        techs.nuclear.costs.monetary.energy_cap: 9304000
+        techs.nuclear.costs.monetary.om_annual: 167000
+        techs.nuclear.costs.monetary.om_prod: 2.6
     nuclear_cost_min:
-        techs.nuclear.costs.monetary.energy_cap: 3828000
-        techs.nuclear.costs.monetary.om_annual: 91000
-        techs.nuclear.costs.monetary.om_prod: 0.81
+        techs.nuclear.costs.monetary.energy_cap: 4652000
+        techs.nuclear.costs.monetary.om_annual: 19000
+        techs.nuclear.costs.monetary.om_prod: 1.5
 
     biomass_cost_max:
-        techs.biomass.costs.monetary.energy_cap: 3325000
-        techs.biomass.costs.monetary.om_annual: 108600
-        techs.biomass.costs.monetary.om_prod: 10.77 
-    biomass_cost_med:
-        techs.biomass.costs.monetary.energy_cap: 2104000
-        techs.biomass.costs.monetary.om_annual: 72000
-        techs.biomass.costs.monetary.om_prod: 6.71
+        techs.biomass.costs.monetary.energy_cap: 2419000
+        techs.biomass.costs.monetary.om_annual: 57000
+        techs.biomass.costs.monetary.om_prod: 3.6
     biomass_cost_min:
-        techs.biomass.costs.monetary.energy_cap: 882000
-        techs.biomass.costs.monetary.om_annual: 37000
-        techs.biomass.costs.monetary.om_prod: 2.65
+        techs.biomass.costs.monetary.energy_cap: 1396000
+        techs.biomass.costs.monetary.om_annual: 34000
+        techs.biomass.costs.monetary.om_prod: 2.2
 
     geothermal_cost_max:
-        techs.geothermal.costs.monetary.energy_cap: 5601000
-        techs.geothermal.costs.monetary.om_annual: 59000
-        techs.geothermal.costs.monetary.om_prod: 37.7   
-    geothermal_cost_med:
-        techs.geothermal.costs.monetary.energy_cap: 3618000
-        techs.geothermal.costs.monetary.om_annual: 34000
-        techs.geothermal.costs.monetary.om_prod: 18.99
+        techs.geothermal.costs.monetary.energy_cap: 4233000
+        techs.geothermal.costs.monetary.om_annual: 41000
+        techs.geothermal.costs.monetary.om_prod: 0.2
     geothermal_cost_min:
-        techs.geothermal.costs.monetary.energy_cap: 1634000
-        techs.geothermal.costs.monetary.om_annual: 9000
-        techs.geothermal.costs.monetary.om_prod: 0.28
+        techs.geothermal.costs.monetary.energy_cap: 1582000
+        techs.geothermal.costs.monetary.om_annual: 25000
+        techs.geothermal.costs.monetary.om_prod: 0.1
 
     large_hydro_cost_max:
-        techs.large_hydro.costs.monetary.energy_cap: 2574000
-        techs.large_hydro.costs.monetary.om_annual: 63000
-        techs.large_hydro.costs.monetary.om_prod: 4.25
-    large_hydro_cost_med:
-        techs.large_hydro.costs.monetary.energy_cap: 2096000
-        techs.large_hydro.costs.monetary.om_annual: 49000
-        techs.large_hydro.costs.monetary.om_prod: 2.445
+        techs.large_hydro.costs.monetary.energy_cap: 2280000
+        techs.large_hydro.costs.monetary.om_annual: 44000
+        techs.large_hydro.costs.monetary.om_prod: 0.8
     large_hydro_cost_min:
-        techs.large_hydro.costs.monetary.energy_cap: 1618000
-        techs.large_hydro.costs.monetary.om_annual: 35000
-        techs.large_hydro.costs.monetary.om_prod: 0.64
+        techs.large_hydro.costs.monetary.energy_cap: 1368000
+        techs.large_hydro.costs.monetary.om_annual: 27000
+        techs.large_hydro.costs.monetary.om_prod: 0.5
 
     small_hydro_cost_max:
-        techs.small_hydro.costs.monetary.energy_cap: 3750000
-        techs.small_hydro.costs.monetary.om_annual: 75000
-        techs.small_hydro.costs.monetary.om_prod: 4.25
-    small_hydro_cost_med:
-        techs.small_hydro.costs.monetary.energy_cap: 2765000
-        techs.small_hydro.costs.monetary.om_annual: 60500
-        techs.small_hydro.costs.monetary.om_prod: 2.375
+        techs.small_hydro.costs.monetary.energy_cap: 2791000
+        techs.small_hydro.costs.monetary.om_annual: 63000
+        techs.small_hydro.costs.monetary.om_prod: 0.6
     small_hydro_cost_min:
-        techs.small_hydro.costs.monetary.energy_cap: 1780000
-        techs.small_hydro.costs.monetary.om_annual: 46000
-        techs.small_hydro.costs.monetary.om_prod: 0.5
-
-    alternative_solar:
-        locations.Bali.techs.solar_floating.exists: True
-        locations.Banten.techs.solar_floating.exists: True
-        locations.Daerah_Istimewa_Yogyakarta.techs.solar_floating.exists: True
-        locations.Jawa_Barat.techs.solar_floating.exists: True
-        locations.Jawa_Tengah.techs.solar_floating.exists: True
-        locations.Jawa_Timur.techs.solar_floating.exists: True
-        
-        locations.Bali.techs.solar_rooftop.exists: True
-        locations.Banten.techs.solar_rooftop.exists: True
-        locations.Daerah_Istimewa_Yogyakarta.techs.solar_rooftop.exists: True
-        locations.Jawa_Barat.techs.solar_rooftop.exists: True
-        locations.Jawa_Tengah.techs.solar_rooftop.exists: True
-        locations.Jawa_Timur.techs.solar_rooftop.exists: True
+        techs.small_hydro.costs.monetary.energy_cap: 1675000
+        techs.small_hydro.costs.monetary.om_annual: 38000
+        techs.small_hydro.costs.monetary.om_prod: 0.4
         
